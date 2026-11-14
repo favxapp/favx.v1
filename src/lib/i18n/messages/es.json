@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "FAVX",
+    "description": "Plataforma para compartir recomendaciones, experiencias y momentos."
+  },
+  "common": {
+    "appName": "FAVX",
+    "signOut": "Cerrar sesión",
+    "save": "Guardar",
+    "language": "Idioma",
+    "menuMe": "Mi cuenta",
+    "menuCreator": "Mi perfil de creador",
+    "skipToContent": "Saltar al contenido"
+  },
+  "landing": {
+    "headline": "Comparte recomendaciones, experiencias y momentos.",
+    "sub": "Un lugar para guardar lo que recomiendas y ayudar a otras personas a encontrar lo que importa.",
+    "cta": "Iniciar sesión o crear cuenta"
+  },
+  "login": {
+    "title": "Iniciar sesión en FAVX",
+    "intro": "Te enviaremos un código de verificación por correo. No necesitas contraseña.",
+    "emailLabel": "Correo electrónico",
+    "sendCode": "Enviar código",
+    "codeTitle": "Introduce el código",
+    "sentTo": "Enviamos un código a {email}.",
+    "codeLabel": "Código de verificación",
+    "verify": "Confirmar",
+    "changeEmail": "Usar otro correo"
+  },
+  "errors": {
+    "email_invalid": "Introduce un correo electrónico válido.",
+    "otp_invalid": "El código debe tener de 6 a 10 números.",
+    "otp_failed": "Código no válido o caducado. Solicita uno nuevo.",
+    "send_failed": "No pudimos enviar el código ahora. Inténtalo de nuevo en unos instantes.",
+    "rate_limited": "Demasiados intentos. Espera un poco e inténtalo de nuevo.",
+    "username_format": "Usa de 3 a 30 caracteres: letras minúsculas, números, guion o guion bajo, empezando por letra o número.",
+    "username_reserved": "Este nombre de usuario no está disponible.",
+    "username_taken": "Este nombre de usuario ya está en uso.",
+    "display_name_required": "Indica el nombre para mostrar.",
+    "display_name_too_long": "El nombre para mostrar puede tener como máximo 80 caracteres.",
+    "bio_too_long": "La bio puede tener como máximo 500 caracteres.",
+    "timezone_invalid": "Zona horaria no válida.",
+    "locale_invalid": "Idioma no válido.",
+    "unauthorized": "Tu sesión ha caducado. Inicia sesión de nuevo.",
+    "generic": "Algo salió mal. Inténtalo de nuevo."
+  },
+  "me": {
+    "title": "Mi cuenta",
+    "welcome": "Sesión iniciada como",
+    "creatorTitle": "Perfil de creador",
+    "creatorInactive": "Todavía no has activado tu perfil de creador.",
+    "creatorActive": "Tu perfil de creador está activo como @{username}.",
+    "activateCta": "Activar perfil de creador",
+    "editCta": "Editar perfil"
+  },
+  "activate": {
+    "title": "Activar perfil de creador",
+    "intro": "Elige el nombre de usuario de tu perfil. Te identifica en FAVX.",
+    "usernameLabel": "Nombre de usuario",
+    "usernameHint": "De 3 a 30 caracteres: a-z, 0-9, guion y guion bajo.",
+    "displayNameLabel": "Nombre para mostrar",
+    "submit": "Activar perfil"
+  },
+  "profile": {
+    "title": "Editar perfil",
+    "usernameLabel": "Nombre de usuario",
+    "usernameLocked": "El nombre de usuario no se puede cambiar por ahora.",
+    "displayNameLabel": "Nombre para mostrar",
+    "bioLabel": "Bio",
+    "bioHint": "Hasta 500 caracteres.",
+    "localeLabel": "Idioma de la interfaz",
+    "timezoneLabel": "Zona horaria",
+    "saved": "Perfil guardado.",
+    "submit": "Guardar cambios",
+    "publicPageSoon": "La página pública de tu perfil se habilitará en una etapa posterior."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "La dirección puede ser incorrecta o el contenido no está disponible.",
+    "back": "Volver al inicio"
+  },
+  "error": {
+    "title": "Algo salió mal",
+    "body": "No pudimos completar esta acción. Inténtalo de nuevo.",
+    "retry": "Reintentar"
+  }
+}

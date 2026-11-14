@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "FAVX",
+    "description": "Plateforme pour partager recommandations, expériences et moments."
+  },
+  "common": {
+    "appName": "FAVX",
+    "signOut": "Se déconnecter",
+    "save": "Enregistrer",
+    "language": "Langue",
+    "menuMe": "Mon compte",
+    "menuCreator": "Mon profil de créateur",
+    "skipToContent": "Aller au contenu"
+  },
+  "landing": {
+    "headline": "Partagez recommandations, expériences et moments.",
+    "sub": "Un lieu pour garder ce que vous recommandez et aider les autres à trouver ce qui compte.",
+    "cta": "Se connecter ou créer un compte"
+  },
+  "login": {
+    "title": "Se connecter à FAVX",
+    "intro": "Nous vous enverrons un code de vérification par e-mail. Aucun mot de passe nécessaire.",
+    "emailLabel": "E-mail",
+    "sendCode": "Envoyer le code",
+    "codeTitle": "Saisissez le code",
+    "sentTo": "Nous avons envoyé un code à {email}.",
+    "codeLabel": "Code de vérification",
+    "verify": "Confirmer",
+    "changeEmail": "Utiliser un autre e-mail"
+  },
+  "errors": {
+    "email_invalid": "Saisissez une adresse e-mail valide.",
+    "otp_invalid": "Le code doit comporter de 6 à 10 chiffres.",
+    "otp_failed": "Code invalide ou expiré. Demandez-en un nouveau.",
+    "send_failed": "Impossible d'envoyer le code pour le moment. Réessayez dans un instant.",
+    "rate_limited": "Trop de tentatives. Patientez un peu puis réessayez.",
+    "username_format": "Utilisez de 3 à 30 caractères : lettres minuscules, chiffres, tiret ou tiret bas, en commençant par une lettre ou un chiffre.",
+    "username_reserved": "Ce nom d'utilisateur n'est pas disponible.",
+    "username_taken": "Ce nom d'utilisateur est déjà utilisé.",
+    "display_name_required": "Saisissez le nom affiché.",
+    "display_name_too_long": "Le nom affiché peut comporter 80 caractères au maximum.",
+    "bio_too_long": "La bio peut comporter 500 caractères au maximum.",
+    "timezone_invalid": "Fuseau horaire invalide.",
+    "locale_invalid": "Langue invalide.",
+    "unauthorized": "Votre session a expiré. Reconnectez-vous.",
+    "generic": "Une erreur s'est produite. Réessayez."
+  },
+  "me": {
+    "title": "Mon compte",
+    "welcome": "Connecté en tant que",
+    "creatorTitle": "Profil de créateur",
+    "creatorInactive": "Vous n'avez pas encore activé votre profil de créateur.",
+    "creatorActive": "Votre profil de créateur est actif sous @{username}.",
+    "activateCta": "Activer le profil de créateur",
+    "editCta": "Modifier le profil"
+  },
+  "activate": {
+    "title": "Activer le profil de créateur",
+    "intro": "Choisissez le nom d'utilisateur de votre profil. Il vous identifie sur FAVX.",
+    "usernameLabel": "Nom d'utilisateur",
+    "usernameHint": "De 3 à 30 caractères : a-z, 0-9, tiret et tiret bas.",
+    "displayNameLabel": "Nom affiché",
+    "submit": "Activer le profil"
+  },
+  "profile": {
+    "title": "Modifier le profil",
+    "usernameLabel": "Nom d'utilisateur",
+    "usernameLocked": "Le nom d'utilisateur ne peut pas être modifié pour le moment.",
+    "displayNameLabel": "Nom affiché",
+    "bioLabel": "Bio",
+    "bioHint": "Jusqu'à 500 caractères.",
+    "localeLabel": "Langue de l'interface",
+    "timezoneLabel": "Fuseau horaire",
+    "saved": "Profil enregistré.",
+    "submit": "Enregistrer les modifications",
+    "publicPageSoon": "La page publique de votre profil sera disponible lors d'une étape ultérieure."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "L'adresse est peut-être incorrecte ou le contenu n'est pas disponible.",
+    "back": "Retour à l'accueil"
+  },
+  "error": {
+    "title": "Une erreur s'est produite",
+    "body": "Nous n'avons pas pu terminer cette action. Réessayez.",
+    "retry": "Réessayer"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "imported_at": "2026-11-14",
+  "documents": [
+    {
+      "source": "FAVX_DOC03_App_Flow_Screen_Specifications_v1_0 (1).md",
+      "path": "docs/requirements/FAVX_DOC03_App_Flow_Screen_Specifications_v1_0.md",
+      "sha256": "d62fe667fba62d9fe332a26a3cedb60d75ce07d0348fe6ab439568451f53d844"
+    },
+    {
+      "source": "FAVX_TRD_Ultra_Detalhado_v1_0 (1).md",
+      "path": "docs/requirements/FAVX_TRD_Ultra_Detalhado_v1_0.md",
+      "sha256": "5702a200937aaadd0f7a9e3c4f0ced780431cad74bbc3744c25e38f9e3f4f8c9"
+    },
+    {
+      "source": "FAVX_PRD_Ultra_Detalhado_v1_0 (1).md",
+      "path": "docs/requirements/FAVX_PRD_Ultra_Detalhado_v1_0.md",
+      "sha256": "d7569c707ff41a7cb3867655c1bb987659ced01e4a0b38208257212ffd1261ab"
+    },
+    {
+      "source": "FAVX_DOC04_Pacote_Completo_v1_0.zip/FAVX_DOC04_Design_Tokens_v1_0.tokens.json",
+      "path": "docs/design/FAVX_DOC04_Design_Tokens_v1_0.tokens.json",
+      "sha256": "bc43ae9d69cccba142165ce9bb4cf7a0b41a61bca2a07b5e35b3818b5baf1608"
+    },
+    {
+      "source": "FAVX_DOC04_Pacote_Completo_v1_0.zip/FAVX_DOC04_Design_Tokens_v1_0.css",
+      "path": "docs/design/FAVX_DOC04_Design_Tokens_v1_0.css",
+      "sha256": "30b6e2595f1f0197aa0f9d070aea3e9bcbf3c9bcc69ced21d625e06d7fef7c99"
+    },
+    {
+      "source": "FAVX_DOC04_Pacote_Completo_v1_0.zip/FAVX_DOC04_Design_System_Completo_v1_0.md",
+      "path": "docs/design/FAVX_DOC04_Design_System_Completo_v1_0.md",
+      "sha256": "f6e43d62cc19bfc75589c401da471f24564cae436bbff309d99aeb8223551408"
+    },
+    {
+      "source": "FAVX_DOC04_Pacote_Completo_v1_0.zip/FAVX_DOC04_Design_System_Completo_v1_0.docx",
+      "path": "docs/design/FAVX_DOC04_Design_System_Completo_v1_0.docx",
+      "sha256": "191d9c76db41eb73015d5d41e62220db6fe82c3fc25542cdaf83f6f41fdbdf57"
+    }
+  ]
+}

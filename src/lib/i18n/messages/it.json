@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "FAVX",
+    "description": "Piattaforma per condividere consigli, esperienze e momenti."
+  },
+  "common": {
+    "appName": "FAVX",
+    "signOut": "Esci",
+    "save": "Salva",
+    "language": "Lingua",
+    "menuMe": "Il mio account",
+    "menuCreator": "Il mio profilo creator",
+    "skipToContent": "Vai al contenuto"
+  },
+  "landing": {
+    "headline": "Condividi consigli, esperienze e momenti.",
+    "sub": "Un posto dove conservare ciò che consigli e aiutare gli altri a trovare ciò che conta.",
+    "cta": "Accedi o crea un account"
+  },
+  "login": {
+    "title": "Accedi a FAVX",
+    "intro": "Ti invieremo un codice di verifica via e-mail. Non serve una password.",
+    "emailLabel": "E-mail",
+    "sendCode": "Invia codice",
+    "codeTitle": "Inserisci il codice",
+    "sentTo": "Abbiamo inviato un codice a {email}.",
+    "codeLabel": "Codice di verifica",
+    "verify": "Conferma",
+    "changeEmail": "Usa un'altra e-mail"
+  },
+  "errors": {
+    "email_invalid": "Inserisci un indirizzo e-mail valido.",
+    "otp_invalid": "Il codice deve avere da 6 a 10 cifre.",
+    "otp_failed": "Codice non valido o scaduto. Richiedine uno nuovo.",
+    "send_failed": "Non è stato possibile inviare il codice ora. Riprova tra poco.",
+    "rate_limited": "Troppi tentativi. Attendi un momento e riprova.",
+    "username_format": "Usa da 3 a 30 caratteri: lettere minuscole, numeri, trattino o trattino basso, iniziando con una lettera o un numero.",
+    "username_reserved": "Questo nome utente non è disponibile.",
+    "username_taken": "Questo nome utente è già in uso.",
+    "display_name_required": "Inserisci il nome visualizzato.",
+    "display_name_too_long": "Il nome visualizzato può avere al massimo 80 caratteri.",
+    "bio_too_long": "La bio può avere al massimo 500 caratteri.",
+    "timezone_invalid": "Fuso orario non valido.",
+    "locale_invalid": "Lingua non valida.",
+    "unauthorized": "La sessione è scaduta. Accedi di nuovo.",
+    "generic": "Qualcosa è andato storto. Riprova."
+  },
+  "me": {
+    "title": "Il mio account",
+    "welcome": "Accesso effettuato come",
+    "creatorTitle": "Profilo creator",
+    "creatorInactive": "Non hai ancora attivato il profilo creator.",
+    "creatorActive": "Il tuo profilo creator è attivo come @{username}.",
+    "activateCta": "Attiva il profilo creator",
+    "editCta": "Modifica profilo"
+  },
+  "activate": {
+    "title": "Attiva il profilo creator",
+    "intro": "Scegli il nome utente del tuo profilo. Ti identifica su FAVX.",
+    "usernameLabel": "Nome utente",
+    "usernameHint": "Da 3 a 30 caratteri: a-z, 0-9, trattino e trattino basso.",
+    "displayNameLabel": "Nome visualizzato",
+    "submit": "Attiva profilo"
+  },
+  "profile": {
+    "title": "Modifica profilo",
+    "usernameLabel": "Nome utente",
+    "usernameLocked": "Per ora il nome utente non può essere modificato.",
+    "displayNameLabel": "Nome visualizzato",
+    "bioLabel": "Bio",
+    "bioHint": "Fino a 500 caratteri.",
+    "localeLabel": "Lingua dell'interfaccia",
+    "timezoneLabel": "Fuso orario",
+    "saved": "Profilo salvato.",
+    "submit": "Salva modifiche",
+    "publicPageSoon": "La pagina pubblica del tuo profilo sarà disponibile in una fase successiva."
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "body": "L'indirizzo potrebbe essere errato o il contenuto non è disponibile.",
+    "back": "Torna alla home"
+  },
+  "error": {
+    "title": "Qualcosa è andato storto",
+    "body": "Non siamo riusciti a completare questa azione. Riprova.",
+    "retry": "Riprova"
+  }
+}

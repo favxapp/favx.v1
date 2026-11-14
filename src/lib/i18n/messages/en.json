@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "FAVX",
+    "description": "A platform to share recommendations, experiences and moments."
+  },
+  "common": {
+    "appName": "FAVX",
+    "signOut": "Sign out",
+    "save": "Save",
+    "language": "Language",
+    "menuMe": "My account",
+    "menuCreator": "My Creator profile",
+    "skipToContent": "Skip to content"
+  },
+  "landing": {
+    "headline": "Share recommendations, experiences and moments.",
+    "sub": "A place to keep what you recommend and help other people find what matters.",
+    "cta": "Sign in or create account"
+  },
+  "login": {
+    "title": "Sign in to FAVX",
+    "intro": "We will email you a verification code. No password needed.",
+    "emailLabel": "Email",
+    "sendCode": "Send code",
+    "codeTitle": "Enter the code",
+    "sentTo": "We sent a code to {email}.",
+    "codeLabel": "Verification code",
+    "verify": "Confirm",
+    "changeEmail": "Use a different email"
+  },
+  "errors": {
+    "email_invalid": "Enter a valid email address.",
+    "otp_invalid": "The code must be 6 to 10 digits.",
+    "otp_failed": "Invalid or expired code. Request a new one.",
+    "send_failed": "We could not send the code right now. Please try again shortly.",
+    "rate_limited": "Too many attempts. Wait a moment and try again.",
+    "username_format": "Use 3 to 30 characters: lowercase letters, numbers, hyphen or underscore, starting with a letter or number.",
+    "username_reserved": "This username is not available.",
+    "username_taken": "This username is already taken.",
+    "display_name_required": "Enter a display name.",
+    "display_name_too_long": "The display name can have at most 80 characters.",
+    "bio_too_long": "The bio can have at most 500 characters.",
+    "timezone_invalid": "Invalid time zone.",
+    "locale_invalid": "Invalid language.",
+    "unauthorized": "Your session expired. Please sign in again.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "me": {
+    "title": "My account",
+    "welcome": "Signed in as",
+    "creatorTitle": "Creator profile",
+    "creatorInactive": "You have not activated your Creator profile yet.",
+    "creatorActive": "Your Creator profile is active as @{username}.",
+    "activateCta": "Activate Creator profile",
+    "editCta": "Edit profile"
+  },
+  "activate": {
+    "title": "Activate Creator profile",
+    "intro": "Choose your profile username. It identifies you on FAVX.",
+    "usernameLabel": "Username",
+    "usernameHint": "3 to 30 characters: a-z, 0-9, hyphen and underscore.",
+    "displayNameLabel": "Display name",
+    "submit": "Activate profile"
+  },
+  "profile": {
+    "title": "Edit profile",
+    "usernameLabel": "Username",
+    "usernameLocked": "The username cannot be changed for now.",
+    "displayNameLabel": "Display name",
+    "bioLabel": "Bio",
+    "bioHint": "Up to 500 characters.",
+    "localeLabel": "Interface language",
+    "timezoneLabel": "Time zone",
+    "saved": "Profile saved.",
+    "submit": "Save changes",
+    "publicPageSoon": "Your public profile page will be released in a later step."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The address may be wrong or the content is not available.",
+    "back": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "body": "We could not complete this action. Please try again.",
+    "retry": "Try again"
+  }
+}

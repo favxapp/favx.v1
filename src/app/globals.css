@@ -1,0 +1,22 @@
+@import './tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* PROPOSTA da F00-C (não homologada): borda de campo com 3,5:1 sobre branco; border-strong do DOC04 dá 2,68:1 */
+  --favx-field-border: #8a8986;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--favx-color-canvas);
+  color: var(--favx-color-ink-default);
+  font-family: var(--font-manrope), var(--favx-font-ui);
+  font-size: var(--favx-font-size-body);
+  line-height: var(--favx-line-height-body);
+}
+:focus-visible { outline: 2px solid var(--favx-color-focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

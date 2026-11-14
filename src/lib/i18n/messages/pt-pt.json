@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "FAVX",
+    "description": "Plataforma para partilhar recomendações, experiências e momentos."
+  },
+  "common": {
+    "appName": "FAVX",
+    "signOut": "Terminar sessão",
+    "save": "Guardar",
+    "language": "Idioma",
+    "menuMe": "A minha conta",
+    "menuCreator": "O meu perfil de criador",
+    "skipToContent": "Saltar para o conteúdo"
+  },
+  "landing": {
+    "headline": "Partilhe recomendações, experiências e momentos.",
+    "sub": "Um espaço para guardar o que recomenda e ajudar outras pessoas a encontrar o que interessa.",
+    "cta": "Entrar ou criar conta"
+  },
+  "login": {
+    "title": "Entrar na FAVX",
+    "intro": "Vamos enviar um código de verificação para o seu e-mail. Não precisa de criar palavra-passe.",
+    "emailLabel": "E-mail",
+    "sendCode": "Enviar código",
+    "codeTitle": "Introduza o código",
+    "sentTo": "Enviámos um código para {email}.",
+    "codeLabel": "Código de verificação",
+    "verify": "Confirmar",
+    "changeEmail": "Usar outro e-mail"
+  },
+  "errors": {
+    "email_invalid": "Indique um e-mail válido.",
+    "otp_invalid": "O código deve ter entre 6 e 10 números.",
+    "otp_failed": "Código inválido ou expirado. Peça um novo código.",
+    "send_failed": "Não foi possível enviar o código agora. Tente novamente dentro de instantes.",
+    "rate_limited": "Demasiadas tentativas. Aguarde um pouco e tente de novo.",
+    "username_format": "Use entre 3 e 30 carateres: letras minúsculas, números, hífen ou sublinhado, começando por letra ou número.",
+    "username_reserved": "Este nome de utilizador não está disponível.",
+    "username_taken": "Este nome de utilizador já está em uso.",
+    "display_name_required": "Indique o nome de apresentação.",
+    "display_name_too_long": "O nome de apresentação deve ter no máximo 80 carateres.",
+    "bio_too_long": "A bio deve ter no máximo 500 carateres.",
+    "timezone_invalid": "Fuso horário inválido.",
+    "locale_invalid": "Idioma inválido.",
+    "unauthorized": "A sua sessão expirou. Inicie sessão novamente.",
+    "generic": "Algo correu mal. Tente novamente."
+  },
+  "me": {
+    "title": "A minha conta",
+    "welcome": "Iniciou sessão como",
+    "creatorTitle": "Perfil de criador",
+    "creatorInactive": "Ainda não ativou o perfil de criador.",
+    "creatorActive": "O seu perfil de criador está ativo como @{username}.",
+    "activateCta": "Ativar perfil de criador",
+    "editCta": "Editar perfil"
+  },
+  "activate": {
+    "title": "Ativar perfil de criador",
+    "intro": "Escolha o nome de utilizador do seu perfil. Identifica-o na FAVX.",
+    "usernameLabel": "Nome de utilizador",
+    "usernameHint": "3 a 30 carateres: a-z, 0-9, hífen e sublinhado.",
+    "displayNameLabel": "Nome de apresentação",
+    "submit": "Ativar perfil"
+  },
+  "profile": {
+    "title": "Editar perfil",
+    "usernameLabel": "Nome de utilizador",
+    "usernameLocked": "O nome de utilizador não pode ser alterado por agora.",
+    "displayNameLabel": "Nome de apresentação",
+    "bioLabel": "Bio",
+    "bioHint": "Até 500 carateres.",
+    "localeLabel": "Idioma da interface",
+    "timezoneLabel": "Fuso horário",
+    "saved": "Perfil guardado.",
+    "submit": "Guardar alterações",
+    "publicPageSoon": "A página pública do seu perfil será disponibilizada numa próxima etapa."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "body": "O endereço pode estar incorreto ou o conteúdo não está disponível.",
+    "back": "Voltar ao início"
+  },
+  "error": {
+    "title": "Algo correu mal",
+    "body": "Não conseguimos concluir esta ação. Tente novamente.",
+    "retry": "Tentar de novo"
+  }
+}
