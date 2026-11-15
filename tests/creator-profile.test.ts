@@ -38,3 +38,11 @@ test('storage credentials go only to the configured Bunny storage host, never CD
   });
   await assert.rejects(uploadAvatar(path, new Uint8Array([1]), config, async () => new Response(null, { status: 403 })));
 });
+
+test('Bunny dashboard URL, whitespace and Sydney region are accepted; URLs cannot redirect credentials', () => {
+  const env = { BUNNY_STORAGE_ZONE: ' test-zone ', BUNNY_STORAGE_ACCESS_KEY: ' fake-key ', BUNNY_CDN_URL: ' https://test.b-cdn.net/ ' };
+  assert.equal(bunnyConfig({ ...env, BUNNY_STORAGE_HOST: ' https://syd.storage.bunnycdn.com/ ' }).endpoint, 'https://syd.storage.bunnycdn.com/test-zone/avatars/');
+  for (const host of ['http://storage.bunnycdn.com', 'https://storage.bunnycdn.com/zone', 'https://storage.bunnycdn.com@evil.test', 'https://evil@storage.bunnycdn.com', 'storage.bunnycdn.com.evil.test', 'https://storage.bunnycdn.com?host=evil']) {
+    assert.throws(() => bunnyConfig({ ...env, BUNNY_STORAGE_HOST: host }), host);
+  }
+});
