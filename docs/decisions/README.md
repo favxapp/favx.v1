@@ -36,3 +36,7 @@ Build e testes unitários não encerram essas pendências. A migration recebida 
 ## Atualização de 15/11/2026 — perfil Creator
 
 DOC05, DOC06 e pacotes F00 recebidos; ver [conciliação e incremento](../creator-profile.md). Login OTP confirmado pela Product Owner. O próximo incremento adiciona foto, redes, perfil público, compartilhar e validação de username. A política de renomeação continua pendente. A Product Owner autorizou explicitamente a aplicação da proposta. A migration 20261115155702 foi aplicada no Supabase FAVX e os testes transacionais de acesso A/B/anônimo, suspensão e atomicidade passaram, com rollback das identidades de teste. Não considerar concluídas as fases F02/F03 nem homologada a POC geral de mídia.
+
+## Atualização de 15/11/2026 — editor editorial
+
+A Product Owner pediu avançar na criação de posts. Ver [escopo e decisões do editor](../posts-editor.md): CRE-006/007/009/011 parciais, com rascunho/persistência/publicação de texto. Migration 20261115221433 aplicada e verificada no Supabase; não implica conclusão de mídia, agendamento ou do baseline DOC05.

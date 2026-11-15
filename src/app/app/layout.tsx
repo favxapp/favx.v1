@@ -29,6 +29,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <Link href="/app/creator/profile" className="text-ink hover:text-ink-strong">
               {m.common.menuCreator}
             </Link>
+            <Link href="/app/creator/posts" className="text-ink hover:text-ink-strong">{m.posts.myPosts}</Link>
             <form action="/auth/signout" method="post">
               <input type="hidden" name="locale" value={locale} />
               <button type="submit" className="min-h-[44px] text-ink-muted underline underline-offset-4 hover:text-ink-strong">
