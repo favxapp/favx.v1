@@ -1,6 +1,8 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { getRequestLocale } from '@/lib/i18n/server';
+import { otpRequestOptions } from '@/lib/email/locale';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { parseEmail, parseOtp } from '@/lib/forms';
 import { safeNextPath } from '@/lib/redirect';
@@ -13,7 +15,7 @@ export async function requestOtpAction(_prev: LoginState, formData: FormData): P
 
   const supabase = await createSupabaseServerClient();
   // shouldCreateUser: cadastro e login são o mesmo fluxo; a resposta não revela se o e-mail já existe.
-  const { error } = await supabase.auth.signInWithOtp({ email: email.value, options: { shouldCreateUser: true } });
+  const { error } = await supabase.auth.signInWithOtp({ email: email.value, options: otpRequestOptions(await getRequestLocale(), process.env.APP_URL) });
   if (error) {
     console.error('otp_request_failed', error.status ?? 'sem-status', error.code ?? 'sem-codigo');
     return { step: 'email', email: email.value, error: error.status === 429 ? 'rate_limited' : 'send_failed' };

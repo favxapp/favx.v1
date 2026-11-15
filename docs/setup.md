@@ -30,7 +30,11 @@ Depois de mudar variáveis, fazer novo deploy. `.env.example` é versionado sem 
 
 A importação do código não executa operações nesses serviços. Primeiro deploy não equivale a lançamento homologado.
 
-## Pré-requisitos do login
+## E-mails via código (novo fluxo)
+
+O envio personalizado pelo Resend usa um Send Email Hook. Ver [guia de e-mails](email/README.md) para domínio verificado, variáveis, seis idiomas e ativação. O código do hook não o habilita automaticamente no Supabase.
+
+## Pré-requisitos do login (SMTP, quando o hook está desativado)
 
 - Tabelas e políticas da migration precisam existir no projeto correto para perfil Creator funcionar.
 - Templates de Magic Link e confirmação de cadastro devem incluir `{{ .Token }}` para entregar o código digitado na interface.
