@@ -62,3 +62,5 @@ O advisory de RPC pública com SECURITY DEFINER deixou de aparecer após a mudan
 ## Correção de upload — 15/11/2026
 
 Após relato de seleção sem foto/feedback, o upload passa a mostrar nome do arquivo, prévia durante envio e erro de carregamento da CDN. A verificação de origem aceita `APP_URL` e a URL explícita do deployment além da origem interna, mantendo rejeição de origens arbitrárias. O host Bunny aceita hostname ou URL HTTPS raiz, espaços externos e regiões de três letras (Sydney); credenciais não seguem redirects. Erros registram somente etapa e código/status, sem arquivo, dados pessoais ou chave. A causa específica da tentativa da Product Owner não constava dos logs retidos; não declarar upload real validado só com mocks.
+
+A segunda rodada de investigação do avatar substitui a mensagem opcional por estados explícitos (envio, salvo, erro), com retorno sempre visível e tamanho do arquivo. Toda preparação fica protegida por tratamento de erro; a prévia local é opcional e não bloqueia envio. O timeout usa AbortController para compatibilidade entre navegadores. A usuária relatou Chrome/PNG; a reprodução com seu arquivo/serviço real ainda está pendente.

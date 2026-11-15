@@ -1,0 +1,54 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { PGlite } from '@electric-sql/pglite';
+
+test('posts SQL: ownership, drafts, publish validation, retries, conflicts, audit and public projection', async () => {
+  const db = new PGlite();
+  const a = '11111111-1111-4111-8111-111111111111', b = '22222222-2222-4222-8222-222222222222', id = '33333333-3333-4333-8333-333333333333';
+  const role = async (name: string, user = '') => { await db.exec('reset role'); await db.query("select set_config('request.jwt.claim.sub',$1,false)", [user]); await db.exec(`set role ${name}`); };
+  const payload = { title: 'Cafe', body: 'Text', slug: 'cafe', content_kind: 'place', tags: ['cafe'], links: [{ label: 'Visit', url: 'https://example.com/', coupon: '' }], rating: 9.5, is_sponsored: false, disclosure: '' };
+  const save = (v: number, state: string, content = payload) => db.query<{ id: string; version: number; public_id: string }>('select * from public.save_creator_post($1,$2,$3,$4)', [id,v,JSON.stringify(content),state]);
+  try {
+    await db.exec(`create role anon; create role authenticated; create schema auth; create table auth.users(id uuid primary key);
+      create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
+      grant usage on schema auth to anon,authenticated; grant execute on function auth.uid() to anon,authenticated;`);
+    for (const file of ['migrations/20261109000100_foundation_auth_creator.sql','migrations/20261115155702_creator_public_profile.sql','proposals/creator_posts.sql']) await db.exec(await readFile(new URL(`../supabase/${file}`, import.meta.url),'utf8'));
+    await db.query('insert into auth.users(id) values($1),($2)',[a,b]);
+    await role('authenticated', a);
+    await db.query("insert into public.creator_profiles(user_id,username,display_name) values($1,'alice','Alice')",[a]);
+    const created = (await save(0,'draft')).rows[0]; assert.equal(created.version,1);
+    assert.equal((await save(0,'draft')).rows[0].id,id, 'retry is idempotent');
+    await assert.rejects(save(1,'published'), /PUBLIC_PROFILE_REQUIRED/);
+    await role('anon');
+    assert.equal((await db.query("select * from public.get_public_posts('alice')")).rows.length,0);
+    await assert.rejects(db.query('select * from public.creator_posts'));
+    await assert.rejects(save(1,'published'));
+    await role('authenticated',b);
+    assert.equal((await db.query('select * from public.creator_posts')).rows.length,0);
+    await assert.rejects(save(1,'published'));
+    assert.equal((await db.query("update public.creator_posts set body='attacker' returning id")).rows.length,0);
+    await role('authenticated',a);
+    await db.exec('update public.creator_profiles set is_public=true');
+    await assert.rejects(save(1,'published',{ ...payload,body:'' }));
+    await assert.rejects(save(1,'published',{ ...payload,is_sponsored:true }));
+    await assert.rejects(save(1,'draft',{ ...payload,rating:9.99 }));
+    await assert.rejects(save(1,'draft',{ ...payload,links:[{label:'Bad',url:'javascript:alert(1)',coupon:''}] }));
+    assert.equal((await save(1,'published')).rows[0].version,2);
+    await assert.rejects(save(1,'draft'), /POST_CONFLICT/);
+    await assert.rejects(db.query("update public.creator_posts set creator_id=$1",[b]));
+    await assert.rejects(db.query('select * from favx_private.post_revisions'));
+    await role('anon');
+    const publicRows = (await db.query<Record<string, unknown>>("select * from public.get_public_posts('alice')")).rows;
+    assert.equal(publicRows.length,1);
+    assert.deepEqual(Object.keys(publicRows[0]).sort(),['public_id','slug','title','body','content_kind','tags','links','rating','is_sponsored','disclosure','published_at'].sort());
+    await role('postgres');
+    assert.equal((await db.query('select * from favx_private.post_revisions')).rows.length,2, 'failed transactions and retries do not add revisions');
+    await db.query("update public.profiles set account_state='suspended' where user_id=$1",[a]);
+    await role('anon'); assert.equal((await db.query("select * from public.get_public_posts('alice')")).rows.length,0);
+    await role('authenticated',a); await assert.rejects(save(2,'draft'));
+    await role('postgres'); await db.query("update public.profiles set account_state='active' where user_id=$1",[a]);
+    await role('authenticated',a); await save(2,'hidden');
+    await role('anon'); assert.equal((await db.query("select * from public.get_public_posts('alice')")).rows.length,0);
+  } finally { await db.close(); }
+});
