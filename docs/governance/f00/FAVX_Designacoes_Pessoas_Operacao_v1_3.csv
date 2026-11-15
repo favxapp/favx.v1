@@ -1,0 +1,13 @@
+﻿FUNCAO,MOTIVO,RESPONSAVEL_PESSOA,AUTH_USER_ID_REFERENCIA,SUBSTITUTO_PESSOA,ESCOPO,DATA_DESIGNACAO_UTC,EVIDENCIA_NOMEACAO,STATUS,RELEASE_BLOCKER
+Product Owner,Aceites e escopo de produto,,,,,,,A_DESIGNAR,CONDICIONAL
+Solicitante financeiro,"Propostas preços, entitlements, reembolsos e payout",,,,,,,A_DESIGNAR,SIM
+Aprovador financeiro independente,Aprovações financeiras SoD,,,,,,,A_DESIGNAR,SIM
+Executor financeiro manual (se aplicável),Execução manual de payout/refund distinta dos dois anteriores,,,,,,,A_DESIGNAR,CONDICIONAL
+Responsável por segurança/privacidade,"Incidentes, contenção, break-glass e revisão independente",,,,,,,A_DESIGNAR,SIM
+Revisor independente de segurança,Aprovação/revisão distinta,,,,,,,A_DESIGNAR,SIM
+Operação / moderação,Triagem de denúncias e recursos,,,,,,,A_DESIGNAR,SIM
+Jurídico/privacidade,"Parecer LGPD, direitos, pagamento e retenção",,,,,,,A_DESIGNAR,SIM
+Contabilidade/fiscal,"Notas, tributos, países e pagamentos",,,,,,,A_DESIGNAR,SIM
+Engenharia responsável,"ADRs, POCs, QA e release",,,,,,,A_DESIGNAR,SIM
+Revisor de tradução por idioma,Seis idiomas críticos,,,,,,,A_DESIGNAR,CONDICIONAL
+Responsável por incidentes / on-call,Resposta a indisponibilidade e abuso,,,,,,,A_DESIGNAR,SIM

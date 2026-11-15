@@ -1,0 +1,467 @@
+table,domain,purpose,visibility,column,type_token,definition_excerpt
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,user_id,uuid,user_id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,display_name,text,display_name text NOT NULL DEFAULT ''
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,avatar_asset_id,uuid,avatar_asset_id uuid
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,locale,text,"locale text NOT NULL DEFAULT 'pt-BR' CHECK (locale IN ('pt-BR','pt-PT','en','es','it','fr'))"
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,timezone,text,timezone text NOT NULL DEFAULT 'America/Sao_Paulo'
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,region_code,text,region_code text
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,currency,text,"currency text NOT NULL DEFAULT 'BRL' CHECK (currency IN ('BRL','USD','EUR'))"
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,account_state,text,"account_state text NOT NULL DEFAULT 'active' CHECK (account_state IN ('active','suspended','pending_deletion','deleted'))"
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+profiles,Identidade/Preferências,"Identidade unificada de pessoa, locale, timezone, moeda e estado de conta",privado titular,deleted_at,timestamptz,deleted_at timestamptz
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,user_id,uuid,user_id uuid PRIMARY KEY REFERENCES app.profiles(user_id) ON DELETE CASCADE
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,username,text,"username text NOT NULL UNIQUE CHECK (username ~ '^[a-z0-9][a-z0-9._-]{2,29}$')"
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,bio,text,bio text NOT NULL DEFAULT ''
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,is_public,boolean,is_public boolean NOT NULL DEFAULT true
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,creator_state,text,"creator_state text NOT NULL DEFAULT 'active' CHECK (creator_state IN ('active','suspended','hidden'))"
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+creator_profiles,Creator,"Username, bio e estado de perfil público; não contém contadores públicos",público DTO saneado; linha privada,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+reserved_slugs,Rotas,Slugs protegidos do sistema,serviço,slug,text,slug text PRIMARY KEY
+reserved_slugs,Rotas,Slugs protegidos do sistema,serviço,reason,text,reason text NOT NULL
+slug_redirects,Rotas,Redirecionamentos de usernames alterados,serviço,old_slug,text,old_slug text PRIMARY KEY
+slug_redirects,Rotas,Redirecionamentos de usernames alterados,serviço,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id) ON DELETE CASCADE
+slug_redirects,Rotas,Redirecionamentos de usernames alterados,serviço,new_slug,text,new_slug text NOT NULL
+slug_redirects,Rotas,Redirecionamentos de usernames alterados,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id) ON DELETE CASCADE
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,title,text,title text NOT NULL
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,url,text,url text NOT NULL
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,sort_order,integer,sort_order integer NOT NULL DEFAULT 0
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,is_public,boolean,is_public boolean NOT NULL DEFAULT true
+profile_links,Creator,Links configurados e ordenados do perfil,público sob is_public,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+follows,Social privado,Relações de seguir sem contagem pública,somente titular e área privada,follower_id,uuid,follower_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+follows,Social privado,Relações de seguir sem contagem pública,somente titular e área privada,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id) ON DELETE CASCADE
+follows,Social privado,Relações de seguir sem contagem pública,somente titular e área privada,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+blocked_users,Segurança,Relacionamentos de bloqueio,privado titular,owner_id,uuid,owner_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+blocked_users,Segurança,Relacionamentos de bloqueio,privado titular,blocked_id,uuid,blocked_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+blocked_users,Segurança,Relacionamentos de bloqueio,privado titular,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,owner_id,uuid,owner_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,origin_kind,text,"origin_kind text NOT NULL CHECK (origin_kind IN ('native_capture','user_upload','external_reference','community_submission'))"
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,media_kind,text,"media_kind text NOT NULL CHECK (media_kind IN ('image','video','audio'))"
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,original_key,text,original_key text UNIQUE
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,original_filename,text,original_filename text
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,original_mime,text,original_mime text
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,original_bytes,bigint,original_bytes bigint CHECK (original_bytes >= 0)
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,duration_ms,bigint,duration_ms bigint CHECK (duration_ms >= 0)
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,sha256,text,sha256 text
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,original_state,text,"original_state text NOT NULL DEFAULT 'pending' CHECK (original_state IN ('pending','uploading','verifying','verified','failed','purged'))"
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,rights_confirmed,boolean,rights_confirmed boolean NOT NULL DEFAULT false
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,can_download_original,boolean,can_download_original boolean NOT NULL DEFAULT false
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,moderation_state,text,"moderation_state text NOT NULL DEFAULT 'pending' CHECK (moderation_state IN ('pending','approved','restricted','rejected'))"
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+media_assets,Mídia,"Manifesto de originais, direitos e integridade",privado titular,deleted_at,timestamptz,deleted_at timestamptz
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,asset_id,uuid,asset_id uuid NOT NULL REFERENCES app.media_assets(id) ON DELETE CASCADE
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,owner_id,uuid,owner_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,provider,text,provider text NOT NULL DEFAULT 'bunny'
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,upload_token_hash,text,upload_token_hash text NOT NULL
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,expires_at,timestamptz,expires_at timestamptz NOT NULL
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,state,text,"state text NOT NULL DEFAULT 'issued' CHECK (state IN ('issued','completed','expired','revoked','failed'))"
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+media_upload_intents,Mídia,Permissão curta de upload e confirmação,serviço,completed_at,timestamptz,completed_at timestamptz
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",asset_id,uuid,asset_id uuid NOT NULL REFERENCES app.media_assets(id) ON DELETE CASCADE
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",variant_name,text,variant_name text NOT NULL
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",storage_key,text,storage_key text NOT NULL UNIQUE
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",mime,text,mime text NOT NULL
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",bytes,bigint,bytes bigint CHECK (bytes >= 0)
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",width,integer,width integer
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",height,integer,height integer
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",processing_state,text,"processing_state text NOT NULL DEFAULT 'pending' CHECK (processing_state IN ('pending','ready','failed','purged'))"
+media_variants,Mídia,Derivados para entrega/preview,"serviço, URL por política",created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,asset_id,uuid,asset_id uuid NOT NULL REFERENCES app.media_assets(id) ON DELETE CASCADE
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,kind,text,kind text NOT NULL
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,state,text,"state text NOT NULL DEFAULT 'queued' CHECK (state IN ('queued','running','done','failed','dead'))"
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,attempts,integer,attempts integer NOT NULL DEFAULT 0 CHECK (attempts>=0)
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,next_run_at,timestamptz,next_run_at timestamptz NOT NULL DEFAULT now()
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,last_error_code,text,last_error_code text
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+media_processing_jobs,Mídia,Fila de inspeção/processamento de arquivos,serviço,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id) ON DELETE CASCADE
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,title,text,title text NOT NULL DEFAULT ''
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,body,text,body text NOT NULL DEFAULT '' CHECK (char_length(body) <= 10000)
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,lifecycle_state,text,"lifecycle_state text NOT NULL DEFAULT 'draft' CHECK (lifecycle_state IN ('draft','scheduled','published','hidden','expired','archived','pending_deletion','deleted'))"
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,moderation_state,text,"moderation_state text NOT NULL DEFAULT 'approved' CHECK (moderation_state IN ('pending','approved','restricted','rejected'))"
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,visible_from,timestamptz,visible_from timestamptz
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,visible_until,timestamptz,visible_until timestamptz
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,original_timezone,text,original_timezone text NOT NULL DEFAULT 'UTC'
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,published_at,timestamptz,published_at timestamptz
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,is_sponsored,boolean,is_sponsored boolean NOT NULL DEFAULT false
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,version,integer,version integer NOT NULL DEFAULT 1 CHECK (version>0)
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+posts,Conteúdo,"Publicações, lifecycle e janelas de visibilidade",público via filtro; privado titular,deleted_at,timestamptz,deleted_at timestamptz
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,version,integer,version integer NOT NULL
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,editor_id,uuid,editor_id uuid REFERENCES app.profiles(user_id) ON DELETE SET NULL
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,snapshot,jsonb,snapshot jsonb NOT NULL
+post_revisions,Conteúdo,Histórico de edições e versionamento,privado titular/auditoria,changed_at,timestamptz,changed_at timestamptz NOT NULL DEFAULT now()
+post_media,Conteúdo,"Associação, ordenação e legendas de mídias",público via post elegível,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_media,Conteúdo,"Associação, ordenação e legendas de mídias",público via post elegível,media_id,uuid,media_id uuid NOT NULL REFERENCES app.media_assets(id) ON DELETE RESTRICT
+post_media,Conteúdo,"Associação, ordenação e legendas de mídias",público via post elegível,sort_order,integer,sort_order integer NOT NULL CHECK (sort_order>=0)
+post_media,Conteúdo,"Associação, ordenação e legendas de mídias",público via post elegível,caption,text,caption text
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,label,text,label text
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,url,text,url text NOT NULL
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,normalized_url,text,normalized_url text
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,link_kind,text,link_kind text NOT NULL DEFAULT 'external'
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,sort_order,integer,sort_order integer NOT NULL DEFAULT 0
+post_links,Conteúdo,"Links externos, canonicalização e ordenação",público via post elegível,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+categories,Taxonomia,Categorias navegáveis e hierarquia,público curado,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+categories,Taxonomia,Categorias navegáveis e hierarquia,público curado,parent_id,uuid,parent_id uuid REFERENCES app.categories(id) ON DELETE RESTRICT
+categories,Taxonomia,Categorias navegáveis e hierarquia,público curado,slug,text,slug text NOT NULL UNIQUE
+categories,Taxonomia,Categorias navegáveis e hierarquia,público curado,label_default,text,label_default text NOT NULL
+categories,Taxonomia,Categorias navegáveis e hierarquia,público curado,is_active,boolean,is_active boolean NOT NULL DEFAULT true
+tags,Taxonomia,Tags canônicas,público curado,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+tags,Taxonomia,Tags canônicas,público curado,canonical_key,text,canonical_key text NOT NULL UNIQUE
+tags,Taxonomia,Tags canônicas,público curado,label,text,label text NOT NULL
+tag_aliases,Taxonomia,Aliases e sinônimos,serviço,alias_key,text,alias_key text PRIMARY KEY
+tag_aliases,Taxonomia,Aliases e sinônimos,serviço,tag_id,uuid,tag_id uuid NOT NULL REFERENCES app.tags(id) ON DELETE CASCADE
+post_categories,Taxonomia,Vínculos posts/categorias e proveniência,público via post elegível,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_categories,Taxonomia,Vínculos posts/categorias e proveniência,público via post elegível,category_id,uuid,category_id uuid NOT NULL REFERENCES app.categories(id)
+post_categories,Taxonomia,Vínculos posts/categorias e proveniência,público via post elegível,provenance,text,"provenance text NOT NULL CHECK (provenance IN ('creator','ai_suggested','admin'))"
+post_tags,Taxonomia,Vínculos posts/tags e proveniência,público via post elegível,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_tags,Taxonomia,Vínculos posts/tags e proveniência,público via post elegível,tag_id,uuid,tag_id uuid NOT NULL REFERENCES app.tags(id)
+post_tags,Taxonomia,Vínculos posts/tags e proveniência,público via post elegível,provenance,text,"provenance text NOT NULL CHECK (provenance IN ('creator','ai_suggested','admin'))"
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,code,text,code text NOT NULL
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,label,text,label text
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,discount_type,text,discount_type text
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,discount_value,"numeric(12,2)","discount_value numeric(12,2)"
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,currency,text,currency text
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,starts_at,timestamptz,starts_at timestamptz
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,expires_at,timestamptz,expires_at timestamptz
+post_coupons,Ofertas,"Cupons, condições e prazo",público via post elegível e prazo,terms,text,terms text
+post_sponsorships,Publicidade,Disclosure obrigatório,público via post elegível,post_id,uuid,post_id uuid PRIMARY KEY REFERENCES app.posts(id) ON DELETE CASCADE
+post_sponsorships,Publicidade,Disclosure obrigatório,público via post elegível,sponsor_name,text,sponsor_name text NOT NULL
+post_sponsorships,Publicidade,Disclosure obrigatório,público via post elegível,disclosure,text,disclosure text NOT NULL
+post_sponsorships,Publicidade,Disclosure obrigatório,público via post elegível,sponsorship_type,text,sponsorship_type text
+post_sponsorships,Publicidade,Disclosure obrigatório,público via post elegível,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+post_ratings,Creator,Nota pessoal 0–10 opcional,público via post elegível,post_id,uuid,post_id uuid PRIMARY KEY REFERENCES app.posts(id) ON DELETE CASCADE
+post_ratings,Creator,Nota pessoal 0–10 opcional,público via post elegível,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+post_ratings,Creator,Nota pessoal 0–10 opcional,público via post elegível,score,"numeric(3,1)","score numeric(3,1) NOT NULL CHECK (score>=0 AND score<=10 AND score*2=trunc(score*2))"
+post_ratings,Creator,Nota pessoal 0–10 opcional,público via post elegível,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",post_id,uuid,post_id uuid PRIMARY KEY REFERENCES app.posts(id) ON DELETE CASCADE
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",owner_id,uuid,owner_id uuid NOT NULL REFERENCES app.profiles(user_id)
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",context_text,text,context_text text NOT NULL DEFAULT ''
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",source_media_id,uuid,source_media_id uuid REFERENCES app.media_assets(id)
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",transcription_status,text,"transcription_status text NOT NULL DEFAULT 'not_needed' CHECK (transcription_status IN ('not_needed','pending','done','failed'))"
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",generation,integer,generation integer NOT NULL DEFAULT 1
+post_private_contexts,IA/Privacidade,Contexto oculto e transcrição de Creator,"privado, nunca DTO público",updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,media_id,uuid,media_id uuid REFERENCES app.media_assets(id)
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,title,text,title text
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,destination_url,text,destination_url text
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,lifecycle_state,text,"lifecycle_state text NOT NULL DEFAULT 'draft' CHECK (lifecycle_state IN ('draft','scheduled','published','hidden','expired','archived','pending_deletion','deleted'))"
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,moderation_state,text,"moderation_state text NOT NULL DEFAULT 'approved' CHECK (moderation_state IN ('pending','approved','restricted','rejected'))"
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,visible_from,timestamptz,visible_from timestamptz
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,visible_until,timestamptz,visible_until timestamptz
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,original_timezone,text,original_timezone text NOT NULL DEFAULT 'UTC'
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,version,integer,version integer NOT NULL DEFAULT 1
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+banners,Campanhas,Banner independente com ciclo de visibilidade,público se vigente e Plus ativo,deleted_at,timestamptz,deleted_at timestamptz
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,slot,integer,slot integer NOT NULL CHECK (slot BETWEEN 1 AND 6)
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,visible_from,timestamptz,visible_from timestamptz
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,visible_until,timestamptz,visible_until timestamptz
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,lifecycle_state,text,"lifecycle_state text NOT NULL DEFAULT 'scheduled' CHECK (lifecycle_state IN ('scheduled','active','expired','hidden','cancelled'))"
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+pinned_posts,Destaques,"Fixação independente do post, slot e janela",público se vigente e Plus ativo,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,owner_id,uuid,owner_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,title,text,title text NOT NULL
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,description,text,description text NOT NULL DEFAULT ''
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,cover_media_id,uuid,cover_media_id uuid REFERENCES app.media_assets(id)
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,visibility,text,"visibility text NOT NULL DEFAULT 'private' CHECK (visibility IN ('private','public','unlisted'))"
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,is_creator_collection,boolean,is_creator_collection boolean NOT NULL DEFAULT false
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,sort_order,integer,sort_order integer NOT NULL DEFAULT 0
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+collections,Coleções,Coleções User/Creator e visibilidade,privado/compartilhável/público,deleted_at,timestamptz,deleted_at timestamptz
+collection_items,Coleções,Ordenação de posts dentro da coleção,conforme política da coleção e post,collection_id,uuid,collection_id uuid NOT NULL REFERENCES app.collections(id) ON DELETE CASCADE
+collection_items,Coleções,Ordenação de posts dentro da coleção,conforme política da coleção e post,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+collection_items,Coleções,Ordenação de posts dentro da coleção,conforme política da coleção e post,sort_order,integer,sort_order integer NOT NULL DEFAULT 0
+collection_items,Coleções,Ordenação de posts dentro da coleção,conforme política da coleção e post,added_at,timestamptz,added_at timestamptz NOT NULL DEFAULT now()
+saved_posts,Biblioteca,Salvamentos pessoais,privado titular,user_id,uuid,user_id uuid NOT NULL REFERENCES app.profiles(user_id) ON DELETE CASCADE
+saved_posts,Biblioteca,Salvamentos pessoais,privado titular,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+saved_posts,Biblioteca,Salvamentos pessoais,privado titular,saved_at,timestamptz,saved_at timestamptz NOT NULL DEFAULT now()
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,collection_id,uuid,collection_id uuid NOT NULL REFERENCES app.collections(id) ON DELETE CASCADE
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,token_hash,text,token_hash text NOT NULL UNIQUE
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,revoked_at,timestamptz,revoked_at timestamptz
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,expires_at,timestamptz,expires_at timestamptz
+collection_share_tokens,Compartilhamento,Capabilities revogáveis não listadas,serviço; hash não exposto,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,title,text,title text NOT NULL
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,instructions,text,instructions text
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,state,text,"state text NOT NULL DEFAULT 'open' CHECK (state IN ('open','closed','archived'))"
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,allow_anonymous,boolean,allow_anonymous boolean NOT NULL DEFAULT false
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+recommendation_requests,Comunidade,Pedido criado por Creator,público enquanto aberto,expires_at,timestamptz,expires_at timestamptz
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,request_id,uuid,request_id uuid NOT NULL REFERENCES app.recommendation_requests(id)
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,submitter_id,uuid,submitter_id uuid REFERENCES app.profiles(user_id) ON DELETE SET NULL
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,submitter_display_name,text,submitter_display_name text
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,body,text,body text NOT NULL
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,reference_url,text,reference_url text
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,state,text,"state text NOT NULL DEFAULT 'pending' CHECK (state IN ('pending','approved','rejected','withdrawn','hidden'))"
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,published_post_id,uuid,published_post_id uuid REFERENCES app.posts(id) ON DELETE SET NULL
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+community_submissions,Comunidade,Sugestões recebidas e revisão,privado por padrão,reviewed_at,timestamptz,reviewed_at timestamptz
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,entity_kind,text,"entity_kind text NOT NULL CHECK (entity_kind IN ('product','place','service','other'))"
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,canonical_name,text,canonical_name text NOT NULL
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,canonical_url,text,canonical_url text
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,normalized_url,text,normalized_url text
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+discovery_entities,Busca futura,Entidade canônica produto/lugar/serviço,serviço e indexável futuro,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+entity_aliases,Busca futura,Sinônimos de entidades,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+entity_aliases,Busca futura,Sinônimos de entidades,serviço,entity_id,uuid,entity_id uuid NOT NULL REFERENCES app.discovery_entities(id) ON DELETE CASCADE
+entity_aliases,Busca futura,Sinônimos de entidades,serviço,alias,text,alias text NOT NULL
+entity_aliases,Busca futura,Sinônimos de entidades,serviço,locale,text,locale text
+entity_aliases,Busca futura,Sinônimos de entidades,serviço,source,text,source text
+post_entity_links,Busca futura,Ligação recomendação-entidade com confiança,serviço,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_entity_links,Busca futura,Ligação recomendação-entidade com confiança,serviço,entity_id,uuid,entity_id uuid NOT NULL REFERENCES app.discovery_entities(id) ON DELETE CASCADE
+post_entity_links,Busca futura,Ligação recomendação-entidade com confiança,serviço,confidence,"numeric(4,3)","confidence numeric(4,3) CHECK (confidence BETWEEN 0 AND 1)"
+post_entity_links,Busca futura,Ligação recomendação-entidade com confiança,serviço,review_state,text,"review_state text NOT NULL DEFAULT 'proposed' CHECK (review_state IN ('proposed','verified','rejected'))"
+post_entity_links,Busca futura,Ligação recomendação-entidade com confiança,serviço,provenance,text,provenance text
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,entity_id,uuid,entity_id uuid NOT NULL REFERENCES app.discovery_entities(id) ON DELETE CASCADE
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,field_name,text,field_name text NOT NULL
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,field_value,jsonb,field_value jsonb NOT NULL
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,source_kind,text,source_kind text NOT NULL
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,source_ref,text,source_ref text
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,collected_at,timestamptz,collected_at timestamptz NOT NULL DEFAULT now()
+entity_evidence,Busca futura,Evidências e fontes dos atributos,serviço,expires_at,timestamptz,expires_at timestamptz
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,post_id,uuid,post_id uuid PRIMARY KEY REFERENCES app.posts(id) ON DELETE CASCADE
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,public_text,text,public_text text NOT NULL DEFAULT ''
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,private_context_indexed,boolean,private_context_indexed boolean NOT NULL DEFAULT false
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,lexical,tsvector,"lexical tsvector GENERATED ALWAYS AS (to_tsvector('simple', coalesce(public_text,''))) STORED"
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,index_version,integer,index_version integer NOT NULL DEFAULT 1
+post_search_documents,Busca,Documento lexical público e chave de indexação,serviço; nunca expor index privado,refreshed_at,timestamptz,refreshed_at timestamptz NOT NULL DEFAULT now()
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,owner_user_id,uuid,owner_user_id uuid REFERENCES app.profiles(user_id) ON DELETE SET NULL
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,scope_kind,text,"scope_kind text NOT NULL CHECK (scope_kind IN ('creator','saved'))"
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,scope_owner_id,uuid,scope_owner_id uuid NOT NULL REFERENCES app.profiles(user_id)
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,session_key_hash,text,session_key_hash text
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,locale,text,locale text NOT NULL DEFAULT 'pt-BR'
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+search_sessions,Busca IA,Sessões e escopo imutável Creator/Salvos,privado sessão/usuário,expires_at,timestamptz,expires_at timestamptz NOT NULL
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,session_id,uuid,session_id uuid NOT NULL REFERENCES app.search_sessions(id) ON DELETE CASCADE
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,actor,text,"actor text NOT NULL CHECK (actor IN ('user','assistant','system'))"
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,text,text,text text NOT NULL
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,structured_filters,jsonb,structured_filters jsonb NOT NULL DEFAULT '{}'::jsonb
+search_messages,Busca IA,Histórico curto de refinamentos,privado sessão/usuário,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+search_feedback,Busca IA,Feedback de qualidade,privado/agregado,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+search_feedback,Busca IA,Feedback de qualidade,privado/agregado,search_session_id,uuid,search_session_id uuid NOT NULL REFERENCES app.search_sessions(id) ON DELETE CASCADE
+search_feedback,Busca IA,Feedback de qualidade,privado/agregado,post_id,uuid,post_id uuid REFERENCES app.posts(id) ON DELETE SET NULL
+search_feedback,Busca IA,Feedback de qualidade,privado/agregado,rating,text,"rating text NOT NULL CHECK (rating IN ('helpful','not_helpful'))"
+search_feedback,Busca IA,Feedback de qualidade,privado/agregado,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,event_name,text,event_name text NOT NULL
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,creator_id,uuid,creator_id uuid REFERENCES app.creator_profiles(user_id)
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,post_id,uuid,post_id uuid REFERENCES app.posts(id)
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,collection_id,uuid,collection_id uuid REFERENCES app.collections(id)
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,banner_id,uuid,banner_id uuid REFERENCES app.banners(id)
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,actor_user_id,uuid,actor_user_id uuid REFERENCES app.profiles(user_id)
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,anonymous_key_hash,text,anonymous_key_hash text
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,session_key_hash,text,session_key_hash text
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,event_dedupe_key,text,event_dedupe_key text NOT NULL UNIQUE
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,source_surface,text,source_surface text NOT NULL
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,event_payload,jsonb,event_payload jsonb NOT NULL DEFAULT '{}'::jsonb
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,occurred_at,timestamptz,occurred_at timestamptz NOT NULL
+analytics_events,Telemetria,Eventos idempotentes com timestamp e pseudônimo,serviço,received_at,timestamptz,received_at timestamptz NOT NULL DEFAULT now()
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id) ON DELETE CASCADE
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,day,date,day date NOT NULL
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,visits,bigint,visits bigint NOT NULL DEFAULT 0
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,profile_link_clicks,bigint,profile_link_clicks bigint NOT NULL DEFAULT 0
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,searches,bigint,searches bigint NOT NULL DEFAULT 0
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,saves,bigint,saves bigint NOT NULL DEFAULT 0
+creator_metrics_daily,Analytics,Agregações diárias de creator,privado + entitlement,shares,bigint,shares bigint NOT NULL DEFAULT 0
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,post_id,uuid,post_id uuid NOT NULL REFERENCES app.posts(id) ON DELETE CASCADE
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,day,date,day date NOT NULL
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,impressions,bigint,impressions bigint NOT NULL DEFAULT 0
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,views,bigint,views bigint NOT NULL DEFAULT 0
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,saves,bigint,saves bigint NOT NULL DEFAULT 0
+post_metrics_daily,Analytics,Agregações diárias por post,privado + entitlement,link_clicks,bigint,link_clicks bigint NOT NULL DEFAULT 0
+banner_metrics_daily,Analytics,Agregações diárias por banner,privado + entitlement,banner_id,uuid,banner_id uuid NOT NULL REFERENCES app.banners(id) ON DELETE CASCADE
+banner_metrics_daily,Analytics,Agregações diárias por banner,privado + entitlement,day,date,day date NOT NULL
+banner_metrics_daily,Analytics,Agregações diárias por banner,privado + entitlement,impressions,bigint,impressions bigint NOT NULL DEFAULT 0
+banner_metrics_daily,Analytics,Agregações diárias por banner,privado + entitlement,clicks,bigint,clicks bigint NOT NULL DEFAULT 0
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,user_id,uuid,user_id uuid NOT NULL REFERENCES app.profiles(user_id)
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,purpose,text,purpose text NOT NULL
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,policy_version,text,policy_version text NOT NULL
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,decision,text,"decision text NOT NULL CHECK (decision IN ('granted','withdrawn','denied'))"
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,occurred_at,timestamptz,occurred_at timestamptz NOT NULL DEFAULT now()
+privacy_consents,Privacidade,Histórico de escolha/base/versão,privado titular/segurança,source,text,source text NOT NULL
+plans,Billing,Catálogo de planos,servidor/consulta pública saneada,id,text,id text PRIMARY KEY
+plans,Billing,Catálogo de planos,servidor/consulta pública saneada,label,text,label text NOT NULL
+plans,Billing,Catálogo de planos,servidor/consulta pública saneada,is_active,boolean,is_active boolean NOT NULL DEFAULT true
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,plan_id,text,plan_id text NOT NULL REFERENCES app.plans(id)
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,currency,text,"currency text NOT NULL CHECK (currency IN ('BRL','USD','EUR'))"
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,billing_interval,text,"billing_interval text NOT NULL CHECK (billing_interval IN ('month','year'))"
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,minor_units,bigint,minor_units bigint NOT NULL CHECK (minor_units > 0)
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,stripe_price_id,text,stripe_price_id text UNIQUE
+plan_prices,Billing,Preços por moeda e período; apenas aprovados,servidor/consulta pública saneada,is_approved,boolean,is_approved boolean NOT NULL DEFAULT false
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,stripe_customer_id,text,stripe_customer_id text NOT NULL
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,stripe_subscription_id,text,stripe_subscription_id text UNIQUE
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,plan_id,text,plan_id text NOT NULL REFERENCES app.plans(id)
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,state,text,"state text NOT NULL DEFAULT 'incomplete' CHECK (state IN ('incomplete','trialing','active','past_due','unpaid','paused','canceled'))"
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,currency,text,"currency text NOT NULL CHECK (currency IN ('BRL','USD','EUR'))"
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,current_period_start,timestamptz,current_period_start timestamptz
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,current_period_end,timestamptz,current_period_end timestamptz
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,trial_ends_at,timestamptz,trial_ends_at timestamptz
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,cancel_at_period_end,boolean,cancel_at_period_end boolean NOT NULL DEFAULT false
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+subscriptions,Billing,Projeção reconciliada de assinaturas Stripe,privado titular/financeiro,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,subscription_id,uuid,subscription_id uuid NOT NULL REFERENCES app.subscriptions(id)
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,provider_event_id,text,provider_event_id text NOT NULL UNIQUE
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,event_type,text,event_type text NOT NULL
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,event_payload,jsonb,event_payload jsonb NOT NULL
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,received_at,timestamptz,received_at timestamptz NOT NULL DEFAULT now()
+subscription_events,Billing,Eventos assíncronos aplicados por provedor,serviço,applied_at,timestamptz,applied_at timestamptz
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,creator_id,uuid,creator_id uuid NOT NULL REFERENCES app.creator_profiles(user_id)
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,feature_key,text,feature_key text NOT NULL
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,valid_from,timestamptz,valid_from timestamptz NOT NULL
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,valid_until,timestamptz,valid_until timestamptz
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,source_subscription_id,uuid,source_subscription_id uuid REFERENCES app.subscriptions(id)
+entitlements,Billing,Permissões temporais de recursos Plus,servidor,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,provider,text,"provider text NOT NULL CHECK (provider IN ('stripe','bunny','other'))"
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,provider_event_id,text,provider_event_id text NOT NULL
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,event_type,text,event_type text NOT NULL
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,payload_digest,text,payload_digest text NOT NULL
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,received_at,timestamptz,received_at timestamptz NOT NULL DEFAULT now()
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,processed_at,timestamptz,processed_at timestamptz
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,processing_state,text,processing_state text NOT NULL DEFAULT 'queued'
+provider_webhook_events,Integração,Inbox deduplicada e resultado de webhook,serviço,last_error,text,last_error text
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,user_id,uuid,user_id uuid NOT NULL UNIQUE REFERENCES app.profiles(user_id)
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,code,text,code text NOT NULL UNIQUE
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,state,text,"state text NOT NULL DEFAULT 'pending' CHECK (state IN ('pending','approved','rejected','suspended'))"
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,approved_at,timestamptz,approved_at timestamptz
+partners,Partners,Inscrição e status de parceiro,privado titular/admin,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,partner_id,uuid,partner_id uuid NOT NULL REFERENCES app.partners(id)
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,anonymous_key_hash,text,anonymous_key_hash text
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,session_key_hash,text,session_key_hash text
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,event_dedupe_key,text,event_dedupe_key text NOT NULL UNIQUE
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,occurred_at,timestamptz,occurred_at timestamptz NOT NULL DEFAULT now()
+partner_clicks,Partners,Clique rastreado para atribuição,serviço,source,text,source text
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,partner_id,uuid,partner_id uuid NOT NULL REFERENCES app.partners(id)
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,referred_user_id,uuid,referred_user_id uuid NOT NULL UNIQUE REFERENCES app.profiles(user_id)
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,attributed_click_id,uuid,attributed_click_id uuid REFERENCES app.partner_clicks(id)
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,attribution_model,text,attribution_model text NOT NULL DEFAULT 'last_eligible_click'
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,attributed_at,timestamptz,attributed_at timestamptz NOT NULL DEFAULT now()
+partner_referrals,Partners,Atribuição de usuário referido,privado parceiro/admin,attribution_reason,text,attribution_reason text
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,partner_id,uuid,partner_id uuid NOT NULL REFERENCES app.partners(id)
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,referral_id,uuid,referral_id uuid NOT NULL REFERENCES app.partner_referrals(id)
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,subscription_id,uuid,subscription_id uuid NOT NULL REFERENCES app.subscriptions(id)
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,eligible_payment_reference,text,eligible_payment_reference text NOT NULL
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,coverage_period_start,date,coverage_period_start date
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,coverage_period_end,date,coverage_period_end date
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,amount_minor,bigint,amount_minor bigint NOT NULL CHECK (amount_minor>=0)
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,currency,text,currency text NOT NULL
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,state,text,"state text NOT NULL DEFAULT 'pending' CHECK (state IN ('pending','approved','payable','paid','reversed','held'))"
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+partner_commissions,Partners,Lançamento auditável de comissão,privado parceiro/admin,paid_at,timestamptz,paid_at timestamptz
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,currency,text,currency text NOT NULL
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,state,text,"state text NOT NULL DEFAULT 'draft' CHECK (state IN ('draft','approved','processing','paid','failed'))"
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,approved_by,uuid,approved_by uuid REFERENCES app.profiles(user_id)
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+partner_payout_batches,Partners,Lotes de pagamento,financeiro/admin,paid_at,timestamptz,paid_at timestamptz
+partner_payout_items,Partners,Comissão incluída em lote,financeiro/admin,payout_batch_id,uuid,payout_batch_id uuid NOT NULL REFERENCES app.partner_payout_batches(id)
+partner_payout_items,Partners,Comissão incluída em lote,financeiro/admin,commission_id,uuid,commission_id uuid NOT NULL UNIQUE REFERENCES app.partner_commissions(id)
+admin_memberships,Admin,RBAC administrativo,serviço/admin auditado,user_id,uuid,user_id uuid NOT NULL REFERENCES app.profiles(user_id)
+admin_memberships,Admin,RBAC administrativo,serviço/admin auditado,role,text,"role text NOT NULL CHECK (role IN ('support','moderator','finance','admin','superadmin'))"
+admin_memberships,Admin,RBAC administrativo,serviço/admin auditado,granted_by,uuid,granted_by uuid REFERENCES app.profiles(user_id)
+admin_memberships,Admin,RBAC administrativo,serviço/admin auditado,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,reporter_id,uuid,reporter_id uuid REFERENCES app.profiles(user_id)
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,content_type,text,content_type text NOT NULL
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,content_id,uuid,content_id uuid NOT NULL
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,reason,text,reason text NOT NULL
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,state,text,"state text NOT NULL DEFAULT 'open' CHECK (state IN ('open','triaged','resolved','dismissed'))"
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,assigned_to,uuid,assigned_to uuid REFERENCES app.profiles(user_id)
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+moderation_reports,Moderação,Denúncias e tratamento,privado suporte/moderação,resolved_at,timestamptz,resolved_at timestamptz
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,actor_id,uuid,actor_id uuid REFERENCES app.profiles(user_id)
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,actor_kind,text,actor_kind text NOT NULL
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,action,text,action text NOT NULL
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,subject_kind,text,subject_kind text NOT NULL
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,subject_id,text,subject_id text
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,correlation_id,text,correlation_id text
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,before_redacted,jsonb,before_redacted jsonb
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,after_redacted,jsonb,after_redacted jsonb
+audit_logs,Auditoria,Rastro de alterações sensíveis sem segredos,serviço/admin,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,recipient_id,uuid,recipient_id uuid NOT NULL REFERENCES app.profiles(user_id)
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,notification_type,text,notification_type text NOT NULL
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,payload,jsonb,payload jsonb NOT NULL DEFAULT '{}'::jsonb
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,read_at,timestamptz,read_at timestamptz
+notifications,Notificação,Caixa de mensagens do usuário,privado titular,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+notification_preferences,Notificação,Preferências de entrega,privado titular,user_id,uuid,user_id uuid NOT NULL REFERENCES app.profiles(user_id)
+notification_preferences,Notificação,Preferências de entrega,privado titular,channel,text,"channel text NOT NULL CHECK(channel IN ('email','in_app'))"
+notification_preferences,Notificação,Preferências de entrega,privado titular,notification_type,text,notification_type text NOT NULL
+notification_preferences,Notificação,Preferências de entrega,privado titular,enabled,boolean,enabled boolean NOT NULL DEFAULT true
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,aggregate_kind,text,aggregate_kind text NOT NULL
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,aggregate_id,uuid,aggregate_id uuid
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,event_type,text,event_type text NOT NULL
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,payload,jsonb,payload jsonb NOT NULL
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,state,text,"state text NOT NULL DEFAULT 'pending' CHECK(state IN ('pending','processing','done','failed','dead'))"
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,dedupe_key,text,dedupe_key text NOT NULL UNIQUE
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,attempts,integer,attempts integer NOT NULL DEFAULT 0
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,next_run_at,timestamptz,next_run_at timestamptz NOT NULL DEFAULT now()
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+outbox_events,Jobs,Eventos transacionais para processamento,serviço,processed_at,timestamptz,processed_at timestamptz
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,id,uuid,id uuid PRIMARY KEY DEFAULT gen_random_uuid()
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,job_kind,text,job_kind text NOT NULL
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,object_kind,text,object_kind text NOT NULL
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,object_id,uuid,object_id uuid NOT NULL
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,run_at,timestamptz,run_at timestamptz NOT NULL
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,state,text,"state text NOT NULL DEFAULT 'pending' CHECK(state IN ('pending','running','done','failed','cancelled','dead'))"
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,expected_version,integer,expected_version integer
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,attempt,integer,attempt integer NOT NULL DEFAULT 0
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,claimed_at,timestamptz,claimed_at timestamptz
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,claimed_by,text,claimed_by text
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,next_run_at,timestamptz,next_run_at timestamptz
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,last_error_code,text,last_error_code text
+scheduled_jobs,Jobs,Agendamento de tarefas duráveis com versão,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,principal_key,text,principal_key text NOT NULL
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,operation,text,operation text NOT NULL
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,idempotency_key,text,idempotency_key text NOT NULL
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,request_hash,text,request_hash text NOT NULL
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,response_code,integer,response_code integer
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,response_json,jsonb,response_json jsonb
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,expires_at,timestamptz,expires_at timestamptz NOT NULL
+idempotency_keys,Segurança,Replay seguro de comandos mutáveis,serviço,created_at,timestamptz,created_at timestamptz NOT NULL DEFAULT now()
+feature_flags,Configuração,Desligamento seletivo de módulos,serviço,flag_key,text,flag_key text PRIMARY KEY
+feature_flags,Configuração,Desligamento seletivo de módulos,serviço,enabled,boolean,enabled boolean NOT NULL DEFAULT false
+feature_flags,Configuração,Desligamento seletivo de módulos,serviço,config,jsonb,config jsonb NOT NULL DEFAULT '{}'::jsonb
+feature_flags,Configuração,Desligamento seletivo de módulos,serviço,updated_at,timestamptz,updated_at timestamptz NOT NULL DEFAULT now()

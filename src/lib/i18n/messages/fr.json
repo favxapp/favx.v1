@@ -43,7 +43,11 @@
     "timezone_invalid": "Fuseau horaire invalide.",
     "locale_invalid": "Langue invalide.",
     "unauthorized": "Votre session a expiré. Reconnectez-vous.",
-    "generic": "Une erreur s'est produite. Réessayez."
+    "generic": "Une erreur s'est produite. Réessayez.",
+    "social_invalid": "Vérifiez les liens sélectionnés. Utilisez l’URL HTTPS du profil sur le réseau indiqué.",
+    "avatar_invalid": "Choisissez une image JPG, PNG ou WebP valide de 2 Mo maximum.",
+    "avatar_unavailable": "L’envoi de photos est temporairement indisponible. Réessayez plus tard.",
+    "avatar_failed": "Impossible d’enregistrer la photo. Réessayez."
   },
   "me": {
     "title": "Mon compte",
@@ -72,8 +76,7 @@
     "localeLabel": "Langue de l'interface",
     "timezoneLabel": "Fuseau horaire",
     "saved": "Profil enregistré.",
-    "submit": "Enregistrer les modifications",
-    "publicPageSoon": "La page publique de votre profil sera disponible lors d'une étape ultérieure."
+    "submit": "Enregistrer les modifications"
   },
   "notFound": {
     "title": "Page introuvable",
@@ -84,5 +87,36 @@
     "title": "Une erreur s'est produite",
     "body": "Nous n'avons pas pu terminer cette action. Réessayez.",
     "retry": "Réessayer"
+  },
+  "creator": {
+    "requiredNote": "Les champs marqués * sont obligatoires.",
+    "available": "Nom disponible",
+    "unavailable": "Nom indisponible",
+    "checking": "Vérification de la disponibilité…",
+    "checkFailed": "Vérification impossible pour le moment. Réessayez.",
+    "socialTitle": "Vos réseaux sociaux",
+    "socialHint": "Sélectionnez les réseaux à afficher et collez le lien complet de chaque profil.",
+    "remove": "Supprimer",
+    "photo": "Photo de profil",
+    "photoHint": "JPG, PNG ou WebP, jusqu’à 2 Mo. La photo sera recadrée en carré centré.",
+    "uploadPhoto": "Ajouter ou changer la photo",
+    "uploading": "Envoi de la photo…",
+    "photoSaved": "Photo enregistrée.",
+    "preview": "Aperçu du profil",
+    "viewPublic": "Voir le profil public",
+    "publish": "Publier mon profil",
+    "publicHint": "À l’enregistrement, votre nom, photo, bio et liens deviennent visibles par tous.",
+    "privateHint": "Votre profil est encore privé. Sélectionnez publier et enregistrez avant de partager.",
+    "share": "Partager le profil",
+    "copy": "Copier le lien",
+    "copied": "Lien copié.",
+    "copyManually": "Sélectionnez le lien ci-dessus et copiez-le manuellement.",
+    "profileLink": "Lien du profil",
+    "emptyTitle": "De nouvelles découvertes bientôt",
+    "emptyBody": "Ce Creator n’a pas encore publié de recommandations.",
+    "backEdit": "Retour à la modification",
+    "setupTitle": "Votre profil, à votre image",
+    "setupIntro": "Ajoutez votre photo et vos liens. Vérifiez l’aperçu avant de publier.",
+    "nextStep": "Continuer la personnalisation"
   }
 }

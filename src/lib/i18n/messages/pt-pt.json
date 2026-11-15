@@ -43,7 +43,11 @@
     "timezone_invalid": "Fuso horário inválido.",
     "locale_invalid": "Idioma inválido.",
     "unauthorized": "A sua sessão expirou. Inicie sessão novamente.",
-    "generic": "Algo correu mal. Tente novamente."
+    "generic": "Algo correu mal. Tente novamente.",
+    "social_invalid": "Verifique as ligações das redes selecionadas. Use o endereço HTTPS do perfil na rede indicada.",
+    "avatar_invalid": "Selecione uma imagem JPG, PNG ou WebP válida até 2 MB.",
+    "avatar_unavailable": "O envio de fotografias está temporariamente indisponível. Tente mais tarde.",
+    "avatar_failed": "Não foi possível guardar a fotografia. Tente novamente."
   },
   "me": {
     "title": "A minha conta",
@@ -72,8 +76,7 @@
     "localeLabel": "Idioma da interface",
     "timezoneLabel": "Fuso horário",
     "saved": "Perfil guardado.",
-    "submit": "Guardar alterações",
-    "publicPageSoon": "A página pública do seu perfil será disponibilizada numa próxima etapa."
+    "submit": "Guardar alterações"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -84,5 +87,36 @@
     "title": "Algo correu mal",
     "body": "Não conseguimos concluir esta ação. Tente novamente.",
     "retry": "Tentar de novo"
+  },
+  "creator": {
+    "requiredNote": "Os campos com * são obrigatórios.",
+    "available": "Nome disponível",
+    "unavailable": "Nome indisponível",
+    "checking": "A verificar disponibilidade…",
+    "checkFailed": "Não foi possível consultar agora. Tente novamente.",
+    "socialTitle": "As suas redes sociais",
+    "socialHint": "Selecione as redes que pretende mostrar e cole a ligação completa de cada perfil.",
+    "remove": "Remover",
+    "photo": "Fotografia de perfil",
+    "photoHint": "JPG, PNG ou WebP, até 2 MB. A fotografia será recortada ao centro num quadrado.",
+    "uploadPhoto": "Adicionar ou alterar fotografia",
+    "uploading": "A enviar fotografia…",
+    "photoSaved": "Fotografia guardada.",
+    "preview": "Pré-visualização do perfil",
+    "viewPublic": "Ver perfil público",
+    "publish": "Publicar o meu perfil",
+    "publicHint": "Ao guardar, o seu nome, fotografia, bio e ligações ficam visíveis para qualquer visitante.",
+    "privateHint": "O seu perfil ainda é privado. Selecione a opção de publicar e guarde para partilhar.",
+    "share": "Partilhar perfil",
+    "copy": "Copiar ligação",
+    "copied": "Ligação copiada.",
+    "copyManually": "Selecione a ligação acima e copie manualmente.",
+    "profileLink": "Ligação do perfil",
+    "emptyTitle": "Novas descobertas em breve",
+    "emptyBody": "Este Creator ainda não publicou recomendações.",
+    "backEdit": "Voltar à edição",
+    "setupTitle": "O seu perfil, à sua maneira",
+    "setupIntro": "Adicione a sua fotografia e ligações. Confira a pré-visualização antes de publicar.",
+    "nextStep": "Continuar para personalizar"
   }
 }

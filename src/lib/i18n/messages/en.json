@@ -43,7 +43,11 @@
     "timezone_invalid": "Invalid time zone.",
     "locale_invalid": "Invalid language.",
     "unauthorized": "Your session expired. Please sign in again.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "social_invalid": "Check your selected social links. Use the HTTPS profile URL on the matching network.",
+    "avatar_invalid": "Choose a valid JPG, PNG or WebP image up to 2 MB.",
+    "avatar_unavailable": "Photo uploads are temporarily unavailable. Please try later.",
+    "avatar_failed": "Could not save the photo. Please try again."
   },
   "me": {
     "title": "My account",
@@ -72,8 +76,7 @@
     "localeLabel": "Interface language",
     "timezoneLabel": "Time zone",
     "saved": "Profile saved.",
-    "submit": "Save changes",
-    "publicPageSoon": "Your public profile page will be released in a later step."
+    "submit": "Save changes"
   },
   "notFound": {
     "title": "Page not found",
@@ -84,5 +87,36 @@
     "title": "Something went wrong",
     "body": "We could not complete this action. Please try again.",
     "retry": "Try again"
+  },
+  "creator": {
+    "requiredNote": "Fields marked * are required.",
+    "available": "Username available",
+    "unavailable": "Username unavailable",
+    "checking": "Checking availability…",
+    "checkFailed": "Could not check right now. Please try again.",
+    "socialTitle": "Your social networks",
+    "socialHint": "Select the networks to display and paste the full link to each profile.",
+    "remove": "Remove",
+    "photo": "Profile photo",
+    "photoHint": "JPG, PNG or WebP, up to 2 MB. Your photo will be cropped to a centered square.",
+    "uploadPhoto": "Add or change photo",
+    "uploading": "Uploading photo…",
+    "photoSaved": "Photo saved.",
+    "preview": "Profile preview",
+    "viewPublic": "View public profile",
+    "publish": "Publish my profile",
+    "publicHint": "When you save, your name, photo, bio and links become visible to any visitor.",
+    "privateHint": "Your profile is still private. Select publish and save before sharing.",
+    "share": "Share profile",
+    "copy": "Copy link",
+    "copied": "Link copied.",
+    "copyManually": "Select the link above and copy it manually.",
+    "profileLink": "Profile link",
+    "emptyTitle": "New discoveries coming soon",
+    "emptyBody": "This Creator has not published recommendations yet.",
+    "backEdit": "Back to editing",
+    "setupTitle": "Your profile, your way",
+    "setupIntro": "Add your photo and links. Check the preview before publishing.",
+    "nextStep": "Continue to customize"
   }
 }

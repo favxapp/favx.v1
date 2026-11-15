@@ -61,7 +61,7 @@ export function TextArea({
       <label htmlFor={id} className="block text-sm font-semibold text-ink-strong">
         {label}
       </label>
-      <textarea id={id} aria-describedby={`${id}-hint`} aria-invalid={error ? true : undefined} className={`${fieldClass} min-h-[120px]`} {...props} />
+      <textarea id={id} aria-describedby={`${id}-hint${error ? ` ${id}-error` : ''}`} aria-invalid={error ? true : undefined} className={`${fieldClass} min-h-[120px]`} {...props} />
       {hint ? (
         <p id={`${id}-hint`} className="text-sm text-ink-muted">
           {hint}
@@ -69,7 +69,7 @@ export function TextArea({
       ) : (
         <span id={`${id}-hint`} />
       )}
-      {error ? <p className="text-sm text-danger-text">{error}</p> : null}
+      {error ? <p id={`${id}-error`} className="text-sm text-danger-text">{error}</p> : null}
     </div>
   );
 }
