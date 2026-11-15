@@ -43,7 +43,11 @@
     "timezone_invalid": "Fuso horário inválido.",
     "locale_invalid": "Idioma inválido.",
     "unauthorized": "Sua sessão expirou. Entre novamente.",
-    "generic": "Algo deu errado. Tente novamente."
+    "generic": "Algo deu errado. Tente novamente.",
+    "social_invalid": "Confira os links das redes selecionadas. Use o endereço HTTPS do perfil na rede indicada.",
+    "avatar_invalid": "Selecione uma imagem JPG, PNG ou WebP válida de até 2 MB.",
+    "avatar_unavailable": "O envio de fotos está temporariamente indisponível. Tente mais tarde.",
+    "avatar_failed": "Não foi possível salvar a foto. Tente novamente."
   },
   "me": {
     "title": "Minha conta",
@@ -72,8 +76,7 @@
     "localeLabel": "Idioma da interface",
     "timezoneLabel": "Fuso horário",
     "saved": "Perfil salvo.",
-    "submit": "Salvar alterações",
-    "publicPageSoon": "A página pública do seu perfil será liberada em uma próxima etapa."
+    "submit": "Salvar alterações"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -84,5 +87,36 @@
     "title": "Algo deu errado",
     "body": "Não conseguimos concluir essa ação. Tente novamente.",
     "retry": "Tentar de novo"
+  },
+  "creator": {
+    "requiredNote": "Campos com * são obrigatórios.",
+    "available": "Nome disponível",
+    "unavailable": "Nome indisponível",
+    "checking": "Verificando disponibilidade…",
+    "checkFailed": "Não foi possível consultar agora. Tente novamente.",
+    "socialTitle": "Suas redes sociais",
+    "socialHint": "Selecione as redes que deseja mostrar e cole o link completo de cada perfil.",
+    "remove": "Remover",
+    "photo": "Foto do perfil",
+    "photoHint": "JPG, PNG ou WebP, até 2 MB. A foto será recortada ao centro em formato quadrado.",
+    "uploadPhoto": "Adicionar ou trocar foto",
+    "uploading": "Enviando foto…",
+    "photoSaved": "Foto salva.",
+    "preview": "Prévia do perfil",
+    "viewPublic": "Visualizar perfil público",
+    "publish": "Publicar meu perfil",
+    "publicHint": "Ao salvar, seu nome, foto, bio e links ficam visíveis para qualquer visitante.",
+    "privateHint": "Seu perfil ainda é privado. Marque a opção de publicar e salve para compartilhar.",
+    "share": "Compartilhar perfil",
+    "copy": "Copiar link",
+    "copied": "Link copiado.",
+    "copyManually": "Selecione o link acima e copie manualmente.",
+    "profileLink": "Link do perfil",
+    "emptyTitle": "Novas descobertas em breve",
+    "emptyBody": "Este Creator ainda não publicou recomendações.",
+    "backEdit": "Voltar à edição",
+    "setupTitle": "Seu perfil, do seu jeito",
+    "setupIntro": "Adicione sua foto e seus links. Confira a prévia antes de publicar.",
+    "nextStep": "Continuar para personalizar"
   }
 }

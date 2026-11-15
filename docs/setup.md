@@ -2,7 +2,7 @@
 
 ## Base atual
 
-Next.js com Supabase Auth por e-mail OTP. Stripe e Bunny ainda não são usados pelo código. Nenhum projeto Supabase ou Vercel foi selecionado nesta importação.
+Next.js com Supabase Auth por e-mail OTP, validado pela Product Owner após o deploy da PR #1. A integração de fotos Creator com Bunny está descrita em [Perfil Creator](creator-profile.md). Stripe ainda não é usado pelo código.
 
 ## Variáveis necessárias agora
 

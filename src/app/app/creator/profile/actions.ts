@@ -4,6 +4,8 @@ import { cookies } from 'next/headers';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { parseBio, parseDisplayName, parseTimeZone } from '@/lib/forms';
 import { LOCALE_COOKIE, normalizeLocale } from '@/lib/locale';
+import { parseSocialLinks } from '@/lib/creator/social';
+import { revalidatePath } from 'next/cache';
 
 export type ProfileState = { error: string | null; saved: boolean };
 
@@ -16,6 +18,8 @@ export async function updateProfileAction(_prev: ProfileState, formData: FormDat
   if (!tz.ok) return { saved: false, error: tz.error };
   const locale = normalizeLocale(String(formData.get('locale') ?? ''));
   if (!locale) return { saved: false, error: 'locale_invalid' };
+  const social = parseSocialLinks(formData.get('socialLinks'));
+  if (!social.ok) return { saved: false, error: social.error };
 
   const supabase = await createSupabaseServerClient();
   const {
@@ -23,19 +27,18 @@ export async function updateProfileAction(_prev: ProfileState, formData: FormDat
   } = await supabase.auth.getUser();
   if (!user) return { saved: false, error: 'unauthorized' };
 
-  // RLS + privilégios por coluna: só estas colunas são graváveis pelo próprio usuário.
-  const creator = await supabase.from('creator_profiles').update({ display_name: name.value, bio: bio.value }).eq('user_id', user.id).select('user_id');
-  if (creator.error || !creator.data || creator.data.length !== 1) {
-    console.error('creator_update_failed', creator.error?.code ?? 'sem-linha');
-    return { saved: false, error: 'generic' };
-  }
-  const profile = await supabase.from('profiles').update({ preferred_locale: locale, timezone: tz.value, display_name: name.value }).eq('user_id', user.id).select('user_id');
-  if (profile.error || !profile.data || profile.data.length !== 1) {
-    console.error('profile_update_failed', profile.error?.code ?? 'sem-linha');
+  // Invoker RPC: both updates commit together under the caller's RLS policies.
+  const { error } = await supabase.rpc('save_creator_profile', {
+    p_name: name.value, p_bio: bio.value, p_locale: locale, p_timezone: tz.value,
+    p_links: social.value, p_public: formData.get('isPublic') === 'on',
+  });
+  if (error) {
+    console.error('profile_update_failed', error.code ?? 'unknown');
     return { saved: false, error: 'generic' };
   }
 
   const jar = await cookies();
   jar.set(LOCALE_COOKIE, locale, { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
+  revalidatePath('/app/creator/profile');
   return { saved: true, error: null };
 }

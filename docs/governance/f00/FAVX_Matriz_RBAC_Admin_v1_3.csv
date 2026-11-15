@@ -1,0 +1,68 @@
+﻿PERMISSAO,support,moderator,content_ops,partner_ops,finance_ops,finance_approve,finance_execute,analyst,platform_ops,security_privacy,superadmin,TELAS_ADMIN,ESCOPO,CONTROLE_DE_ACESSO,TESTE_NEGATIVO,CRITICIDADE,ESTADO
+admin.dashboard.read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,SIM,ADM-001,indicadores agregados,Escopo interno; sem pesquisas individuais,RB-001,NORMAL,PROPOSTO
+users.read_limited,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-002;ADM-003,conta com campos mínimos,Mascarar PII; limitar por ticket/necessidade,RB-002,NORMAL,PROPOSTO
+users.support_action,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-003;ADM-018,ticket e usuário,Ações reversíveis; usuário id/justificativa,RB-003,NORMAL,PROPOSTO
+users.suspend_propose,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-003;ADM-005,conta específica,Justificativa e ticket; não efetiva suspensão,RB-004,CRITICO,PROPOSTO
+users.suspend_approve,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-003;ADM-005,conta específica,"Segundo ator, MFA, motivo e prazo; emergência moderacional separada",RB-005,CRITICO,PROPOSTO
+creators.read_limited,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,SIM,ADM-004;ADM-005,"creator, dados não sensíveis",Analytics agregado conforme função,RB-006,NORMAL,PROPOSTO
+content.list,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-006,posts públicos e reportados,Não inclui contexto privado ou original,RB-007,NORMAL,PROPOSTO
+content.report_read,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-007;ADM-008,denúncias atribuídas,Ocultar dados do denunciante quando não necessários,RB-008,NORMAL,PROPOSTO
+content.moderate,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-006;ADM-008,conteúdo reportado,Justificativa e histórico de revisão,RB-009,NORMAL,PROPOSTO
+content.appeal_read,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-008,contestação,Não retornar ao decisor inicial como único revisor,RB-010,NORMAL,PROPOSTO
+content.appeal_decide,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-008,recurso específico,Revisor diferente do decisor original; MFA e auditoria,RB-011,CRITICO,PROPOSTO
+content.taxonomy_manage,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-009,categorias/tags,Versionamento e revisão de impacto de busca,RB-012,NORMAL,PROPOSTO
+content.localization_manage,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-010,textos e localizações,Revisão humana para termos críticos,RB-013,NORMAL,PROPOSTO
+content.entities_manage,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-022,entidade canônica,Não expor Context; audit on merge/split,RB-014,NORMAL,PROPOSTO
+analytics.aggregate_read,NÃO,NÃO,SIM,SIM,NÃO,NÃO,NÃO,SIM,SIM,NÃO,SIM,ADM-001;ADM-005;ADM-015;ADM-024,estatísticas agregadas,Limiar de privacidade e janela de retenção,RB-015,NORMAL,PROPOSTO
+analytics.satisfaction_read,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,SIM,ADM-024,amostras agregadas,Não inferir satisfação a partir de uso,RB-016,NORMAL,PROPOSTO
+billing.plan_read,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,SIM,NÃO,NÃO,SIM,ADM-011;ADM-012,planos e preços,Não expor pagamento completo,RB-017,NORMAL,PROPOSTO
+billing.pricing_propose,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-012,alteração de preços,Não aplica preço sem segunda aprovação,RB-018,CRITICO,PROPOSTO
+billing.pricing_approve,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-012,alteração de preços,Aprovador diferente do proponente; flag rollout,RB-019,CRITICO,PROPOSTO
+billing.subscription_read,SIM,NÃO,NÃO,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011,"assinatura, sem cartão",Support apenas status mínimo,RB-020,NORMAL,PROPOSTO
+billing.entitlement_read,SIM,NÃO,NÃO,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-005,entitlements da conta,Entitlements Free/Plus calculados por servidor,RB-021,NORMAL,PROPOSTO
+billing.entitlement_adjust_propose,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011,proposta de entitlement,"Rationale, ticket, before/after redigido",RB-022,CRITICO,PROPOSTO
+billing.entitlement_adjust_approve,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011,entitlement solicitado,"Aprovador diferente do proponente, MFA",RB-023,CRITICO,PROPOSTO
+billing.refund_propose,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-012,reembolso,Sem execução de pagamento; idempotency key,RB-024,CRITICO,PROPOSTO
+billing.refund_approve,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-012,reembolso,"2 atores distintos, limites, MFA, confirmação Stripe; executar somente após autorização independente e reconciliação",RB-025,CRITICO,PROPOSTO
+billing.chargeback_read,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-011;ADM-012,disputa específica,PII mínima; sem alteração direta,RB-026,NORMAL,PROPOSTO
+billing.revenue_read,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,SIM,NÃO,NÃO,SIM,ADM-012,receita por moeda,Somente métricas necessárias à função,RB-027,NORMAL,PROPOSTO
+partners.application_read,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-016,inscrição,Documentos privados restritos,RB-028,NORMAL,PROPOSTO
+partners.application_decide,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-016,candidatura,Regra de conflito de interesse e auditoria,RB-029,NORMAL,PROPOSTO
+partners.manage,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-016,parceiro aprovado,Bloquear self-referral; sem aprovar payout,RB-030,NORMAL,PROPOSTO
+partners.referrals_read,NÃO,NÃO,NÃO,SIM,SIM,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-016;ADM-017,atribuição e referral,Mascarar identidade não essencial,RB-031,NORMAL,PROPOSTO
+partners.commission_read,NÃO,NÃO,NÃO,SIM,SIM,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-017,ledger comissão,Somente dados autorizados,RB-032,NORMAL,PROPOSTO
+partners.commission_adjust_propose,NÃO,NÃO,NÃO,SIM,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-017,ajuste de comissão,Nenhum crédito aplicado sem aprovação independente,RB-033,CRITICO,PROPOSTO
+partners.commission_adjust_approve,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-017,ajuste pendente,"Aprovador distinto, anti-fraude e auditoria",RB-034,CRITICO,PROPOSTO
+partners.payout_propose,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-017,payout pendente,Não transfere recursos,RB-035,CRITICO,PROPOSTO
+partners.payout_approve,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,SIM,ADM-017,payout pendente,Aprovador distinto; prova de pagamento/dupe; executar somente após autorização independente e reconciliação,RB-036,CRITICO,PROPOSTO
+support.ticket_read,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-018,ticket atribuído,Mascarar dados sensíveis,RB-037,NORMAL,PROPOSTO
+support.ticket_manage,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-018,ticket atribuído,"Resposta registrada, sem acesso irrestrito a dados",RB-038,NORMAL,PROPOSTO
+ops.jobs_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-013,job e fila,Sem payload sensível em log,RB-039,NORMAL,PROPOSTO
+ops.jobs_retry,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-013,job idempotente,Simulação antes de retry de ação financeira,RB-040,CRITICO,PROPOSTO
+ops.media_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-014,metadados técnicos,Sem bytes/originais privados,RB-041,NORMAL,PROPOSTO
+ops.media_reprocess,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-014,asset id,"Fila e variante, sem acesso ao original no operador",RB-042,NORMAL,PROPOSTO
+ops.ai_cost_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,SIM,ADM-015,custo e qualidade agregados,Sem raw queries/Context,RB-043,NORMAL,PROPOSTO
+ops.flags_propose,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-021,flag e rollout,Alteração produção exige revisão,RB-044,CRITICO,PROPOSTO
+ops.flags_approve,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-021,flag sensível,Aprovador distinto; rollback documentado,RB-045,CRITICO,PROPOSTO
+privacy.request_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-023,DSAR,Minimização; acessar pedido específico,RB-046,NORMAL,PROPOSTO
+privacy.request_propose,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-023,DSAR,Não executar eliminação sem segundo controle quando aplicável,RB-047,CRITICO,PROPOSTO
+privacy.request_execute,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-023,DSAR aprovado,Outro aprovador; jurídico/retention review,RB-048,CRITICO,PROPOSTO
+privacy.audit_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-023;ADM-019,auditoria privacidade,Não acessar payload completo de Context,RB-049,NORMAL,PROPOSTO
+security.audit_read,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-019,trilhas auditáveis,Read-only,RB-050,NORMAL,PROPOSTO
+security.audit_export,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-019,exportação,"MFA, necessidade, log e duração",RB-051,CRITICO,PROPOSTO
+security.roles_propose,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-020,role grant/revoke,"Nunca autoconcessão, nem remover último superadmin",RB-052,CRITICO,PROPOSTO
+security.roles_approve,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-020,role grant/revoke,Aprovação por outro humano; privilegiado exige revisão extra,RB-053,CRITICO,PROPOSTO
+notifications.template_read,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-025,template,Separar valores públicos dos privados,RB-054,NORMAL,PROPOSTO
+notifications.template_edit,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,ADM-025,template rascunho,Sem ativar disparo real,RB-055,NORMAL,PROPOSTO
+notifications.template_publish,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,SIM,ADM-025,template aprovado,Revisão i18n + aprovação de outra pessoa em transacionais críticos,RB-056,CRITICO,PROPOSTO
+private.context_breakglass_request,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-019;ADM-023,incidente específico,"Não concede acesso, só abre ticket",RB-057,BREAK_GLASS,PROPOSTO
+private.context_breakglass_approve,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-019;ADM-023,ticket de incidente,"Aprovação por outro ator, tempo limitado e escopo mínimo",RB-058,BREAK_GLASS,PROPOSTO
+private.original_breakglass_request,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-014;ADM-019,asset específico,"Não concede download, apenas solicita",RB-059,BREAK_GLASS,PROPOSTO
+private.original_breakglass_approve,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,ADM-014;ADM-019,asset específico,Aprovador independente e justificativa legal/técnica,RB-060,BREAK_GLASS,PROPOSTO
+private.context_breakglass_access,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,ADM-019;ADM-023,temporário/escopo único,"NÃO CONCEDER POR PAPEL; acesso somente por grant temporário específico de incidente, após aprovação humana independente, MFA e logs; consulta ao serviço de grants",RB-061,BREAK_GLASS,PROPOSTO
+private.original_breakglass_access,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,ADM-014;ADM-019,temporário/asset único,"NÃO CONCEDER POR PAPEL; acesso somente por grant temporário específico de incidente, após aprovação humana independente, MFA e logs; consulta ao serviço de grants",RB-062,BREAK_GLASS,PROPOSTO
+billing.refund_execute,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,ADM-011;ADM-012,refund_id aprovado,Execução manual apenas com MFA recente; proposta e aprovação prévias válidas; executor != proponente/aprovador; idempotência e reconciliação Stripe; execução automática somente por service identity restrita,RB13-63,CRITICA,PROPOSTO
+partners.payout_execute,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,NÃO,NÃO,NÃO,ADM-017,payout_batch_id aprovado,"Execução manual apenas após dupla autorização válida, executor distinto de solicitante/aprovador; identidade de serviço dedicada pode executar automaticamente; reconciliação e limites",RB13-64,CRITICA,PROPOSTO
+users.temporary_hold,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,ADM-003;ADM-005;ADM-019,conta específica; perigo iminente,"Conter só com reason_code, ticket, TTL proposto até 24h e trilha; revisão humana independente em até 24h; sem mudar status de suspensão definitiva",RB13-65,CRITICA,PROPOSTO
+users.temporary_hold_review,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,NÃO,ADM-003;ADM-005;ADM-019,hold_id e conta específica,"Revisor humano diferente do autor, MFA recente, decisão manter/revogar/encaminhar; vencimento automático quando não confirmado",RB13-66,CRITICA,PROPOSTO
+finance.execution_audit_read,NÃO,NÃO,NÃO,NÃO,NÃO,SIM,SIM,NÃO,NÃO,SIM,NÃO,ADM-012;ADM-017;ADM-019,eventos financeiros redigidos,"Somente rastros e IDs, sem dados bancários; não concede execute",RB13-67,CRITICA,PROPOSTO

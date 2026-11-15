@@ -17,7 +17,7 @@ export default async function ActivatePage() {
         <h1 className="font-serif text-4xl text-ink-strong">{m.activate.title}</h1>
         <p className="mt-2 text-ink-muted">{m.activate.intro}</p>
       </div>
-      <ActivateForm labels={{ ...m.activate, errors: m.errors as Record<string, string> }} />
+      <ActivateForm labels={{ ...m.activate, creator: m.creator, errors: m.errors as Record<string, string> }} />
     </main>
   );
 }

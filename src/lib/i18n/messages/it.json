@@ -43,7 +43,11 @@
     "timezone_invalid": "Fuso orario non valido.",
     "locale_invalid": "Lingua non valida.",
     "unauthorized": "La sessione è scaduta. Accedi di nuovo.",
-    "generic": "Qualcosa è andato storto. Riprova."
+    "generic": "Qualcosa è andato storto. Riprova.",
+    "social_invalid": "Controlla i link selezionati. Usa l’URL HTTPS del profilo sul social indicato.",
+    "avatar_invalid": "Scegli un’immagine JPG, PNG o WebP valida fino a 2 MB.",
+    "avatar_unavailable": "Il caricamento delle foto non è disponibile al momento. Riprova più tardi.",
+    "avatar_failed": "Impossibile salvare la foto. Riprova."
   },
   "me": {
     "title": "Il mio account",
@@ -72,8 +76,7 @@
     "localeLabel": "Lingua dell'interfaccia",
     "timezoneLabel": "Fuso orario",
     "saved": "Profilo salvato.",
-    "submit": "Salva modifiche",
-    "publicPageSoon": "La pagina pubblica del tuo profilo sarà disponibile in una fase successiva."
+    "submit": "Salva modifiche"
   },
   "notFound": {
     "title": "Pagina non trovata",
@@ -84,5 +87,36 @@
     "title": "Qualcosa è andato storto",
     "body": "Non siamo riusciti a completare questa azione. Riprova.",
     "retry": "Riprova"
+  },
+  "creator": {
+    "requiredNote": "I campi con * sono obbligatori.",
+    "available": "Nome disponibile",
+    "unavailable": "Nome non disponibile",
+    "checking": "Verifica della disponibilità…",
+    "checkFailed": "Impossibile verificare ora. Riprova.",
+    "socialTitle": "I tuoi social network",
+    "socialHint": "Seleziona i social da mostrare e incolla il link completo di ciascun profilo.",
+    "remove": "Rimuovi",
+    "photo": "Foto del profilo",
+    "photoHint": "JPG, PNG o WebP, fino a 2 MB. La foto verrà ritagliata in un quadrato centrato.",
+    "uploadPhoto": "Aggiungi o cambia foto",
+    "uploading": "Caricamento foto…",
+    "photoSaved": "Foto salvata.",
+    "preview": "Anteprima del profilo",
+    "viewPublic": "Visualizza profilo pubblico",
+    "publish": "Pubblica il mio profilo",
+    "publicHint": "Salvando, il tuo nome, foto, bio e link saranno visibili a tutti i visitatori.",
+    "privateHint": "Il tuo profilo è ancora privato. Seleziona pubblica e salva prima di condividere.",
+    "share": "Condividi profilo",
+    "copy": "Copia link",
+    "copied": "Link copiato.",
+    "copyManually": "Seleziona il link qui sopra e copialo manualmente.",
+    "profileLink": "Link del profilo",
+    "emptyTitle": "Nuove scoperte in arrivo",
+    "emptyBody": "Questo Creator non ha ancora pubblicato consigli.",
+    "backEdit": "Torna alla modifica",
+    "setupTitle": "Il tuo profilo, a modo tuo",
+    "setupIntro": "Aggiungi foto e link. Controlla l’anteprima prima di pubblicare.",
+    "nextStep": "Continua a personalizzare"
   }
 }

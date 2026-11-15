@@ -1,0 +1,2006 @@
+openapi: 3.1.0
+info:
+  title: FAVX API — Contratos iniciais
+  version: 1.0.0
+  description: Contrato orientador, NÃO implantado. Só habilitar caminhos após security/QA.
+servers:
+- url: https://favx.app/api/v1
+  description: canônico proposto, requer validação DNS
+tags:
+- name: Identity
+- name: Creator
+- name: Content
+- name: Media
+- name: Discovery
+- name: Library
+- name: Commerce
+- name: Partners
+- name: Admin
+- name: Analytics
+paths:
+  /me:
+    get:
+      tags:
+      - Identity
+      summary: Perfil privado
+      operationId: get_me
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+    patch:
+      tags:
+      - Identity
+      summary: Preferências por allowlist
+      operationId: patch_me
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /creator/activate:
+    post:
+      tags:
+      - Creator
+      summary: Criar Creator associado à mesma identidade
+      operationId: post_creator_activate
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /creator/profile:
+    get:
+      tags:
+      - Creator
+      summary: Perfil editável próprio
+      operationId: get_creator_profile
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+    patch:
+      tags:
+      - Creator
+      summary: Atualizar creator e validar slug
+      operationId: patch_creator_profile
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /profiles/{username}:
+    get:
+      tags:
+      - Creator
+      summary: DTO público do creator, sem métricas
+      operationId: get_profiles_username
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+  /profiles/{username}/posts:
+    get:
+      tags:
+      - Content
+      summary: Posts publicados e elegíveis
+      operationId: get_profiles_username_posts
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts:
+    post:
+      tags:
+      - Content
+      summary: Criar rascunho/publicação
+      operationId: post_posts
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+    get:
+      tags:
+      - Content
+      summary: Listar posts próprios
+      operationId: get_posts
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /posts/{id}:
+    get:
+      tags:
+      - Content
+      summary: Post privado do owner
+      operationId: get_posts_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      tags:
+      - Content
+      summary: Editar post versionado
+      operationId: patch_posts_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Content
+      summary: Solicitar exclusão lógica
+      operationId: delete_posts_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/publish:
+    post:
+      tags:
+      - Content
+      summary: Publicar ou agendar
+      operationId: post_posts_id_publish
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/hide:
+    post:
+      tags:
+      - Content
+      summary: Ocultar manualmente
+      operationId: post_posts_id_hide
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/archive:
+    post:
+      tags:
+      - Content
+      summary: Arquivar post
+      operationId: post_posts_id_archive
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/restore:
+    post:
+      tags:
+      - Content
+      summary: Restaurar conteúdo elegível
+      operationId: post_posts_id_restore
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /media/upload-intents:
+    post:
+      tags:
+      - Media
+      summary: Conceder intenção de upload
+      operationId: post_media_upload_intents
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadIntent'
+  /media/{id}/complete:
+    post:
+      tags:
+      - Media
+      summary: Confirmar bytes enviados
+      operationId: post_media_id_complete
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /media/{id}/status:
+    get:
+      tags:
+      - Media
+      summary: Status de processamento
+      operationId: get_media_id_status
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /media/{id}/download-grant:
+    post:
+      tags:
+      - Media
+      summary: Conceder download privado ao titular
+      operationId: post_media_id_download_grant
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/context:
+    get:
+      tags:
+      - Discovery
+      summary: Contexto privado owner
+      operationId: get_posts_id_context
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      tags:
+      - Discovery
+      summary: Editar contexto privado
+      operationId: put_posts_id_context
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContextInput'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Discovery
+      summary: Remover contexto e index derivado
+      operationId: delete_posts_id_context
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /banners:
+    get:
+      tags:
+      - Content
+      summary: Listar banners próprios
+      operationId: get_banners
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+    post:
+      tags:
+      - Content
+      summary: Criar banner Plus
+      operationId: post_banners
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BannerInput'
+  /banners/{id}:
+    patch:
+      tags:
+      - Content
+      summary: Editar banner
+      operationId: patch_banners_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BannerInput'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Content
+      summary: Encerrar ou excluir logicamente banner
+      operationId: delete_banners_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /pins:
+    post:
+      tags:
+      - Content
+      summary: Criar fixação temporal Plus
+      operationId: post_pins
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /pins/{id}:
+    patch:
+      tags:
+      - Content
+      summary: Editar janela de fixação
+      operationId: patch_pins_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Content
+      summary: Remover fixação sem excluir post
+      operationId: delete_pins_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /collections:
+    post:
+      tags:
+      - Library
+      summary: Criar coleção
+      operationId: post_collections
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+    get:
+      tags:
+      - Library
+      summary: Listar coleções próprias
+      operationId: get_collections
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /collections/{id}:
+    get:
+      tags:
+      - Library
+      summary: Detalhe owner/compartilhada conforme token
+      operationId: get_collections_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      tags:
+      - Library
+      summary: Editar coleção
+      operationId: patch_collections_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Library
+      summary: Excluir coleção protegida
+      operationId: delete_collections_id
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /collections/{id}/items:
+    post:
+      tags:
+      - Library
+      summary: Adicionar post à coleção
+      operationId: post_collections_id_items
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /posts/{id}/save:
+    post:
+      tags:
+      - Library
+      summary: Salvar post idempotente
+      operationId: post_posts_id_save
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      tags:
+      - Library
+      summary: Remover save
+      operationId: delete_posts_id_save
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /me/saved:
+    get:
+      tags:
+      - Library
+      summary: Consultar biblioteca privada
+      operationId: get_me_saved
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /recommendation-requests:
+    post:
+      tags:
+      - Creator
+      summary: Criar pedido de comunidade
+      operationId: post_recommendation_requests
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /requests/{id}/submissions:
+    post:
+      tags:
+      - Creator
+      summary: Enviar sugestão privada
+      operationId: post_requests_id_submissions
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /creator/community-submissions:
+    get:
+      tags:
+      - Creator
+      summary: Listar submissões de próprio pedido
+      operationId: get_creator_community_submissions
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /community-submissions/{id}/review:
+    post:
+      tags:
+      - Creator
+      summary: Aprovar/rejeitar submissão
+      operationId: post_community_submissions_id_review
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /search/sessions:
+    post:
+      tags:
+      - Discovery
+      summary: Criar busca com escopo imutável
+      operationId: post_search_sessions
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchSession'
+  /search/sessions/{id}/messages:
+    post:
+      tags:
+      - Discovery
+      summary: Refinar busca e obter candidatos
+      operationId: post_search_sessions_id_messages
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchMessage'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /search/sessions/{id}/results:
+    get:
+      tags:
+      - Discovery
+      summary: Resultados filtrados elegíveis
+      operationId: get_search_sessions_id_results
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /search/voice/transcribe:
+    post:
+      tags:
+      - Discovery
+      summary: Transcrever consulta de voz protegida
+      operationId: post_search_voice_transcribe
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+  /analytics/events:
+    post:
+      tags:
+      - Analytics
+      summary: Ingestão de evento validado
+      operationId: post_analytics_events
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsEvent'
+  /creator/analytics/overview:
+    get:
+      tags:
+      - Analytics
+      summary: Resumo privado condicionado ao plano
+      operationId: get_creator_analytics_overview
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /creator/analytics/posts:
+    get:
+      tags:
+      - Analytics
+      summary: Métricas por post Plus
+      operationId: get_creator_analytics_posts
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /creator/analytics/search:
+    get:
+      tags:
+      - Analytics
+      summary: Relatório de buscas agregado Plus
+      operationId: get_creator_analytics_search
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /billing/plans:
+    get:
+      tags:
+      - Commerce
+      summary: Preços e planos aprovados
+      operationId: get_billing_plans
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+  /billing/checkout:
+    post:
+      tags:
+      - Commerce
+      summary: Gerar checkout Stripe
+      operationId: post_billing_checkout
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /billing/subscription:
+    get:
+      tags:
+      - Commerce
+      summary: Consultar assinatura própria
+      operationId: get_billing_subscription
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /billing/customer-portal:
+    post:
+      tags:
+      - Commerce
+      summary: Abrir portal Stripe
+      operationId: post_billing_customer_portal
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /webhooks/stripe:
+    post:
+      tags:
+      - Commerce
+      summary: Webhook com assinatura bruta
+      operationId: post_webhooks_stripe
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      description: Verificar Stripe-Signature no raw body antes de inserir inbox;
+        endpoint não é autenticado por cookie, mas assinatura obrigatória.
+  /partners/application:
+    post:
+      tags:
+      - Partners
+      summary: Inscrever parceiro
+      operationId: post_partners_application
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /partners/dashboard:
+    get:
+      tags:
+      - Partners
+      summary: Métricas privadas de parceiro aprovado
+      operationId: get_partners_dashboard
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /partners/referrals:
+    get:
+      tags:
+      - Partners
+      summary: Referrals atribuídos
+      operationId: get_partners_referrals
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /partners/commissions:
+    get:
+      tags:
+      - Partners
+      summary: Comissões próprias
+      operationId: get_partners_commissions
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /admin/dashboard:
+    get:
+      tags:
+      - Admin
+      summary: Métricas operacionais com RBAC
+      operationId: get_admin_dashboard
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /admin/creators:
+    get:
+      tags:
+      - Admin
+      summary: Consulta protegida de creators
+      operationId: get_admin_creators
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /admin/moderation:
+    get:
+      tags:
+      - Admin
+      summary: Fila de moderação
+      operationId: get_admin_moderation
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+  /admin/audit-logs:
+    get:
+      tags:
+      - Admin
+      summary: Auditoria somente papéis autorizados
+      operationId: get_admin_audit_logs
+      responses:
+        '200':
+          description: Sucesso, DTO tipado conforme implementação
+        '400':
+          description: Requisição inválida
+        '401':
+          description: Não autenticado
+        '403':
+          description: Sem permissão ou entitlement
+        '404':
+          description: Não encontrado ou não acessível
+        '409':
+          description: Conflito/idempotência/versão
+        '422':
+          description: Regra de validação
+        '429':
+          description: Rate limit
+      security:
+      - session: []
+components:
+  securitySchemes:
+    session:
+      type: apiKey
+      in: cookie
+      name: session
+      description: cookie ilustrativo; o cookie efetivo é gerido Supabase SSR, não
+        fixar nome
+  schemas:
+    Error:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - messageKey
+          - requestId
+          properties:
+            code:
+              type: string
+            messageKey:
+              type: string
+            requestId:
+              type: string
+            retryable:
+              type: boolean
+            details:
+              type: array
+              items:
+                type: object
+    PostInput:
+      type: object
+      required:
+      - title
+      - body
+      properties:
+        title:
+          type: string
+          maxLength: 200
+        body:
+          type: string
+          maxLength: 10000
+        visibleFrom:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        visibleUntil:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        timezone:
+          type: string
+        mediaIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        linkIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        expectedVersion:
+          type: integer
+          minimum: 1
+    UploadIntent:
+      type: object
+      required:
+      - kind
+      - filename
+      - bytes
+      - mime
+      - originKind
+      properties:
+        kind:
+          type: string
+          enum:
+          - image
+          - video
+          - audio
+        originKind:
+          type: string
+          enum:
+          - native_capture
+          - user_upload
+        filename:
+          type: string
+        bytes:
+          type: integer
+          minimum: 1
+        mime:
+          type: string
+        durationMs:
+          type: integer
+          minimum: 0
+        sha256:
+          type: string
+    SearchSession:
+      type: object
+      required:
+      - scopeKind
+      - scopeOwnerId
+      properties:
+        scopeKind:
+          type: string
+          enum:
+          - creator
+          - saved
+        scopeOwnerId:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          enum:
+          - pt-BR
+          - pt-PT
+          - en
+          - es
+          - it
+          - fr
+    SearchMessage:
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          maxLength: 2000
+        locationText:
+          type: string
+        filters:
+          type: object
+    ContextInput:
+      type: object
+      properties:
+        text:
+          type: string
+        audioAssetId:
+          type: string
+          format: uuid
+        expectedGeneration:
+          type: integer
+    BannerInput:
+      type: object
+      properties:
+        title:
+          type: string
+        mediaId:
+          type: string
+          format: uuid
+        destinationUrl:
+          type: string
+          format: uri
+        visibleFrom:
+          type: string
+          format: date-time
+        visibleUntil:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+        expectedVersion:
+          type: integer
+    AnalyticsEvent:
+      type: object
+      required:
+      - eventName
+      - eventDedupeKey
+      - sourceSurface
+      - occurredAt
+      properties:
+        eventName:
+          type: string
+        eventDedupeKey:
+          type: string
+        sourceSurface:
+          type: string
+        occurredAt:
+          type: string
+          format: date-time
+        postId:
+          type: string
+          format: uuid
+        metadata:
+          type: object

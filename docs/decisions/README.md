@@ -32,3 +32,7 @@ Registro de 14/11/2026. Importação preserva documentos e comportamento do paco
 | Stripe e Bunny | Stack definida, sem código de integração | Implementar por incremento após definir contratos |
 
 Build e testes unitários não encerram essas pendências. A migration recebida é somente versionada nesta etapa.
+
+## Atualização de 15/11/2026 — perfil Creator
+
+DOC05, DOC06 e pacotes F00 recebidos; ver [conciliação e incremento](../creator-profile.md). Login OTP confirmado pela Product Owner. O próximo incremento adiciona foto, redes, perfil público, compartilhar e validação de username. A política de renomeação continua pendente. A mudança de banco preparada foi testada em PostgreSQL embarcado, mas a revisão automática bloqueou sua aplicação em produção por falta de autorização específica. Não considerar concluídas as fases F02/F03 nem homologada a POC geral de mídia.

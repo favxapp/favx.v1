@@ -1,0 +1,11 @@
+flowchart LR
+  UI[Next.js public & private] --> API[API /api/v1]
+  API --> AUTH[Supabase Auth]
+  API --> DOM[Domain Services]
+  DOM --> PG[(Postgres app schema RLS)]
+  DOM --> OUT[Transactional Outbox]
+  OUT --> WORK[Durable Workers]
+  WORK --> B[Bunny]
+  WORK --> AI[OpenAI]
+  API --> ST[Stripe]
+  ST -->|signed webhook| API

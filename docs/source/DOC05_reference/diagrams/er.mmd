@@ -1,0 +1,15 @@
+erDiagram
+ profiles ||--o| creator_profiles : activates
+ creator_profiles ||--o{ posts : publishes
+ posts ||--o{ post_media : contains
+ media_assets ||--o{ post_media : attached
+ posts ||--o| post_private_contexts : has_private_context
+ creator_profiles ||--o{ banners : schedules
+ creator_profiles ||--o{ pinned_posts : pins
+ profiles ||--o{ collections : owns
+ collections ||--o{ collection_items : contains
+ posts ||--o{ collection_items : appears
+ creator_profiles ||--o{ subscriptions : pays
+ subscriptions ||--o{ entitlements : unlocks
+ partners ||--o{ partner_referrals : attributes
+ partner_referrals ||--o{ partner_commissions : earns

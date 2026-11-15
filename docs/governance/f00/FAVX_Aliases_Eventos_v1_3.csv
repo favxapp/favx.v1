@@ -1,0 +1,35 @@
+﻿NOME_LEGADO,NOME_CANONICO,TIPO_TRANSICAO,MIGRACAO,ESTADO,NOTAS_ORIGEM
+auth.otp_requested,otp.requested,RENOMEAR_APOS_VALIDACAO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,Legado auth.*; segurança
+auth.otp_verified,otp.verified,RENOMEAR_APOS_VALIDACAO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,Legado auth.*; segurança
+auth.login_succeeded,login.succeeded,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+auth.login_failed,login.failed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+auth.signup_completed,signup.completed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+auth.session_expired,session.expired,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+profile.link_clicked,profile_link.clicked,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+post.link_clicked,post_link.clicked,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+search.no_results,search.empty,RENOMEAR_APOS_VALIDACAO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,Alias já presente; manter único canônico search.empty
+search.result_clicked,search_result.clicked,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+search.voice_submitted,search_voice.submitted,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.upload_started,media_upload.started,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.upload_completed,media_upload.completed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.upload_failed,media_upload.failed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.download_requested,media_download.requested,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+context.edit_started,context_editor.opened,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+context.updated_by_creator,context.updated,CONSOLIDACAO_DE_CONCEITO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+consent.granted,consent.changed,CONSOLIDACAO_DE_CONCEITO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+consent.revoked,consent.changed,CONSOLIDACAO_DE_CONCEITO,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+account.export_requested,account_export.requested,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+account.deletion_requested,account_deletion.requested,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+subscription.entitlement_changed,entitlement.changed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+partner.commission.created,commission.created,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.processing_failed,media_processing.failed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+media.original_purged,media_original.purged,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+account.export_prepared,account_export.prepared,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+account.deletion_completed,account_deletion.completed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+subscription.payment_failed,subscription_payment.failed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+partner.commission.reversed,commission.reversed,RENAME_COMPATIBILIDADE,"Não renomear publisher/consumer em produção sem ADR, dual-write/adapter e verificação de consumidores",PROPOSTO,
+post_save,post.saved,RENOMEAR_APOS_VALIDACAO,"Revisar semântica no PRD/TRD/DOC03; mapear payload, adaptar produtor e consumidor e preservar versão histórica. PRD: evento legado de ação save; verificar se houve de fato salvamento antes de mapear",PROPOSTO,PRD: evento legado de ação save; verificar se houve de fato salvamento antes de mapear
+post_saved,post.saved,RENOMEAR_APOS_VALIDACAO,"Revisar semântica no PRD/TRD/DOC03; mapear payload, adaptar produtor e consumidor e preservar versão histórica. TRD: evento legado ação confirmada",PROPOSTO,TRD: evento legado ação confirmada
+creator_search,search.submitted,AMBIGUO_REVISAR,"Revisar semântica no PRD/TRD/DOC03; mapear payload, adaptar produtor e consumidor e preservar versão histórica. Verificar no código/fonte se representa submit de busca ou visita a página de busca; não converter automaticamente",PROPOSTO,Verificar no código/fonte se representa submit de busca ou visita a página de busca; não converter automaticamente
+search_submitted,search.submitted,RENOMEAR_APOS_VALIDACAO,"Revisar semântica no PRD/TRD/DOC03; mapear payload, adaptar produtor e consumidor e preservar versão histórica. TRD legado",PROPOSTO,TRD legado
+search.query_submitted,search.submitted,RENOMEAR_APOS_VALIDACAO,"Revisar semântica no PRD/TRD/DOC03; mapear payload, adaptar produtor e consumidor e preservar versão histórica. DOC03 legado",PROPOSTO,DOC03 legado
