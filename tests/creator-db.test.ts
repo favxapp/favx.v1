@@ -18,7 +18,7 @@ test('profile SQL: A/B/anonymous isolation, public projection, suspension and tr
       create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
       grant usage on schema auth to anon, authenticated; grant execute on function auth.uid() to anon, authenticated;`);
     await db.exec(await readFile(new URL('../supabase/migrations/20261109000100_foundation_auth_creator.sql', import.meta.url), 'utf8'));
-    await db.exec(await readFile(new URL('../supabase/proposals/creator_public_profile.sql', import.meta.url), 'utf8'));
+    await db.exec(await readFile(new URL('../supabase/migrations/20261115155702_creator_public_profile.sql', import.meta.url), 'utf8'));
     await db.query('insert into auth.users(id) values ($1),($2)', [a, b]);
     await role('authenticated', a);
     await db.query('insert into public.creator_profiles(user_id,username,display_name) values ($1,$2,$3)', [a, 'alice', 'Alice']);

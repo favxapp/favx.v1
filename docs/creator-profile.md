@@ -27,13 +27,15 @@ JPG/PNG/WebP até 2 MiB e 16 megapixels; o servidor verifica bytes, recorta ao c
 
 O projeto existente usa `public.profiles` e `public.creator_profiles` com RLS. DOC05 propõe schema privado `app` e um baseline maior. Substituir a base ativa não está no escopo desta entrega. Os SQLs recebidos foram preservados em `docs/source/DOC05_reference`, sem execução. O workspace 1.3.2 é a versão mais recente enviada; seus prompts F00 não são executados automaticamente, e propostas continuam propostas.
 
-`supabase/proposals/creator_public_profile.sql` é uma mudança aditiva preparada e testada em PostgreSQL embarcado (PGlite): namespace/foto, links sociais, política de conta ativa, salvamento transacional, projeção pública explícita e validação de username com autenticação. Não publica perfis existentes automaticamente. A projeção pública não retorna user_id, estado interno, preferências, e-mail ou métricas. Perfis privados/suspensos retornam vazio. Funções que leem além de RLS ficam no schema não exposto `favx_private`, com search_path vazio, grants específicos e wrappers invoker; não expor esse schema na Data API.
+`supabase/migrations/20261115155702_creator_public_profile.sql` é a mudança aditiva aplicada no projeto FAVX (`krnznqyxsuktohilmluf`) após autorização explícita da Product Owner em 15/11/2026 e testes em PostgreSQL embarcado (PGlite): namespace/foto, links sociais, política de conta ativa, salvamento transacional, projeção pública explícita e validação de username com autenticação. Não publica perfis existentes automaticamente. A projeção pública não retorna user_id, estado interno, preferências, e-mail ou métricas. Perfis privados/suspensos retornam vazio. Funções que leem além de RLS ficam no schema não exposto `favx_private`, com search_path vazio, grants específicos e wrappers invoker; não expor esse schema na Data API.
 
-Antes de publicar o código: inspecionar as políticas atuais do projeto FAVX, gerar migration com `supabase migration new creator_public_profile`, copiar a proposta revisada, aplicar e verificar A/B/anônimo no ambiente alvo. O CLI disponível falhou na inicialização no ambiente de trabalho; por isso a proposta não recebeu um nome de migration inventado. A inspeção SQL remota foi concluída após um limite temporário de uso; as políticas do projeto conferem com a fundação. A aplicação da proposta foi rejeitada pela revisão automática por alterar schema, RLS, grants e funções de produção sem autorização específica para aplicar a proposta. Nenhuma mudança foi executada no Supabase. A aprovação da Product Owner para esta proposta concreta está pendente. Não integrar a branch em produção antes de concluir esse passo.
+A migration foi aplicada via MCP Supabase com sucesso; a versão `20261115155702` foi retornada pelo histórico real de migrations e registrada no Git com o mesmo SQL aprovado. A proposta original permanece em `supabase/proposals/` como registro. O CLI não inicializou neste ambiente, então o identificador foi obtido do provedor, sem inventar timestamp.
+
+O teste transacional `supabase/tests/creator_profile_access.sql` passou no Supabase: duas contas temporárias, isolamento entre titulares, visitante, público/privado, conta e Creator suspensos, username e rollback de salvamento parcial. Toda a transação foi revertida, incluindo as identidades de teste. A consulta de catálogo confirmou que as três RPCs públicas usam security invoker.
 
 ## Verificação
 
-`npm test` inclui isolamento entre duas identidades, ausência de dados privados na projeção, recusa de anônimo, suspensão, rollback de salvamento parcial, colisão de username, validação de links e processamento de foto. São testes em banco embarcado e transportes simulados; não comprovam entrega real no Bunny nem configuração do Supabase de produção. Complementar com typecheck, build e teste completo no ambiente alvo após aplicar a migration.
+`npm test` inclui isolamento entre duas identidades, ausência de dados privados na projeção, recusa de anônimo, suspensão, rollback de salvamento parcial, colisão de username, validação de links e processamento de foto. São testes em banco embarcado e transportes simulados; não comprovam entrega real no Bunny. O teste transacional adicional foi executado no Supabase de produção, com rollback de todos os dados de teste. A confirmação final de foto e CDN depende de upload pela aplicação.
 
 ## Origem dos ícones
 
@@ -43,7 +45,7 @@ SVGs de redes selecionados de Simple Icons 16.37.0 (CC0), vendorizados para carr
 
 - 29 testes aprovados; TypeScript e build aprovados; auditoria npm sem vulnerabilidades.
 - Navegador com backend simulado: seleção de rede, edição refletida na prévia, salvar, público anônimo sem ID/e-mail privado, 404, username ocupado/disponível e nome obrigatório.
-- Desktop 1280 px e celular 390 px; sem overflow horizontal. Fotos e delivery Bunny reais ainda pendentes de hostname/configuração e homologação.
+- Desktop 1280 px e celular 390 px; sem overflow horizontal. As quatro variáveis Bunny estão cadastradas em Production. O upload e a entrega reais ainda precisam ser confirmados em uma sessão autenticada.
 - `BUNNY_CDN_URL` cadastrado em Production com a origem pública informada. As chaves existentes não foram lidas nem copiadas para o Git.
 
 As imagens abaixo usam dados fictícios e não são uma conta real.
@@ -51,3 +53,8 @@ As imagens abaixo usam dados fictícios e não são uma conta real.
 ![Edição e prévia em desktop](previews/creator/desktop.png)
 
 [Prévia no celular](previews/creator/mobile.png) · [Username disponível e campo obrigatório](previews/creator/username.png)
+
+
+### Revisão de segurança do banco
+
+O advisory de RPC pública com SECURITY DEFINER deixou de aparecer após a mudança. Permanecem os avisos anteriores: [RLS sem policy em reserved_slugs](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy), deliberadamente sem leitura direta pelo cliente, e [proteção de senhas vazadas](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection), relacionada ao uso de senhas; o fluxo atual é OTP. Isso não substitui uma auditoria integral.
