@@ -24,4 +24,8 @@ Testes PGlite aplicam a fundação e a proposta real: usuário A/B/anônimo, pub
 
 Navegador com serviços isolados atravessa a UI e as server actions: campos obrigatórios, autosave, refresh, URL estável, edição concorrente, prévia, confirmação, público/404, ocultação e lista. Layout em 320, 390 e 768px e desktop. Isso não comprova Bunny nem sessão real em produção.
 
-SQL revisável em `supabase/proposals/creator_posts.sql` enquanto não aplicado. O CLI disponível falha ao iniciar por tentar gravar em `/home/agent/.supabase` (somente leitura); o versionamento definitivo deve usar o identificador retornado pelo Supabase ao aplicar a proposta, sem inventar timestamp. A aplicação e a verificação remotas serão registradas ao concluir o release.
+Migration `20261115221433_creator_posts.sql` aplicada no Supabase FAVX em 15/11/2026 (19:14 BRT), a partir do SQL revisado no PR #4. O CLI disponível falhou ao iniciar por tentar gravar em `/home/agent/.supabase` (somente leitura); o arquivo usa o identificador real retornado por `list_migrations`, com conteúdo idêntico ao aplicado via MCP. Não foi inventado timestamp.
+
+A verificação transacional `supabase/tests/creator_posts_access.sql` passou no banco real: privacidade, titularidade, publicação, retry, concorrência, histórico, suspensão e ocultação. Após rollback: zero posts/revisões de teste e apenas o perfil real preexistente. Advisors: nenhuma nova advertência de segurança; info de RLS sem policy em `post_revisions` é intencional (sem grants ao cliente, escrita apenas por trigger privada). Aviso preexistente de proteção de senhas não corresponde ao login OTP atual.
+
+A versão compilada foi testada no navegador com serviços isolados. O avatar passou também com falha simulada de `URL.createObjectURL`, sem `AbortSignal.timeout`, e com rejeição visível de arquivo acima de 2MB. A confirmação do envio real ao Bunny continua pendente na sessão da Product Owner.

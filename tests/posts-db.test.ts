@@ -13,7 +13,7 @@ test('posts SQL: ownership, drafts, publish validation, retries, conflicts, audi
     await db.exec(`create role anon; create role authenticated; create schema auth; create table auth.users(id uuid primary key);
       create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
       grant usage on schema auth to anon,authenticated; grant execute on function auth.uid() to anon,authenticated;`);
-    for (const file of ['migrations/20261109000100_foundation_auth_creator.sql','migrations/20261115155702_creator_public_profile.sql','proposals/creator_posts.sql']) await db.exec(await readFile(new URL(`../supabase/${file}`, import.meta.url),'utf8'));
+    for (const file of ['migrations/20261109000100_foundation_auth_creator.sql','migrations/20261115155702_creator_public_profile.sql','migrations/20261115221433_creator_posts.sql']) await db.exec(await readFile(new URL(`../supabase/${file}`, import.meta.url),'utf8'));
     await db.query('insert into auth.users(id) values($1),($2)',[a,b]);
     await role('authenticated', a);
     await db.query("insert into public.creator_profiles(user_id,username,display_name) values($1,'alice','Alice')",[a]);
@@ -50,5 +50,7 @@ test('posts SQL: ownership, drafts, publish validation, retries, conflicts, audi
     await role('postgres'); await db.query("update public.profiles set account_state='active' where user_id=$1",[a]);
     await role('authenticated',a); await save(2,'hidden');
     await role('anon'); assert.equal((await db.query("select * from public.get_public_posts('alice')")).rows.length,0);
+    await role('postgres');
+    await db.exec(await readFile(new URL('../supabase/tests/creator_posts_access.sql', import.meta.url), 'utf8'));
   } finally { await db.close(); }
 });
