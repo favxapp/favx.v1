@@ -47,7 +47,8 @@
     "social_invalid": "Vérifiez les liens sélectionnés. Utilisez l’URL HTTPS du profil sur le réseau indiqué.",
     "avatar_invalid": "Choisissez une image JPG, PNG ou WebP valide de 2 Mo maximum.",
     "avatar_unavailable": "L’envoi de photos est temporairement indisponible. Réessayez plus tard.",
-    "avatar_failed": "Impossible d’enregistrer la photo. Réessayez."
+    "avatar_failed": "Impossible d’enregistrer la photo. Réessayez.",
+    "avatar_display_failed": "La photo a été enregistrée, mais ne peut pas être affichée. Actualisez la page. Si le problème persiste, contactez l’assistance."
   },
   "me": {
     "title": "Mon compte",

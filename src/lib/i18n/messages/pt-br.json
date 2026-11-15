@@ -47,7 +47,8 @@
     "social_invalid": "Confira os links das redes selecionadas. Use o endereço HTTPS do perfil na rede indicada.",
     "avatar_invalid": "Selecione uma imagem JPG, PNG ou WebP válida de até 2 MB.",
     "avatar_unavailable": "O envio de fotos está temporariamente indisponível. Tente mais tarde.",
-    "avatar_failed": "Não foi possível salvar a foto. Tente novamente."
+    "avatar_failed": "Não foi possível salvar a foto. Tente novamente.",
+    "avatar_display_failed": "A foto foi salva, mas não pôde ser exibida. Tente atualizar a página. Se continuar, entre em contato com o suporte."
   },
   "me": {
     "title": "Minha conta",

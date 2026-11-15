@@ -1,20 +1,27 @@
 import { randomUUID } from 'node:crypto';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { avatarUrl, bunnyConfig, deleteAvatar, MAX_AVATAR_BYTES, prepareAvatar, uploadAvatar } from '@/lib/creator/avatar';
+import { AvatarStorageError, avatarUrl, bunnyConfig, deleteAvatar, MAX_AVATAR_BYTES, prepareAvatar, uploadAvatar } from '@/lib/creator/avatar';
 
+import { isTrustedOrigin } from '@/lib/creator/request-origin';
+
+export const maxDuration = 30;
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export async function POST(request: Request) {
   const respond = (body: object, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
-  if (request.headers.get('origin') !== new URL(request.url).origin) return respond({ error: 'unauthorized' }, 403);
+  const fail = (stage: string, error: string, status: number, detail?: string | number) => {
+    console.error('creator_avatar_failed', { stage, status, ...(detail ? { detail } : {}) });
+    return respond({ error }, status);
+  };
+  if (!isTrustedOrigin(request)) return fail('origin', 'unauthorized', 403);
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return respond({ error: 'unauthorized' }, 401);
+  if (!user) return fail('session', 'unauthorized', 401);
   const { data: creator } = await supabase.from('creator_profiles').select('avatar_namespace, creator_state').eq('user_id', user.id).single();
   const { data: profile } = await supabase.from('profiles').select('account_state').eq('user_id', user.id).single();
-  if (!creator || creator.creator_state !== 'active' || profile?.account_state !== 'active') return respond({ error: 'unauthorized' }, 403);
+  if (!creator || creator.creator_state !== 'active' || profile?.account_state !== 'active') return fail('account', 'unauthorized', 403);
   let config: ReturnType<typeof bunnyConfig>;
-  try { config = bunnyConfig(); } catch { return respond({ error: 'avatar_unavailable' }, 503); }
+  try { config = bunnyConfig(); } catch { return fail('configuration', 'avatar_unavailable', 503); }
   let bytes: Buffer;
   try {
     // Bound the streamed body before parsing multipart; Content-Length alone is not trusted.
@@ -33,14 +40,14 @@ export async function POST(request: Request) {
     const file = form.get('photo');
     if (!(file instanceof File) || file.size > MAX_AVATAR_BYTES) throw Error();
     bytes = await prepareAvatar(new Uint8Array(await file.arrayBuffer()));
-  } catch { return respond({ error: 'avatar_invalid' }, 400); }
+  } catch { return fail('decode', 'avatar_invalid', 400); }
   const path = `${creator.avatar_namespace}/${randomUUID()}.webp`;
   try { await uploadAvatar(path, bytes, config); }
-  catch { console.error('creator_avatar_upload_failed'); return respond({ error: 'avatar_failed' }, 502); }
+  catch (error) { return fail('storage', 'avatar_failed', 502, error instanceof AvatarStorageError ? error.status : 'network'); }
   const { data, error } = await supabase.from('creator_profiles').update({ avatar_path: path }).eq('user_id', user.id).select('user_id');
   if (error || data?.length !== 1) {
     try { await deleteAvatar(path, config); } catch { console.error('creator_avatar_cleanup_failed'); }
-    return respond({ error: 'avatar_failed' }, 500);
+    return fail('database', 'avatar_failed', 500, error?.code);
   }
   return respond({ url: avatarUrl(path, config.cdn) });
 }

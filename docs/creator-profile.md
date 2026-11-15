@@ -58,3 +58,7 @@ As imagens abaixo usam dados fictícios e não são uma conta real.
 ### Revisão de segurança do banco
 
 O advisory de RPC pública com SECURITY DEFINER deixou de aparecer após a mudança. Permanecem os avisos anteriores: [RLS sem policy em reserved_slugs](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy), deliberadamente sem leitura direta pelo cliente, e [proteção de senhas vazadas](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection), relacionada ao uso de senhas; o fluxo atual é OTP. Isso não substitui uma auditoria integral.
+
+## Correção de upload — 15/11/2026
+
+Após relato de seleção sem foto/feedback, o upload passa a mostrar nome do arquivo, prévia durante envio e erro de carregamento da CDN. A verificação de origem aceita `APP_URL` e a URL explícita do deployment além da origem interna, mantendo rejeição de origens arbitrárias. O host Bunny aceita hostname ou URL HTTPS raiz, espaços externos e regiões de três letras (Sydney); credenciais não seguem redirects. Erros registram somente etapa e código/status, sem arquivo, dados pessoais ou chave. A causa específica da tentativa da Product Owner não constava dos logs retidos; não declarar upload real validado só com mocks.

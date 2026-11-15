@@ -47,7 +47,8 @@
     "social_invalid": "Controlla i link selezionati. Usa l’URL HTTPS del profilo sul social indicato.",
     "avatar_invalid": "Scegli un’immagine JPG, PNG o WebP valida fino a 2 MB.",
     "avatar_unavailable": "Il caricamento delle foto non è disponibile al momento. Riprova più tardi.",
-    "avatar_failed": "Impossibile salvare la foto. Riprova."
+    "avatar_failed": "Impossibile salvare la foto. Riprova.",
+    "avatar_display_failed": "La foto è stata salvata ma non può essere visualizzata. Aggiorna la pagina. Se persiste, contatta il supporto."
   },
   "me": {
     "title": "Il mio account",
