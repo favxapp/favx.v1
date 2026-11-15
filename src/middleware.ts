@@ -15,6 +15,8 @@ function copyCookies(from: NextResponse, to: NextResponse): NextResponse {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // The pre-session Auth hook authenticates its raw payload using Standard Webhooks.
+  if (pathname === '/api/auth/send-email') return NextResponse.next();
   const negotiated = negotiateLocale(request.headers.get('accept-language'), request.cookies.get(LOCALE_COOKIE)?.value);
   const { locale: pathLocale, wrongCase, rest } = splitLocalePath(pathname);
   const locale: Locale = pathLocale ?? negotiated;

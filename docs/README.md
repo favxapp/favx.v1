@@ -15,6 +15,7 @@ Recebida em 14/11/2026. Originais copiados sem alteração de conteúdo; removid
 ## Guias de engenharia
 
 - [Setup e Vercel](setup.md)
+- [E-mails Auth com Resend](email/README.md)
 - [Decisões e pendências](decisions/README.md)
 - [Verificação](validation.md)
 - [README original do código](source/README-upload.md)
