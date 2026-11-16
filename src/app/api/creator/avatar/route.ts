@@ -49,5 +49,5 @@ export async function POST(request: Request) {
     try { await deleteAvatar(path, config); } catch { console.error('creator_avatar_cleanup_failed'); }
     return fail('database', 'avatar_failed', 500, error?.code);
   }
-  return respond({ url: avatarUrl(path, config.cdn) });
+  return respond({ url: avatarUrl(path) });
 }

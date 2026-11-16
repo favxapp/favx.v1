@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { parseSocialLinks, SOCIAL_NETWORKS } from '../src/lib/creator/social.ts';
-import { avatarUrl, bunnyConfig, prepareAvatar, uploadAvatar } from '../src/lib/creator/avatar.ts';
+import { avatarUrl, avatarCdnUrl, bunnyConfig, prepareAvatar, uploadAvatar } from '../src/lib/creator/avatar.ts';
 
 test('social links accept supported networks and reject spoofed, duplicate and executable destinations', () => {
   for (const network of SOCIAL_NETWORKS) assert.equal(parseSocialLinks([{ network: network.id, url: `https://${network.hosts[0]}/creator` }]).ok, true);
@@ -28,8 +28,9 @@ test('storage credentials go only to the configured Bunny storage host, never CD
   assert.throws(() => bunnyConfig({ BUNNY_STORAGE_HOST: 'evil.test', BUNNY_STORAGE_ZONE: 'test', BUNNY_STORAGE_ACCESS_KEY: 'fake', BUNNY_CDN_URL: 'https://test.b-cdn.net' }));
   assert.throws(() => bunnyConfig({}));
   const path = '11111111-1111-1111-1111-111111111111/22222222-2222-2222-2222-222222222222.webp';
-  assert.equal(avatarUrl(path, config.cdn), `https://test.b-cdn.net/avatars/${path}`);
-  assert.equal(avatarUrl('../secret', config.cdn), null);
+  assert.equal(avatarUrl(path), `/api/media/avatar/${path}`);
+  assert.equal(avatarCdnUrl(path, config.cdn), `https://test.b-cdn.net/avatars/${path}`);
+  assert.equal(avatarUrl('../secret'), null);
   await uploadAvatar(path, new Uint8Array([1]), config, async (url, init) => {
     assert.equal(String(url), `${config.endpoint}${path}`);
     assert.equal(new Headers(init?.headers).get('AccessKey'), 'fake-key');

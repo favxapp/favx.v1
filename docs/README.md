@@ -21,6 +21,7 @@ Recebida em 14/11/2026. Originais copiados sem alteração de conteúdo; removid
 - [E-mails Auth com Resend](email/README.md)
 - [Perfil Creator e Bunny](creator-profile.md)
 - [Editor de recomendações](posts-editor.md)
+- [Auditoria de cobertura das telas](coverage-audit.md)
 - [Decisões e pendências](decisions/README.md)
 - [Verificação](validation.md)
 - [README original do código](source/README-upload.md)

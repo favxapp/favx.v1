@@ -26,7 +26,7 @@ const getProfile = cache(async (username: string) => {
 export async function generateMetadata({ params }: Props) {
   const profile = await getProfile((await params).username);
   const url = `${publicOrigin()}/${profile.username}`;
-  return { title: `${profile.display_name} · FAVX`, description: profile.bio || 'FAVX', alternates: { canonical: url }, openGraph: { title: `${profile.display_name} · FAVX`, description: profile.bio || 'FAVX', url, ...(avatarUrl(profile.avatar_path) ? { images: [avatarUrl(profile.avatar_path)!] } : {}) } };
+  return { title: `${profile.display_name} · FAVX`, description: profile.bio || 'FAVX', alternates: { canonical: url }, openGraph: { title: `${profile.display_name} · FAVX`, description: profile.bio || 'FAVX', url, ...(avatarUrl(profile.avatar_path) ? { images: [`${publicOrigin()}${avatarUrl(profile.avatar_path)!}`] } : {}) } };
 }
 export default async function PublicCreatorPage({ params, searchParams }: Props) {
   const profile = await getProfile((await params).username);
