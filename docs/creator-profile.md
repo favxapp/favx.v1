@@ -64,3 +64,11 @@ O advisory de RPC pública com SECURITY DEFINER deixou de aparecer após a mudan
 Após relato de seleção sem foto/feedback, o upload passa a mostrar nome do arquivo, prévia durante envio e erro de carregamento da CDN. A verificação de origem aceita `APP_URL` e a URL explícita do deployment além da origem interna, mantendo rejeição de origens arbitrárias. O host Bunny aceita hostname ou URL HTTPS raiz, espaços externos e regiões de três letras (Sydney); credenciais não seguem redirects. Erros registram somente etapa e código/status, sem arquivo, dados pessoais ou chave. A causa específica da tentativa da Product Owner não constava dos logs retidos; não declarar upload real validado só com mocks.
 
 A segunda rodada de investigação do avatar substitui a mensagem opcional por estados explícitos (envio, salvo, erro), com retorno sempre visível e tamanho do arquivo. Toda preparação fica protegida por tratamento de erro; a prévia local é opcional e não bloqueia envio. O timeout usa AbortController para compatibilidade entre navegadores. A usuária relatou Chrome/PNG; a reprodução com seu arquivo/serviço real ainda está pendente.
+
+## Avatar de até 20MB e entrega alternativa
+
+A Product Owner solicitou limite superior a 2MB. O formulário passa a aceitar JPG/PNG/WebP de até 20MB e otimiza o avatar no navegador antes do POST; o servidor continua validando bytes e gerando o derivado de 512px. O limite de transporte de 2MB é interno, não o limite do arquivo escolhido. Originais de avatar não são preservados; essa regra não se aplica aos originais de posts.
+
+A URL CDN do avatar existente retornou 404 em duas requisições independentes (com/sem Referer). O novo endpoint `/api/media/avatar/:namespace/:file` tenta CDN e, em falha, lê exclusivamente o prefixo `avatars/` do Storage configurado. Nunca aceita URL arbitrária, não envia AccessKey à CDN, não segue redirects e só devolve WebP com tamanho limitado. Derivados de avatar já eram públicos por URL no desenho anterior; a rota não dá acesso a originais ou outras pastas. Cache por caminho imutável evita transferências repetidas.
+
+A associação Pull Zone → Storage Zone ainda precisa ser conferida no Bunny. O fallback restaura a entrega sem expor a credencial nem exigir alteração de dados do perfil.

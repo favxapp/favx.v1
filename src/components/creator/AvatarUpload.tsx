@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { MAX_AVATAR_ORIGINAL_BYTES, optimizeAvatar } from '@/lib/creator/avatar-client';
 import type { Messages } from '@/lib/i18n/messages';
 
 type UploadState = { phase: 'idle' | 'sending' | 'saved' | 'error'; error?: string };
@@ -20,16 +21,18 @@ export function AvatarUpload({ photo, onChange, labels, errors }: { photo: strin
     const timeout = setTimeout(() => controller.abort(), 30000);
     try {
       setFilename(`${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB`);
-      if ((file.type && !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) || !file.size || file.size > 2 * 1024 * 1024) {
+      if ((file.type && !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) || !file.size || file.size > MAX_AVATAR_ORIGINAL_BYTES) {
         setState({ phase: 'error', error: 'avatar_invalid' }); return;
       }
       // A preview is optional; failure to create it must not prevent the actual upload.
       try { setPreview(URL.createObjectURL(file)); } catch { setPreview(null); }
-      const body = new FormData(); body.set('photo', file);
+      let optimized: Blob;
+      try { optimized = await optimizeAvatar(file); } catch { setState({ phase: 'error', error: 'avatar_invalid' }); return; }
+      const body = new FormData(); body.set('photo', optimized, 'avatar.webp');
       const response = await fetch('/api/creator/avatar', { method: 'POST', body, signal: controller.signal });
       const result = await response.json();
       if (!response.ok) { setState({ phase: 'error', error: typeof result.error === 'string' ? result.error : 'avatar_failed' }); return; }
-      if (typeof result.url !== 'string' || !result.url.startsWith('https://')) throw Error();
+      if (typeof result.url !== 'string' || !(result.url.startsWith('/api/media/avatar/') || result.url.startsWith('https://'))) throw Error();
       onChange(result.url); setState({ phase: 'saved' });
     } catch { setState({ phase: 'error', error: 'avatar_failed' }); }
     finally {
