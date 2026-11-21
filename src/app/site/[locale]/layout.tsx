@@ -15,7 +15,7 @@ export default async function SiteLayout({ children, params }: { children: React
       </a>
       <header className="border-b border-line">
         <div className="mx-auto flex max-w-content flex-wrap items-center justify-between gap-3 px-6 py-4">
-          <Link href={`/${locale}`} className="font-serif text-3xl text-ink-strong">
+          <Link href={`/${locale}`} className="font-sans font-semibold tracking-tight text-3xl text-ink-strong">
             {m.common.appName}
           </Link>
           <nav aria-label={m.common.language} className="flex flex-wrap gap-x-4 gap-y-1 text-sm">

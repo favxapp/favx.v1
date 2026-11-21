@@ -1,7 +1,7 @@
 export const POST_KINDS = ['recommendation', 'product', 'service', 'place', 'experience', 'culture', 'event'] as const;
 export type PostKind = typeof POST_KINDS[number];
 export type PostLink = { label: string; url: string; coupon: string };
-export type PostContent = { title: string; body: string; content_kind: PostKind; tags: string[]; links: PostLink[]; rating: number | null; is_sponsored: boolean; disclosure: string };
+export type PostContent = { media_ids?: string[]; categories?: string[]; private_context?: string; title: string; body: string; content_kind: PostKind; tags: string[]; links: PostLink[]; rating: number | null; is_sponsored: boolean; disclosure: string };
 export type PostStatus = 'draft' | 'published' | 'hidden';
 export type PostRecord = PostContent & { id: string; public_id: string; slug: string; version: number; lifecycle_state: PostStatus; updated_at: string };
 export type PublicPost = PostContent & { public_id: string; slug: string; published_at: string };
@@ -18,6 +18,9 @@ export function parsePost(input: unknown, status: unknown): { ok: true; value: P
   if (!POST_KINDS.includes(d.content_kind as PostKind) || typeof d.is_sponsored !== 'boolean' || typeof d.disclosure !== 'string' || characterCount(d.disclosure) > 300) return { ok: false, error: 'post_invalid' };
   if (d.rating !== null && (typeof d.rating !== 'number' || !Number.isFinite(d.rating) || d.rating < 0 || d.rating > 10 || d.rating * 2 % 1 !== 0)) return { ok: false, error: 'post_rating' };
   if (!Array.isArray(d.tags) || d.tags.length > 20 || d.tags.some(t => typeof t !== 'string' || !t.trim() || characterCount(t) > 30 || /[<>]/.test(t))) return { ok: false, error: 'post_tags' };
+  if (d.media_ids !== undefined && (!Array.isArray(d.media_ids) || d.media_ids.length > 10 || new Set(d.media_ids).size !== d.media_ids.length || d.media_ids.some(id => typeof id !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id)))) return { ok: false, error: 'post_invalid' };
+  if (d.categories !== undefined && (!Array.isArray(d.categories) || d.categories.length > 5 || d.categories.some(t => typeof t !== 'string' || !t.trim() || characterCount(t) > 30 || /[<>]/.test(t)))) return { ok: false, error: 'post_tags' };
+  if (d.private_context !== undefined && (typeof d.private_context !== 'string' || characterCount(d.private_context) > 5000)) return { ok: false, error: 'post_length' };
   if (!Array.isArray(d.links) || d.links.length > 20) return { ok: false, error: 'post_links' };
   const links: PostLink[] = [];
   for (const link of d.links) {
@@ -30,5 +33,5 @@ export function parsePost(input: unknown, status: unknown): { ok: true; value: P
   }
   if (status === 'published' && (!d.title.trim() || !d.body.trim())) return { ok: false, error: 'post_required' };
   if (status === 'published' && d.is_sponsored && !d.disclosure.trim()) return { ok: false, error: 'post_disclosure' };
-  return { ok: true, status: status as PostStatus, value: { title: d.title.trim(), body: d.body, content_kind: d.content_kind as PostKind, tags: [...new Set(d.tags.map(t => t.trim()))], links, rating: d.rating as number | null, is_sponsored: d.is_sponsored, disclosure: d.disclosure.trim(), slug: postSlug(d.title) } };
+  return { ok: true, status: status as PostStatus, value: { ...(d.media_ids !== undefined ? { media_ids: d.media_ids as string[] } : {}), ...(d.categories !== undefined ? { categories: [...new Set((d.categories as string[]).map(t => t.trim()))] } : {}), ...(d.private_context !== undefined ? { private_context: d.private_context as string } : {}), title: d.title.trim(), body: d.body, content_kind: d.content_kind as PostKind, tags: [...new Set(d.tags.map(t => t.trim()))], links, rating: d.rating as number | null, is_sponsored: d.is_sponsored, disclosure: d.disclosure.trim(), slug: postSlug(d.title) } };
 }

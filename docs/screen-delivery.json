@@ -1,0 +1,1004 @@
+{
+  "updated": "2026-11-21",
+  "total": 142,
+  "partial": 43,
+  "notImplemented": 99,
+  "fullyAccepted": 0,
+  "note": "Parcial não equivale a concluído, homologado ou integração externa configurada.",
+  "screens": [
+    {
+      "id": "WEB-001",
+      "title": "Landing institucional",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Landing com Manrope, composição fotográfica e CTA de autenticação; narrativa institucional completa ainda pendente."
+    },
+    {
+      "id": "WEB-002",
+      "title": "Como funciona",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "WEB-003",
+      "title": "Página de preços e planos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "WEB-004",
+      "title": "Ajuda — início",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Ajuda com busca e categorias de artigos iniciais; catálogo completo pendente."
+    },
+    {
+      "id": "WEB-005",
+      "title": "Artigo de ajuda",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Artigos localizados e contato; feedback de utilidade pendente."
+    },
+    {
+      "id": "WEB-006",
+      "title": "Contato e suporte",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "WEB-007",
+      "title": "Termos e políticas",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "WEB-008",
+      "title": "Programa de parceiros — apresentação",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "AUT-001",
+      "title": "Login",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Login OTP em operação; revisar contrato visual completo."
+    },
+    {
+      "id": "AUT-002",
+      "title": "Cadastro",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Cadastro por OTP integrado ao login; não há jornada completa de onboarding."
+    },
+    {
+      "id": "AUT-003",
+      "title": "Verificação de e-mail",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Código de e-mail e mensagens localizadas em operação."
+    },
+    {
+      "id": "AUT-004",
+      "title": "Recuperar acesso",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "AUT-005",
+      "title": "Definir nova senha",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "AUT-006",
+      "title": "Sessão expirada",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Proteção de sessão/redirecionamento; recuperação de edição exige revisão por fluxo."
+    },
+    {
+      "id": "AUT-007",
+      "title": "Verificação adicional e conta restrita",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "AUT-008",
+      "title": "Consentimentos iniciais",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PUB-001",
+      "title": "Perfil público do Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Composição visual solicitada, contagens públicas de conteúdo, posts, coleções, busca e categorias; homologação pendente."
+    },
+    {
+      "id": "PUB-002",
+      "title": "Coleção pública Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Coleção pública com posts elegíveis, compartilhamento e paginação; cover/ordenação pendentes."
+    },
+    {
+      "id": "PUB-003",
+      "title": "Detalhe público da recomendação",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Texto e galeria de imagens com controle de visibilidade; vídeo/áudio demais módulos pendentes."
+    },
+    {
+      "id": "PUB-004",
+      "title": "Entrada de busca no perfil",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Campo lexical dentro do perfil; conversa/voz pendentes."
+    },
+    {
+      "id": "PUB-005",
+      "title": "Lista de resultados Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Resultados públicos filtrados e paginados; contrato completo pendente."
+    },
+    {
+      "id": "PUB-006",
+      "title": "Coleção compartilhada de User",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PUB-007",
+      "title": "Pedido comunitário público",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PUB-008",
+      "title": "Enviar sugestão comunitária",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PUB-009",
+      "title": "Conteúdo indisponível / link antigo",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "404 e slug canônico básicos; faltam estados contextuais."
+    },
+    {
+      "id": "PUB-010",
+      "title": "Prévia segura de compartilhamento",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Metadados básicos; revisar previews sociais completos."
+    },
+    {
+      "id": "USR-001",
+      "title": "Início do User / biblioteca",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-002",
+      "title": "Todos os salvos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-003",
+      "title": "Item salvo e ações",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-004",
+      "title": "Lista de minhas coleções",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-005",
+      "title": "Detalhe de coleção pessoal",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-006",
+      "title": "Criar ou editar coleção User",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-007",
+      "title": "Compartilhar / revogar coleção",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-008",
+      "title": "Seguindo e seguidores — privado",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-009",
+      "title": "Configurações da conta",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Configurações de idioma/fuso persistidas e e-mail da conta; contrato completo pendente."
+    },
+    {
+      "id": "USR-010",
+      "title": "Privacidade e consentimentos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-011",
+      "title": "Solicitar exportação dos dados",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-012",
+      "title": "Encerrar/excluir conta",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "USR-013",
+      "title": "Central de notificações pessoais",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-001",
+      "title": "Ativar perfil Creator — introdução",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Introdução em cards, mesma conta e etapa seguinte; homologação visual pendente."
+    },
+    {
+      "id": "CRE-002",
+      "title": "Ativar Creator — identidade",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Etapa de identidade e username; avatar/bio disponíveis após ativar."
+    },
+    {
+      "id": "CRE-003",
+      "title": "Ativar Creator — finalizar",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Conclusão privada, link para perfil e estúdio; checklist completo pendente."
+    },
+    {
+      "id": "CRE-004",
+      "title": "Dashboard Creator Free",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Estúdio com CTA, posts recentes e contagens reais; cliques/analytics/agenda pendentes."
+    },
+    {
+      "id": "CRE-005",
+      "title": "Editar perfil Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Foto, redes, bio, idioma/fuso e prévia; UI e demais itens precisam de revisão."
+    },
+    {
+      "id": "CRE-006",
+      "title": "Gerenciar publicações",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Gestão com busca por título, filtros por estado e paginação; ciclo de vida completo pendente."
+    },
+    {
+      "id": "CRE-007",
+      "title": "Editor de recomendação — conteúdo",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Imagens até 20 MiB, abas, autosave, categorias, Context e sugestões IA; vídeo/áudio/taxonomia/agenda pendentes."
+    },
+    {
+      "id": "CRE-008",
+      "title": "Detalhe de gestão de post",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Edição disponível; tela específica de gestão não implementada."
+    },
+    {
+      "id": "CRE-009",
+      "title": "Links, cupons, oferta e patrocínio",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Links/código simples/patrocínio; faltam oferta e cupom estruturado."
+    },
+    {
+      "id": "CRE-010",
+      "title": "Agendar publicação e encerramento",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-011",
+      "title": "Revisão e prévia de publicação",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Prévia e confirmação de texto; falta checklist multimídia/acessibilidade."
+    },
+    {
+      "id": "CRE-012",
+      "title": "Confirmação de publicação / agendamento",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Mensagem de confirmação; não há tela/jornada completa nem agendamento."
+    },
+    {
+      "id": "CRE-013",
+      "title": "Calendário editorial e agenda",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-014",
+      "title": "Gerenciar rascunhos e agendados",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Rascunhos na lista; falta gestão dedicada e agendados."
+    },
+    {
+      "id": "CRE-015",
+      "title": "Ocultos, expirados e arquivados",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Ocultação básica; faltam expirados/arquivados."
+    },
+    {
+      "id": "CRE-016",
+      "title": "Lixeira de conteúdo",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-017",
+      "title": "Coleções Creator — lista",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Lista paginada de coleções próprias; cover e gestão completa pendentes."
+    },
+    {
+      "id": "CRE-018",
+      "title": "Editor de coleção Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Editor persistido, posts próprios e visibilidade; ordenação/exclusão pendentes."
+    },
+    {
+      "id": "CRE-019",
+      "title": "Solicitações comunitárias — lista",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-020",
+      "title": "Caixa de recomendações recebidas",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-021",
+      "title": "Detalhe da sugestão recebida",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-022",
+      "title": "Criar/editar pedido comunitário",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-023",
+      "title": "Métricas gerais Creator",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-024",
+      "title": "Analytics por publicação",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-025",
+      "title": "Analytics de coleções e busca",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "CRE-026",
+      "title": "Histórico e versões de publicação",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Histórico no banco; não há interface de versões."
+    },
+    {
+      "id": "CRE-027",
+      "title": "Gerenciar links do perfil",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Redes no editor do perfil; contrato de links completo pendente."
+    },
+    {
+      "id": "MED-001",
+      "title": "Escolha da origem da mídia",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Upload de imagens e seletor de câmera; biblioteca, vídeo/áudio pendentes."
+    },
+    {
+      "id": "MED-002",
+      "title": "Capturar foto/vídeo com câmera",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Captura de foto via seletor nativo quando suportado; vídeo e teste em aparelhos reais pendentes."
+    },
+    {
+      "id": "MED-003",
+      "title": "Gravar áudio",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "MED-004",
+      "title": "Prévia da mídia original",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Preview local de imagem e reordenação/capa; alt/crop completo pendentes."
+    },
+    {
+      "id": "MED-005",
+      "title": "Gerenciador de uploads",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Upload por partes com progresso/retry na sessão; retomada após fechar e vídeo pendentes."
+    },
+    {
+      "id": "MED-006",
+      "title": "Processamento de mídia",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Validação de original e WebP no servidor; pipeline assíncrono completo pendente."
+    },
+    {
+      "id": "MED-007",
+      "title": "Biblioteca de mídias próprias",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "MED-008",
+      "title": "Opções de download do Creator",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Download autenticado do original próprio; variantes e biblioteca completa pendentes."
+    },
+    {
+      "id": "MED-009",
+      "title": "Transcrição e edição de áudio",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SRH-001",
+      "title": "Campo de busca contextual",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Busca lexical de perfil com escopo; salvos e IA pendentes."
+    },
+    {
+      "id": "SRH-002",
+      "title": "Resultados e cards de busca",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Cards e paginação de resultados lexicais; contrato completo pendente."
+    },
+    {
+      "id": "SRH-003",
+      "title": "Refinamento conversacional",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SRH-004",
+      "title": "Busca por voz",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SRH-005",
+      "title": "Filtros avançados de busca",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Filtro por categoria no perfil; filtros avançados restantes pendentes."
+    },
+    {
+      "id": "SRH-006",
+      "title": "Escolha de localização para busca",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SRH-007",
+      "title": "Falha / fallback da busca IA",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SRH-008",
+      "title": "Nenhum resultado — orientação contextual",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Estado sem resultados e limpar filtros; refinamento contextual completo pendente."
+    },
+    {
+      "id": "PLS-001",
+      "title": "Apresentação Creator Plus / upgrade",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-002",
+      "title": "Checkout e retorno seguro",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-003",
+      "title": "Resultado de trial, pagamento e assinatura",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-004",
+      "title": "Banners — lista e biblioteca",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-005",
+      "title": "Editor de banner",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-006",
+      "title": "Detalhes e desempenho de banner",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-007",
+      "title": "Fixados — gestão e agenda",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-008",
+      "title": "Gerenciar assinatura e cancelamento",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-009",
+      "title": "Visão analítica Plus",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PLS-010",
+      "title": "Paywall contextual de recurso Plus",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-001",
+      "title": "Programa de parceiros — detalhes",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-002",
+      "title": "Cadastro/candidatura de parceiro",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-003",
+      "title": "Status da candidatura",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-004",
+      "title": "Dashboard Partner",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-005",
+      "title": "Meu link e materiais",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-006",
+      "title": "Indicações e comissões",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-007",
+      "title": "Pagamentos e dados para repasse",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-008",
+      "title": "Termos e documentação Partner",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-009",
+      "title": "Histórico de atribuição do parceiro",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "PAR-010",
+      "title": "Ajuda e revisão de comissão",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-001",
+      "title": "Admin overview e saúde operacional",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-002",
+      "title": "Gestão de contas User",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-003",
+      "title": "Detalhe de User e direitos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-004",
+      "title": "Gestão de Creators",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-005",
+      "title": "Detalhe e saúde Creator",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-006",
+      "title": "Conteúdo e ativos — catálogo",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-007",
+      "title": "Fila de denúncias e moderação",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-008",
+      "title": "Detalhe da denúncia e decisão",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-009",
+      "title": "Taxonomia — categorias e aliases",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-010",
+      "title": "Localidades e idiomas",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-011",
+      "title": "Cobrança e assinaturas",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-012",
+      "title": "Finanças e receita por moeda",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-013",
+      "title": "Filas, jobs e agendamentos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-014",
+      "title": "Operações de mídia e storage",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-015",
+      "title": "Busca e IA — qualidade/custo",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-016",
+      "title": "Programa de parceiros — inscrições",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-017",
+      "title": "Programa de parceiros — pagamentos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-018",
+      "title": "Suporte — tickets e SLA",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-019",
+      "title": "Central de auditoria e segurança",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-020",
+      "title": "Roles e permissões do admin",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-021",
+      "title": "Configurações e feature flags",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-022",
+      "title": "Entidades canônicas e indexação",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-023",
+      "title": "Política e governança de privacidade",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-024",
+      "title": "Satisfação e feedback",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "ADM-025",
+      "title": "Notificações e templates transacionais",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-001",
+      "title": "Centro global de notificações",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-002",
+      "title": "Central de ajuda contextual",
+      "specStatus": "MVP P0",
+      "implementation": "partial",
+      "note": "Ajuda inicial acessível no menu; contexto por tela pendente."
+    },
+    {
+      "id": "SHR-003",
+      "title": "Gestão de sessão/dispositivos",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-004",
+      "title": "Seletor de ambiente User/Creator/Partner",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-005",
+      "title": "Confirmação de ação destrutiva",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-006",
+      "title": "Modo offline/reconexão",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-007",
+      "title": "Páginas 403/404/500",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-008",
+      "title": "Notificação e configuração de cookies",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-009",
+      "title": "Relatar conteúdo / denunciar",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "SHR-010",
+      "title": "Confirmação de cópia e compartilhamento",
+      "specStatus": "MVP P0",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "FUT-001",
+      "title": "Busca global — placeholder de roadmap",
+      "specStatus": "FUTURO — fora do MVP",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "FUT-002",
+      "title": "FAVX for Brands — adesão Creator",
+      "specStatus": "FUTURO — fora do MVP",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "FUT-003",
+      "title": "FAVX for Brands — interesse/match",
+      "specStatus": "FUTURO — fora do MVP",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    },
+    {
+      "id": "FUT-004",
+      "title": "Events / Proof / Perfil Comercial",
+      "specStatus": "FUTURO — fora do MVP",
+      "implementation": "not_implemented",
+      "note": "Sem implementação desta superfície no código atual."
+    }
+  ]
+}

@@ -32,3 +32,9 @@ O runner Node emite aviso de inferência de módulos nos testes TypeScript; não
 - Auditoria de dependências e busca de padrões de segredo são checks limitados, não garantia de ausência de vulnerabilidades ou dados sensíveis.
 
 As pendências para integração estão em [decisões](decisions/README.md).
+
+## 21/11/2026 — workspace e editor com mídia/IA
+
+38 testes aprovados, typecheck sem erros e build de produção concluído. Ver [escopo, integrações e limites](workspace-delivery.md). Migration `20261120220440_workspace_collections_search_ai_media` aplicada no projeto FAVX; teste transacional `supabase/tests/workspace_access.sql` passou com rollback de todas as fixtures.
+
+Teste Chromium com serviços controlados percorreu editor, upload de imagem 4,3 MB em partes, retry, original byte a byte, autosave, sugestão editorial, revisão/publicação, criação/edição de coleção, perfil e busca públicos, ocultação e revogação da mídia. Context e identidade não constam do pedido enviado à IA. Imagens de rascunho e originais não são legíveis por anônimos. Layout sem overflow em 320/390/768 px e desktop. A integração externa real permanece pendente das variáveis OpenAI e Bunny privado.

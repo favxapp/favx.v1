@@ -7,7 +7,7 @@ export default async function NotFound() {
   const m = getMessages(locale);
   return (
     <main id="main" className="mx-auto flex min-h-screen max-w-form flex-col justify-center gap-4 px-6 py-16">
-      <p className="font-serif text-5xl text-ink-strong">404</p>
+      <p className="font-sans font-semibold tracking-tight text-5xl text-ink-strong">404</p>
       <h1 className="text-2xl font-bold text-ink-strong">{m.notFound.title}</h1>
       <p className="text-ink-muted">{m.notFound.body}</p>
       <Link href={`/${locale}`} className="font-semibold text-link underline underline-offset-4">

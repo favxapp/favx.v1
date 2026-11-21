@@ -44,7 +44,7 @@ export function AvatarUpload({ photo, onChange, labels, errors }: { photo: strin
   return <section aria-busy={pending} className="space-y-3" aria-labelledby="photo-label">
     <h2 id="photo-label" className="text-lg font-semibold">{labels.photo}</h2>
     <div className="flex items-center gap-4">
-      {(preview || photo) ? <img key={preview || photo} src={preview || photo!} onError={() => { if (!inFlight.current) setState({ phase: 'error', error: 'avatar_display_failed' }); }} alt="" width={80} height={80} className="h-20 w-20 shrink-0 rounded-full object-cover" /> : <div aria-hidden="true" className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-soft font-serif text-3xl">F</div>}
+      {(preview || photo) ? <img key={preview || photo} src={preview || photo!} onError={() => { if (!inFlight.current) setState({ phase: 'error', error: 'avatar_display_failed' }); }} alt="" width={80} height={80} className="h-20 w-20 shrink-0 rounded-xl object-cover" /> : <div aria-hidden="true" className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-soft font-sans font-semibold tracking-tight text-3xl">F</div>}
       <button type="button" disabled={pending} onClick={() => input.current?.click()} className="inline-flex min-h-11 items-center rounded-md border border-field px-4 text-sm disabled:opacity-60">
         {pending ? labels.uploading : labels.uploadPhoto}
       </button>

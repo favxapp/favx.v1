@@ -40,3 +40,7 @@ DOC05, DOC06 e pacotes F00 recebidos; ver [conciliação e incremento](../creato
 ## Atualização de 15/11/2026 — editor editorial
 
 A Product Owner pediu avançar na criação de posts. Ver [escopo e decisões do editor](../posts-editor.md): CRE-006/007/009/011 parciais, com rascunho/persistência/publicação de texto. Migration 20261115221433 aplicada e verificada no Supabase; não implica conclusão de mídia, agendamento ou do baseline DOC05.
+
+## Atualização de 21/11/2026 — direção visual e workspace
+
+A Product Owner autorizou aplicar as referências e construir as 142 telas. [Decisão visual](2026-11-16-visual-direction.md): Manrope em toda a interface, sidebar desktop, glass e organização do perfil indicada. OpenAI escolhido explicitamente. [Incremento e limites](../workspace-delivery.md) e [registro por ID](../screen-delivery.json) distinguem implementação parcial e pendências; não representam aceite integral das telas.

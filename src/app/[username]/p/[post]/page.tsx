@@ -14,13 +14,14 @@ const getPost = cache(async (username: string, segment: string) => {
   const publicId = segment.match(/-([a-f0-9]{32})$/)?.[1];
   if (!publicId || !/^[a-z0-9][a-z0-9_-]{2,29}$/.test(username)) notFound();
   const supabase = await createSupabaseServerClient();
-  const [{ data: posts, error }, { data: profiles, error: profileError }] = await Promise.all([
+  const [{ data: posts, error }, { data: profiles, error: profileError }, { data: media, error: mediaError }] = await Promise.all([
     supabase.rpc('get_public_posts', { p_username: username, p_public_id: publicId }),
     supabase.rpc('get_public_creator', { p_username: username }),
+    supabase.rpc('get_post_media', { p_username: username, p_public_id: publicId }),
   ]);
-  if (error || profileError) throw Error('Public post unavailable');
+  if (error || profileError || mediaError) throw Error('Public post unavailable');
   if (!posts?.length || !profiles?.length) notFound();
-  return { post: posts[0] as PublicPost, name: profiles[0].display_name as string };
+  return { post: { ...posts[0], media_ids: media ?? [] } as PublicPost, name: profiles[0].display_name as string };
 });
 export async function generateMetadata({ params }: Props) {
   const { username, post: segment } = await params;

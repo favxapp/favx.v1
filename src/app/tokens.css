@@ -124,7 +124,7 @@
   --favx-container-form: 560px;
   --favx-container-content: 1280px;
   --favx-container-wide: 1440px;
-  --favx-container-sidebar: 272px;
+  --favx-container-sidebar: 232px;
   --favx-breakpoint-xs: 360px;
   --favx-breakpoint-sm: 480px;
   --favx-breakpoint-md: 768px;
@@ -132,7 +132,7 @@
   --favx-breakpoint-xl: 1440px;
   --favx-breakpoint-2xl: 1920px;
   --favx-font-ui: "Manrope", Arial, sans-serif;
-  --favx-font-editorial: "Instrument Serif", Georgia, serif;
+  --favx-font-editorial: "Manrope", Arial, sans-serif;
   --favx-shadow-card: 0 6px 24px rgb(15 15 15 / 0.055);
   --favx-shadow-raised: 0 14px 48px rgb(15 15 15 / 0.10);
   --favx-glass-blur: 16px;

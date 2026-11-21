@@ -53,7 +53,7 @@ export default function ProfileForm({ labels, creatorLabels: c, errors, values, 
     </div>
     <aside className="space-y-5 lg:sticky lg:top-6">
       <h2 className="text-lg font-semibold">{c.preview}</h2>
-      <ProfileCard name={name} username={values.username} bio={bio} photo={photo} links={validLinks.ok ? validLinks.value : []} />
+      <div className="profile-preview"><ProfileCard name={name} username={values.username} bio={bio} photo={photo} links={validLinks.ok ? validLinks.value : []} /></div>
       {values.isPublic ? <>
         <Link href={`/${values.username}`} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center font-semibold text-link underline">{c.viewPublic} ↗</Link>
         <ShareProfile url={publicUrl} title={values.displayName} labels={c} />

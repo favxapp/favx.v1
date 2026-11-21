@@ -23,7 +23,7 @@ export default async function ProfilePage() {
   if (!timezones.includes(current)) timezones.unshift(current);
   return (
     <main id="main" className="mx-auto max-w-content space-y-6 px-4 py-10 sm:px-6">
-      <div><h1 className="font-serif text-4xl text-ink-strong">{m.creator.setupTitle}</h1><p className="mt-3 text-ink-muted">{m.creator.setupIntro}</p></div>
+      <div><h1 className="font-sans font-semibold tracking-tight text-4xl text-ink-strong">{m.creator.setupTitle}</h1><p className="mt-3 text-ink-muted">{m.creator.setupIntro}</p></div>
       <ProfileForm
         labels={m.profile} creatorLabels={m.creator} errors={m.errors}
         publicUrl={`${publicOrigin()}/${creator.username}`}
