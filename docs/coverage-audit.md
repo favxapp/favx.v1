@@ -6,7 +6,9 @@ A entrega do editor foi reduzida à persistência de texto sem alinhamento sufic
 
 Os pacotes DOC05/DOC06/F00 recebidos contêm documentação e referências técnicas. Os seis diretórios extraídos conferidos não contêm arquivos de telas `.tsx`, `.jsx` ou `.html`. O ZIP inicial forneceu a fundação do app, já importada. O DOC04 declara explicitamente que wireframes finais pixel-perfect ainda precisam ser produzidos. A documentação completa permanece a fonte para construir as telas.
 
-## Editor: conjunto funcional que deve ser entregue
+## Editor: lacunas identificadas na auditoria original
+
+Avanço de 20/11/2026: veja [implementação, configurações e limites](workspace-delivery.md). A tabela abaixo documenta a origem do trabalho; o inventário ao final reflete o estado atualizado.
 
 | Bloco | Fonte | Lacuna atual |
 |---|---|---|
@@ -24,23 +26,23 @@ Os pacotes DOC05/DOC06/F00 recebidos contêm documentação e referências técn
 - Editor centrado no conteúdo visual, com entrada de mídia como ação principal; não uma sequência indiferenciada de campos.
 - Navegação clara entre conteúdo, links/ofertas, contexto e publicação; estado de salvamento e progresso próximos à ação correspondente.
 - Painel contextual de IA com sugestões explicáveis, editáveis e aplicadas somente por escolha do Creator.
-- Prévia fiel ao público, fotografia e hierarquia editorial; Manrope para controles, serif pontual, branco/grafite e efeitos contidos.
+- Prévia fiel ao público, fotografia e hierarquia editorial; Manrope também nos títulos conforme decisão de 16/11/2026, branco/grafite e efeitos contidos.
 - Comportamento próprio para celular: ações alcançáveis, organização progressiva e feedback por arquivo.
 - Homologação visual por tela/estado com referências da Product Owner, sem declarar todos os contratos concluídos porque o build passou.
 
-## Inventário por superfície
+## Inventário por superfície — atualizado em 20/11/2026
 
 “Parcial” não significa aceita/concluída. O status da especificação é preservado; propostas e itens futuros não são ativados automaticamente por esta auditoria.
 
-Foram encontrados **142 contratos detalhados**: 23 com algum comportamento implementado e 119 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
+Foram encontrados **142 contratos detalhados**: 43 com algum comportamento implementado e 99 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
 
 | ID | Superfície | Status no DOC03 | Código atual | Observação |
 |---|---|---|---|---|
 | WEB-001 | Landing institucional | MVP P0 | Parcial | Landing inicial; direção fotográfica e narrativa ainda incompletas. |
 | WEB-002 | Como funciona | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-003 | Página de preços e planos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| WEB-004 | Ajuda — início | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| WEB-005 | Artigo de ajuda | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| WEB-004 | Ajuda — início | MVP P0 | Parcial | Ajuda com busca e categorias de artigos iniciais; catálogo completo pendente. |
+| WEB-005 | Artigo de ajuda | MVP P0 | Parcial | Artigos localizados e contato; feedback de utilidade pendente. |
 | WEB-006 | Contato e suporte | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-007 | Termos e políticas | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-008 | Programa de parceiros — apresentação | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -52,11 +54,11 @@ Foram encontrados **142 contratos detalhados**: 23 com algum comportamento imple
 | AUT-006 | Sessão expirada | MVP P0 | Parcial | Proteção de sessão/redirecionamento; recuperação de edição exige revisão por fluxo. |
 | AUT-007 | Verificação adicional e conta restrita | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | AUT-008 | Consentimentos iniciais | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| PUB-001 | Perfil público do Creator | MVP P0 | Parcial | Perfil e posts de texto; faltam coleções, busca e composição visual completa. |
-| PUB-002 | Coleção pública Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| PUB-003 | Detalhe público da recomendação | MVP P0 | Parcial | Post textual; faltam carrossel, áudio/vídeo e demais módulos. |
-| PUB-004 | Entrada de busca no perfil | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| PUB-005 | Lista de resultados Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| PUB-001 | Perfil público do Creator | MVP P0 | Parcial | Composição visual solicitada, contagens públicas de conteúdo, posts, coleções, busca e categorias; homologação pendente. |
+| PUB-002 | Coleção pública Creator | MVP P0 | Parcial | Coleção pública com posts elegíveis, compartilhamento e paginação; cover/ordenação pendentes. |
+| PUB-003 | Detalhe público da recomendação | MVP P0 | Parcial | Texto e galeria de imagens com controle de visibilidade; vídeo/áudio demais módulos pendentes. |
+| PUB-004 | Entrada de busca no perfil | MVP P0 | Parcial | Campo lexical dentro do perfil; conversa/voz pendentes. |
+| PUB-005 | Lista de resultados Creator | MVP P0 | Parcial | Resultados públicos filtrados e paginados; contrato completo pendente. |
 | PUB-006 | Coleção compartilhada de User | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PUB-007 | Pedido comunitário público | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PUB-008 | Enviar sugestão comunitária | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -70,18 +72,18 @@ Foram encontrados **142 contratos detalhados**: 23 com algum comportamento imple
 | USR-006 | Criar ou editar coleção User | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-007 | Compartilhar / revogar coleção | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-008 | Seguindo e seguidores — privado | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-009 | Configurações da conta | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| USR-009 | Configurações da conta | MVP P0 | Parcial | Configurações de idioma/fuso persistidas e e-mail da conta; contrato completo pendente. |
 | USR-010 | Privacidade e consentimentos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-011 | Solicitar exportação dos dados | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-012 | Encerrar/excluir conta | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-013 | Central de notificações pessoais | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-001 | Ativar perfil Creator — introdução | MVP P0 | Parcial | Ativação básica; não existe introdução completa. |
-| CRE-002 | Ativar Creator — identidade | MVP P0 | Parcial | Username/nome; faltam partes do onboarding especificado. |
-| CRE-003 | Ativar Creator — finalizar | MVP P0 | Parcial | Encaminhamento ao perfil; não há conclusão completa do onboarding. |
-| CRE-004 | Dashboard Creator Free | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| CRE-001 | Ativar perfil Creator — introdução | MVP P0 | Parcial | Introdução em cards, mesma conta e etapa seguinte; homologação visual pendente. |
+| CRE-002 | Ativar Creator — identidade | MVP P0 | Parcial | Etapa de identidade e username; avatar/bio disponíveis após ativar. |
+| CRE-003 | Ativar Creator — finalizar | MVP P0 | Parcial | Conclusão privada, link para perfil e estúdio; checklist completo pendente. |
+| CRE-004 | Dashboard Creator Free | MVP P0 | Parcial | Estúdio com CTA, posts recentes e contagens reais; cliques/analytics/agenda pendentes. |
 | CRE-005 | Editar perfil Creator | MVP P0 | Parcial | Foto, redes, bio, idioma/fuso e prévia; UI e demais itens precisam de revisão. |
-| CRE-006 | Gerenciar publicações | MVP P0 | Parcial | Lista paginada; faltam filtros/gestão completa. |
-| CRE-007 | Editor de recomendação — conteúdo | MVP P0 | Parcial | Editor textual; faltam mídia, IA, categorias, Context e demais operações. |
+| CRE-006 | Gerenciar publicações | MVP P0 | Parcial | Gestão com busca por título, filtros por estado e paginação; ciclo de vida completo pendente. |
+| CRE-007 | Editor de recomendação — conteúdo | MVP P0 | Parcial | Imagens até 20 MiB, abas, autosave, categorias, Context e sugestões IA; vídeo/áudio/taxonomia/agenda pendentes. |
 | CRE-008 | Detalhe de gestão de post | MVP P0 | Parcial | Edição disponível; tela específica de gestão não implementada. |
 | CRE-009 | Links, cupons, oferta e patrocínio | MVP P0 | Parcial | Links/código simples/patrocínio; faltam oferta e cupom estruturado. |
 | CRE-010 | Agendar publicação e encerramento | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -91,8 +93,8 @@ Foram encontrados **142 contratos detalhados**: 23 com algum comportamento imple
 | CRE-014 | Gerenciar rascunhos e agendados | MVP P0 | Parcial | Rascunhos na lista; falta gestão dedicada e agendados. |
 | CRE-015 | Ocultos, expirados e arquivados | MVP P0 | Parcial | Ocultação básica; faltam expirados/arquivados. |
 | CRE-016 | Lixeira de conteúdo | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-017 | Coleções Creator — lista | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-018 | Editor de coleção Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| CRE-017 | Coleções Creator — lista | MVP P0 | Parcial | Lista paginada de coleções próprias; cover e gestão completa pendentes. |
+| CRE-018 | Editor de coleção Creator | MVP P0 | Parcial | Editor persistido, posts próprios e visibilidade; ordenação/exclusão pendentes. |
 | CRE-019 | Solicitações comunitárias — lista | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-020 | Caixa de recomendações recebidas | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-021 | Detalhe da sugestão recebida | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -102,23 +104,23 @@ Foram encontrados **142 contratos detalhados**: 23 com algum comportamento imple
 | CRE-025 | Analytics de coleções e busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-026 | Histórico e versões de publicação | MVP P0 | Parcial | Histórico no banco; não há interface de versões. |
 | CRE-027 | Gerenciar links do perfil | MVP P0 | Parcial | Redes no editor do perfil; contrato de links completo pendente. |
-| MED-001 | Escolha da origem da mídia | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-002 | Capturar foto/vídeo com câmera | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| MED-001 | Escolha da origem da mídia | MVP P0 | Parcial | Upload de imagens e seletor de câmera; biblioteca, vídeo/áudio pendentes. |
+| MED-002 | Capturar foto/vídeo com câmera | MVP P0 | Parcial | Captura de foto via seletor nativo quando suportado; vídeo e teste em aparelhos reais pendentes. |
 | MED-003 | Gravar áudio | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-004 | Prévia da mídia original | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-005 | Gerenciador de uploads | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-006 | Processamento de mídia | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| MED-004 | Prévia da mídia original | MVP P0 | Parcial | Preview local de imagem e reordenação/capa; alt/crop completo pendentes. |
+| MED-005 | Gerenciador de uploads | MVP P0 | Parcial | Upload por partes com progresso/retry na sessão; retomada após fechar e vídeo pendentes. |
+| MED-006 | Processamento de mídia | MVP P0 | Parcial | Validação de original e WebP no servidor; pipeline assíncrono completo pendente. |
 | MED-007 | Biblioteca de mídias próprias | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-008 | Opções de download do Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| MED-008 | Opções de download do Creator | MVP P0 | Parcial | Download autenticado do original próprio; variantes e biblioteca completa pendentes. |
 | MED-009 | Transcrição e edição de áudio | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SRH-001 | Campo de busca contextual | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SRH-002 | Resultados e cards de busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SRH-001 | Campo de busca contextual | MVP P0 | Parcial | Busca lexical de perfil com escopo; salvos e IA pendentes. |
+| SRH-002 | Resultados e cards de busca | MVP P0 | Parcial | Cards e paginação de resultados lexicais; contrato completo pendente. |
 | SRH-003 | Refinamento conversacional | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SRH-004 | Busca por voz | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SRH-005 | Filtros avançados de busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SRH-005 | Filtros avançados de busca | MVP P0 | Parcial | Filtro por categoria no perfil; filtros avançados restantes pendentes. |
 | SRH-006 | Escolha de localização para busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SRH-007 | Falha / fallback da busca IA | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SRH-008 | Nenhum resultado — orientação contextual | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SRH-008 | Nenhum resultado — orientação contextual | MVP P0 | Parcial | Estado sem resultados e limpar filtros; refinamento contextual completo pendente. |
 | PLS-001 | Apresentação Creator Plus / upgrade | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PLS-002 | Checkout e retorno seguro | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PLS-003 | Resultado de trial, pagamento e assinatura | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -165,7 +167,7 @@ Foram encontrados **142 contratos detalhados**: 23 com algum comportamento imple
 | ADM-024 | Satisfação e feedback | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | ADM-025 | Notificações e templates transacionais | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-001 | Centro global de notificações | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SHR-002 | Central de ajuda contextual | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SHR-002 | Central de ajuda contextual | MVP P0 | Parcial | Ajuda inicial acessível no menu; contexto por tela pendente. |
 | SHR-003 | Gestão de sessão/dispositivos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-004 | Seletor de ambiente User/Creator/Partner | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-005 | Confirmação de ação destrutiva | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |

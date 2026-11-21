@@ -15,8 +15,10 @@
     "email:preview": "node --experimental-strip-types scripts/preview-auth-emails.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "4.0.118",
     "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.119.0",
+    "ai": "7.0.173",
     "next": "15.5.29",
     "react": "19.3.1",
     "react-dom": "19.3.1",

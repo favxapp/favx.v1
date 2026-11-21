@@ -1,6 +1,10 @@
 # Editor de recomendações — incremento editorial
 
-## Escopo
+## Atualização de 21/11/2026
+
+Este documento preserva o escopo inicial do editor. O [incremento do workspace](workspace-delivery.md) acrescenta imagens em partes, originais privados, assistência OpenAI sob revisão, categorias manuais e Context privado. Consulte esse registro para a configuração e as lacunas atuais; áudio/vídeo e taxonomia canônica continuam pendentes.
+
+## Escopo inicial
 
 Implementa a parte editorial das telas CRE-006, CRE-007, CRE-009 e CRE-011 do DOC03: lista paginada, criar/editar, rascunho privado com autosave e recuperação após refresh, prévia mobile/ampla, revisão com confirmação explícita, publicação e ocultação. Rotas `/app/creator/posts`, `/app/creator/posts/novo`, `/app/creator/posts/:id/editar` e `/:username/p/:slug-:publicId`.
 

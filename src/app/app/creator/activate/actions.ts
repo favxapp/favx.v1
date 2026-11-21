@@ -34,5 +34,5 @@ export async function activateCreatorAction(_prev: ActivateState, formData: Form
     console.error('creator_activate_failed', error.code ?? 'sem-codigo');
     return { ...base, error: 'generic' };
   }
-  redirect('/app/creator/profile');
+  redirect('/app/creator/activate/complete');
 }

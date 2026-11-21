@@ -3,7 +3,7 @@
 Fundação importada do pacote fornecido pela Product Owner em 14/11/2026.
 Repositório oficial: [favxapp/favx.v1](https://github.com/favxapp/favx.v1).
 
-Base Next.js App Router, React, TypeScript, Tailwind e Supabase: seis idiomas, login por código de e-mail, sessão e criação/edição de perfil Creator. É uma fundação em validação, não a implementação completa do PRD.
+Base Next.js App Router, React, TypeScript, Tailwind e Supabase: seis idiomas, login por código de e-mail, sessão e criação/edição de perfil Creator. Inclui o incremento do workspace, editor com imagens/assistência editorial OpenAI e coleções Creator. Consulte [entrega e configurações](docs/workspace-delivery.md) e o [registro dos 142 contratos](docs/screen-delivery.json). Ainda não é a implementação completa do PRD.
 
 ## Comece aqui
 
@@ -22,8 +22,8 @@ docs/requirements/       PRD, TRD e DOC03
 docs/design/             DOC04, Word e tokens
 docs/decisions/          Decisões e pendências
 docs/source/             Proveniência dos anexos
-src/                     Aplicação fornecida
-supabase/migrations/     Migration fornecida, não aplicada nesta importação
+src/                     Aplicação Next.js
+supabase/migrations/     Histórico versionado; aplicações em docs/validation.md
 tests/                   Testes do pacote
 .env.example             Variáveis sem credenciais
 ```

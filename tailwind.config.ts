@@ -19,7 +19,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-manrope)', 'Arial', 'sans-serif'],
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        serif: ['var(--font-manrope)', 'Arial', 'sans-serif'],
       },
       borderRadius: { md: 'var(--favx-radius-md)', lg: 'var(--favx-radius-lg)', xl: 'var(--favx-radius-xl)' },
       boxShadow: { card: 'var(--favx-shadow-card)' },
