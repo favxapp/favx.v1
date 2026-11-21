@@ -87,7 +87,12 @@ export async function middleware(request: NextRequest) {
     url.pathname = `/site/${pathLocale}${rest}`;
     const rewritten = NextResponse.rewrite(url, { request: { headers: requestHeaders } });
     copyCookies(response, rewritten);
-    rewritten.cookies.set(LOCALE_COOKIE, pathLocale, { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
+    // Persist only document navigation. Next strips RSC prefetch headers before
+    // middleware, so background fetches must not select a language. The language
+    // switcher uses native links; account settings persist their cookie directly.
+    const documentNavigation = request.headers.get('sec-fetch-mode') === 'navigate'
+      || request.headers.get('sec-fetch-dest') === 'document';
+    if (documentNavigation) rewritten.cookies.set(LOCALE_COOKIE, pathLocale, { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
     return rewritten;
   }
   return response;

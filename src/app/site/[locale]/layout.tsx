@@ -20,9 +20,9 @@ export default async function SiteLayout({ children, params }: { children: React
           </Link>
           <nav aria-label={m.common.language} className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {LOCALES.map((l) => (
-              <Link key={l} href={`/${l}`} lang={l} hrefLang={l} aria-current={l === locale ? 'true' : undefined} className={l === locale ? 'font-bold text-ink-strong underline underline-offset-4' : 'text-ink-muted hover:text-ink-strong'}>
+              <a key={l} href={`/${l}`} lang={l} hrefLang={l} aria-current={l === locale ? 'true' : undefined} className={l === locale ? 'font-bold text-ink-strong underline underline-offset-4' : 'text-ink-muted hover:text-ink-strong'}>
                 {LOCALE_LABELS[l]}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>
