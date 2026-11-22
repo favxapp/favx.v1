@@ -53,3 +53,7 @@ A Product Owner pediu avançar nas pendências. O [incremento de biblioteca](../
 ## Atualização de 21/11/2026 — gestão de conteúdo
 
 Continuação autorizada nas pendências: [gestão de posts e mídias](../content-management.md). Arquivo/lixeira são reversíveis, restauração retorna a rascunho e preserva ID. Não se institui retenção de 30 dias, expurgo automático ou restauração de versões sem regra aprovada.
+
+## Atualização de 22/11/2026 — comunidade
+
+Continuação autorizada: pedidos dedicados, sugestões privadas de texto/link e revisão. Visita pública permanece livre; este incremento exige conta para enviar, com limite técnico de cinco envios por hora e autorização restrita à revisão privada. Publicação, anexos e submissão anônima não foram ativados. Estas escolhas reversíveis e limites estão em [comunidade](../community.md).

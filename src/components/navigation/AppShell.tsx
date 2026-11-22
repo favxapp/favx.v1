@@ -5,8 +5,8 @@ import { useRef, type ReactNode } from 'react';
 import type { Messages } from '@/lib/i18n/messages';
 import { Icon, type IconName } from '@/components/ui/Icon';
 
-export function AppShell({ children, name, photo, creator, locale, labels: m, libraryLabels: l, managementLabels: g }: {
-  children: ReactNode; name: string; photo: string | null; creator: boolean; locale: string; labels: Messages['workspace']; libraryLabels: Messages['library']; managementLabels: Messages['management'];
+export function AppShell({ children, name, photo, creator, locale, labels: m, libraryLabels: l, managementLabels: g, communityLabel }: {
+  children: ReactNode; name: string; photo: string | null; creator: boolean; locale: string; labels: Messages['workspace']; libraryLabels: Messages['library']; managementLabels: Messages['management']; communityLabel: string;
 }) {
   const path = usePathname();
   const mobileMenu = useRef<HTMLDetailsElement>(null);
@@ -17,6 +17,7 @@ export function AppShell({ children, name, photo, creator, locale, labels: m, li
     ...(creator ? [
       { href: '/app/creator', label: m.studio, icon: 'sparkles' as const, exact: true },
       { href: '/app/creator/posts', label: m.posts, icon: 'grid' as const },
+      { href: '/app/creator/comunidade/pedidos', label: communityLabel, icon: 'globe' as const },
       { href: '/app/creator/midias', label: g.media, icon: 'image' as const },
       { href: '/app/creator/lixeira', label: g.trashed, icon: 'layers' as const },
       { href: '/app/creator/collections', label: m.collections, icon: 'layers' as const },

@@ -48,3 +48,5 @@ Perfil público, posts, busca contextual lexical, biblioteca pessoal e gestão d
 Segredos e `.env` não são versionados. Documentos mantêm seus status originais; importação não aprova pendências. O [README recebido](docs/source/README-upload.md) foi preservado para rastreabilidade.
 
 [Gestão de posts, histórico, lixeira e biblioteca de mídias](docs/content-management.md).
+
+[Pedidos da comunidade e caixa de sugestões privadas](docs/community.md).

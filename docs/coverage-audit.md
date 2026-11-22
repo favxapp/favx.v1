@@ -30,11 +30,11 @@ Avanço de 20/11/2026: veja [implementação, configurações e limites](workspa
 - Comportamento próprio para celular: ações alcançáveis, organização progressiva e feedback por arquivo.
 - Homologação visual por tela/estado com referências da Product Owner, sem declarar todos os contratos concluídos porque o build passou.
 
-## Inventário por superfície — atualizado em 21/11/2026
+## Inventário por superfície — atualizado em 22/11/2026
 
 “Parcial” não significa aceita/concluída. O status da especificação é preservado; propostas e itens futuros não são ativados automaticamente por esta auditoria.
 
-Foram encontrados **142 contratos detalhados**: 54 com algum comportamento implementado e 88 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
+Foram encontrados **142 contratos detalhados**: 60 com algum comportamento implementado e 82 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
 
 | ID | Superfície | Status no DOC03 | Código atual | Observação |
 |---|---|---|---|---|
@@ -60,8 +60,8 @@ Foram encontrados **142 contratos detalhados**: 54 com algum comportamento imple
 | PUB-004 | Entrada de busca no perfil | MVP P0 | Parcial | Campo lexical dentro do perfil; conversa/voz pendentes. |
 | PUB-005 | Lista de resultados Creator | MVP P0 | Parcial | Resultados públicos filtrados e paginados; contrato completo pendente. |
 | PUB-006 | Coleção compartilhada de User | MVP P0 | Parcial | Seleção compartilhada paginada somente com posts elegíveis, sem identidade do User ou totais privados; link revogado retorna 404. |
-| PUB-007 | Pedido comunitário público | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| PUB-008 | Enviar sugestão comunitária | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| PUB-007 | Pedido comunitário público | MVP P0 | Parcial | Pedido ativo em link dedicado com pergunta, instruções, categoria, vencimento e compartilhamento; sem respostas ou contagens privadas no público. |
+| PUB-008 | Enviar sugestão comunitária | MVP P0 | Parcial | Envio autenticado de texto/link, consentimento de revisão privada, prévia, recibo idempotente e limite de frequência; anexos e publicação licenciada pendentes. |
 | PUB-009 | Conteúdo indisponível / link antigo | MVP P0 | Parcial | 404 e slug canônico básicos; faltam estados contextuais. |
 | PUB-010 | Prévia segura de compartilhamento | MVP P0 | Parcial | Metadados básicos; revisar previews sociais completos. |
 | USR-001 | Início do User / biblioteca | MVP P0 | Parcial | Biblioteca com salvos recentes, coleções e acesso ao Creator; histórico autorizado e telemetria pendentes. |
@@ -95,10 +95,10 @@ Foram encontrados **142 contratos detalhados**: 54 com algum comportamento imple
 | CRE-016 | Lixeira de conteúdo | MVP P0 | Parcial | Lixeira de posts com restauração como rascunho, preservação de ID/mídias e confirmação; retenção, expurgo, banners e coleções pendentes. |
 | CRE-017 | Coleções Creator — lista | MVP P0 | Parcial | Lista paginada de coleções próprias; cover e gestão completa pendentes. |
 | CRE-018 | Editor de coleção Creator | MVP P0 | Parcial | Editor persistido, posts próprios e visibilidade; ordenação/exclusão pendentes. |
-| CRE-019 | Solicitações comunitárias — lista | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-020 | Caixa de recomendações recebidas | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-021 | Detalhe da sugestão recebida | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-022 | Criar/editar pedido comunitário | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| CRE-019 | Solicitações comunitárias — lista | MVP P0 | Parcial | Lista paginada de pedidos próprios, estados, contagem privada de recebimentos e links para editar/caixa; telemetria pendente. |
+| CRE-020 | Caixa de recomendações recebidas | MVP P0 | Parcial | Caixa privada paginada, filtros por pedido/estado e revisão sem publicação; notificações e moderação de plataforma pendentes. |
+| CRE-021 | Detalhe da sugestão recebida | MVP P0 | Parcial | Detalhe privado com texto/link, origem comunitária, escopo da autorização e revisão com concorrência; conversão licenciada em post e denúncias pendentes. |
+| CRE-022 | Criar/editar pedido comunitário | MVP P0 | Parcial | Criar/editar pedido, rascunho/aberto/pausado/encerrado, validade UTC opcional, confirmação de abertura e link próprio; anexos/localização pendentes. |
 | CRE-023 | Métricas gerais Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-024 | Analytics por publicação | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-025 | Analytics de coleções e busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -188,3 +188,7 @@ USR-001 a USR-007 e PUB-006 receberam implementação funcional, testes de inter
 ## 21/11/2026 — gestão de conteúdo Creator
 
 Detalhe de gestão, versões, ocultos/arquivados, lixeira e biblioteca de mídias receberam implementação. [Comportamentos e limites](content-management.md). O inventário permanece sem telas integralmente homologadas.
+
+## 22/11/2026 — pedidos e sugestões da comunidade
+
+PUB-007/008 e CRE-019/020/021/022 receberam fluxos de pedido, envio privado e revisão. [Escopo e limites](community.md). Seleção não cria publicação; mídia, licença pública e moderação continuam pendentes.
