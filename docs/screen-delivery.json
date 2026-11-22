@@ -1,8 +1,8 @@
 {
   "updated": "2026-11-21",
   "total": 142,
-  "partial": 43,
-  "notImplemented": 99,
+  "partial": 51,
+  "notImplemented": 91,
   "fullyAccepted": 0,
   "note": "Parcial não equivale a concluído, homologado ou integração externa configurada.",
   "screens": [
@@ -157,8 +157,8 @@
       "id": "PUB-006",
       "title": "Coleção compartilhada de User",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Seleção compartilhada paginada somente com posts elegíveis, sem identidade do User ou totais privados; link revogado retorna 404."
     },
     {
       "id": "PUB-007",
@@ -192,50 +192,50 @@
       "id": "USR-001",
       "title": "Início do User / biblioteca",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Biblioteca com salvos recentes, coleções e acesso ao Creator; histórico autorizado e telemetria pendentes."
     },
     {
       "id": "USR-002",
       "title": "Todos os salvos",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Salvos próprios com busca lexical, filtros categoria/Creator/data, ordenação e paginação; offline e telemetria pendentes."
     },
     {
       "id": "USR-003",
       "title": "Item salvo e ações",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Detalhe salvo com origem, data, coleções, organizar/remover e placeholder sem conteúdo indisponível; telemetria pendente."
     },
     {
       "id": "USR-004",
       "title": "Lista de minhas coleções",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Coleções próprias com busca, ordenação, criação e exclusão confirmada; arquivamento/restauração e capa na lista pendentes."
     },
     {
       "id": "USR-005",
       "title": "Detalhe de coleção pessoal",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Detalhe, capa, ordem persistida pelo editor, ações de compartilhamento/revogação; telemetria e aceite visual pendentes."
     },
     {
       "id": "USR-006",
       "title": "Criar ou editar coleção User",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Nome, descrição, seleção paginada de salvos, capa de item, reordenação e controle de concorrência; upload de capa independente pendente."
     },
     {
       "id": "USR-007",
       "title": "Compartilhar / revogar coleção",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Ativação explícita, copiar, prévia, revogação imediata e rotação do token; prévia privada é limitada à página atual."
     },
     {
       "id": "USR-008",

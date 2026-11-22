@@ -13,5 +13,5 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const { data: creator, error } = await supabase.from('creator_profiles').select('display_name,avatar_path').eq('user_id', user.id).maybeSingle();
   if (error) throw Error('Workspace unavailable');
   const m = getMessages(locale);
-  return <AppShell locale={locale} labels={m.workspace} name={creator?.display_name || user.email?.split('@')[0] || 'FAVX'} photo={avatarUrl(creator?.avatar_path ?? null)} creator={!!creator}>{children}</AppShell>;
+  return <AppShell locale={locale} labels={m.workspace} libraryLabels={m.library} name={creator?.display_name || user.email?.split('@')[0] || 'FAVX'} photo={avatarUrl(creator?.avatar_path ?? null)} creator={!!creator}>{children}</AppShell>;
 }

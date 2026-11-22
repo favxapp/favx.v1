@@ -5,13 +5,15 @@ import { useRef, type ReactNode } from 'react';
 import type { Messages } from '@/lib/i18n/messages';
 import { Icon, type IconName } from '@/components/ui/Icon';
 
-export function AppShell({ children, name, photo, creator, locale, labels: m }: {
-  children: ReactNode; name: string; photo: string | null; creator: boolean; locale: string; labels: Messages['workspace'];
+export function AppShell({ children, name, photo, creator, locale, labels: m, libraryLabels: l }: {
+  children: ReactNode; name: string; photo: string | null; creator: boolean; locale: string; labels: Messages['workspace']; libraryLabels: Messages['library'];
 }) {
   const path = usePathname();
   const mobileMenu = useRef<HTMLDetailsElement>(null);
   const links: { href: string; label: string; icon: IconName; exact?: boolean }[] = [
     { href: '/app/me', label: m.home, icon: 'home', exact: true },
+    { href: '/app/salvos', label: l.saved, icon: 'bookmark' },
+    { href: '/app/colecoes', label: l.collections, icon: 'layers' },
     ...(creator ? [
       { href: '/app/creator', label: m.studio, icon: 'sparkles' as const, exact: true },
       { href: '/app/creator/posts', label: m.posts, icon: 'grid' as const },
@@ -51,7 +53,8 @@ export function AppShell({ children, name, photo, creator, locale, labels: m }: 
     <div className="workspace-content">{children}</div>
     <nav className="mobile-dock glass-panel" aria-label={m.navigation}>
       <Link href="/app/me" aria-label={m.home} aria-current={path === '/app/me' ? 'page' : undefined}><Icon name="home" /></Link>
-      {creator && <><Link href="/app/creator/posts" aria-label={m.posts} aria-current={path === '/app/creator/posts' ? 'page' : undefined}><Icon name="grid" /></Link><Link className="dock-create" href="/app/creator/posts/novo" aria-label={m.newPost}><Icon name="plus" /></Link></>}
+      <Link href="/app/salvos" aria-label={l.saved} aria-current={path.startsWith('/app/salvos') ? 'page' : undefined}><Icon name="bookmark" /></Link>
+      {creator && <><Link className="dock-create" href="/app/creator/posts/novo" aria-label={m.newPost}><Icon name="plus" /></Link></>}
       <Link href={creator ? '/app/creator/profile' : '/app/creator/activate'} aria-label={m.profile} aria-current={path === '/app/creator/profile' ? 'page' : undefined}><Icon name="user" /></Link>
       <Link href={`/${locale}/ajuda`} aria-label={m.help}><Icon name="help" /></Link>
     </nav>

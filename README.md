@@ -34,9 +34,13 @@ Node.js 24 e npm, com versões de dependências fixadas e lockfile. Checks: `npm
 
 O produto será revisado por URLs Vercel. Após vincular o repositório, branches/PRs geram Previews e `main` alimenta Production. A importação do código não cria automaticamente projeto Vercel ou banco.
 
+## Biblioteca pessoal
+
+[Salvos e coleções User](docs/user-library.md) adicionam biblioteca privada, organização e compartilhamento revogável. O cadastro e as coleções Creator permanecem na mesma conta.
+
 ## Escopo atual
 
-Rotas: `/`, `/{pt-br|pt-pt|en|es|it|fr}`, `/{locale}/login`, `/app/me`, `/app/creator/activate`, `/app/creator/profile` e `POST /auth/signout`.
+Rotas principais: site em seis idiomas e login, `/app/me`, `/app/salvos`, `/app/colecoes`, `/app/settings`, `/app/creator` e suas áreas de perfil/posts/coleções. Perfis e posts públicos em `/:username`; coleções pessoais compartilhadas em `/collections/shared/:token`.
 `src/app/site/[locale]` é segmento interno reescrito pelo middleware.
 
 Stripe e Bunny fazem parte da stack, mas não estão integrados. Página pública de Creator, posts, busca, mídia, assinatura e IA ainda não estão implementados. Events, Proof, busca global e FAVX for Brands ficam fora do MVP definido.

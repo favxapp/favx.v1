@@ -66,7 +66,7 @@ export async function middleware(request: NextRequest) {
   if (isApp && !user) {
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}/login`;
-    url.search = `?next=${encodeURIComponent(pathname)}`;
+    url.search = `?next=${encodeURIComponent(pathname + request.nextUrl.search)}`;
     return copyCookies(response, NextResponse.redirect(url, 307));
   }
   if (pathname === '/app') {
