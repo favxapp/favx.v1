@@ -188,3 +188,15 @@ button:disabled { cursor: not-allowed; }
 
 /* Keep the expanded workspace menu reachable as new areas are added. */
 .mobile-menu nav { max-height: calc(100dvh - 120px); overflow-y: auto; }
+
+/* Public guides and recovery follow the approved Manrope / neutral glass direction. */
+.public-page { max-width: 1120px; margin-inline: auto; padding: 48px 24px 80px; display: grid; gap: 48px; }
+.public-heading { max-width: 800px; padding-block: 16px; }
+.public-heading h1 { font-size: clamp(32px, 5vw, 58px); font-weight: 600; line-height: 1.12; letter-spacing: -.045em; }
+.guide-track { display: flex; align-items: center; gap: 16px; min-height: 76px; padding: 20px 24px; border: 1px solid #d9dad5; border-radius: 22px; background: rgb(255 255 255 / .78); font-size: 16px; font-weight: 600; }
+.guide-track[aria-current="page"] { background: #191a1a; border-color: #191a1a; color: white; }
+.guide-track:hover { box-shadow: var(--favx-shadow-card); }
+.public-navigation { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 12px; }
+.public-navigation a { display: inline-flex; align-items: center; min-height: 44px; }
+.public-footer { border-top: 1px solid var(--favx-color-border-subtle, #ddd); padding: 28px 24px; }
+@media (max-width: 639px) { .public-page { padding: 28px 16px 60px; gap: 32px; } .public-heading { padding-block: 8px; } }

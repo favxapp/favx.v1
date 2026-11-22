@@ -57,3 +57,7 @@ Continuação autorizada nas pendências: [gestão de posts e mídias](../conten
 ## Atualização de 22/11/2026 — comunidade
 
 Continuação autorizada: pedidos dedicados, sugestões privadas de texto/link e revisão. Visita pública permanece livre; este incremento exige conta para enviar, com limite técnico de cinco envios por hora e autorização restrita à revisão privada. Publicação, anexos e submissão anônima não foram ativados. Estas escolhas reversíveis e limites estão em [comunidade](../community.md).
+
+## Atualização de 22/11/2026 — guia e contato público
+
+Continuação autorizada: [guia, contato e recuperação](../public-guides.md). Suporte usa o e-mail indicado pela Product Owner com prévia e envio pelo aplicativo da pessoa; não se declara protocolo, backend de tickets ou SLA. Nenhum conteúdo jurídico/comercial pendente foi inventado.

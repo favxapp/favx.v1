@@ -50,3 +50,7 @@ Ver [registro de comportamento, validação e limites](user-library.md). 39 test
 ## 22/11/2026 — comunidade
 
 42 testes, typecheck/build e verificação da aplicação compilada com PGlite sob RLS. `supabase/tests/community_access.sql` passou no Supabase real com rollback integral. Fluxos, reprodução e limites: [comunidade](community.md).
+
+## 22/11/2026 — guia público, contato e recuperação
+
+44 testes, typecheck, build e Chromium aprovados. Navegador verificou seis idiomas, trilhas/FAQ/busca demonstrativa, validação e prévia de suporte, cópia/fallback, compartilhamento/cancelamento e recuperação de falha com nova consulta ao servidor. Layouts 320/390/768/1440 sem overflow; alternativa de contato sem JavaScript verificada. Nenhum e-mail enviado ou dado de banco alterado. [Escopo e limites](public-guides.md).

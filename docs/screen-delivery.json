@@ -1,8 +1,8 @@
 {
   "updated": "2026-11-22",
   "total": 142,
-  "partial": 60,
-  "notImplemented": 82,
+  "partial": 64,
+  "notImplemented": 78,
   "fullyAccepted": 0,
   "note": "Parcial não equivale a concluído, homologado ou integração externa configurada.",
   "screens": [
@@ -17,8 +17,8 @@
       "id": "WEB-002",
       "title": "Como funciona",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Trilhas publicar/encontrar/salvar, demonstração fictícia de busca no perfil, FAQ e CTAs contextuais em seis idiomas; telemetria e aceite visual pendentes."
     },
     {
       "id": "WEB-003",
@@ -45,8 +45,8 @@
       "id": "WEB-006",
       "title": "Contato e suporte",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Contato por e-mail com formulário, consentimento, prévia e cópia; envio pelo aplicativo do usuário. Tickets, protocolo, anexos e histórico internos pendentes."
     },
     {
       "id": "WEB-007",
@@ -948,8 +948,8 @@
       "id": "SHR-007",
       "title": "Páginas 403/404/500",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "404 e error boundary localizados com início/ajuda/suporte, retry e referência opaca; fallback global. Fluxos específicos 403 e homologação completa pendentes."
     },
     {
       "id": "SHR-008",
@@ -969,8 +969,8 @@
       "id": "SHR-010",
       "title": "Confirmação de cópia e compartilhamento",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Componente compartilhado com cópia confirmada, fallback manual, share nativo e cancelamento sem falso sucesso; demais superfícies e telemetria pendentes."
     },
     {
       "id": "FUT-001",

@@ -25,6 +25,7 @@ Recebida em 14/11/2026. Originais copiados sem alteração de conteúdo; removid
 - [Biblioteca, salvos e coleções pessoais](user-library.md)
 - [Gestão de conteúdo, versões e mídias](content-management.md)
 - [Pedidos e sugestões da comunidade](community.md)
+- [Guia público, contato e recuperação](public-guides.md)
 - [Registro dos 142 contratos](screen-delivery.json)
 - [Auditoria de cobertura das telas](coverage-audit.md)
 - [Decisões e pendências](decisions/README.md)
