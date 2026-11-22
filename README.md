@@ -43,6 +43,8 @@ O produto será revisado por URLs Vercel. Após vincular o repositório, branche
 Rotas principais: site em seis idiomas e login, `/app/me`, `/app/salvos`, `/app/colecoes`, `/app/settings`, `/app/creator` e suas áreas de perfil/posts/coleções. Perfis e posts públicos em `/:username`; coleções pessoais compartilhadas em `/collections/shared/:token`.
 `src/app/site/[locale]` é segmento interno reescrito pelo middleware.
 
-Stripe e Bunny fazem parte da stack, mas não estão integrados. Página pública de Creator, posts, busca, mídia, assinatura e IA ainda não estão implementados. Events, Proof, busca global e FAVX for Brands ficam fora do MVP definido.
+Perfil público, posts, busca contextual lexical, biblioteca pessoal e gestão de conteúdo têm incrementos funcionais. Integrações de mídia e assistência editorial dependem das configurações descritas nos guias; Stripe/assinaturas ainda estão pendentes. Veja a auditoria de cobertura para o estado de cada contrato. Events, Proof, busca global e FAVX for Brands ficam fora do MVP definido.
 
 Segredos e `.env` não são versionados. Documentos mantêm seus status originais; importação não aprova pendências. O [README recebido](docs/source/README-upload.md) foi preservado para rastreabilidade.
+
+[Gestão de posts, histórico, lixeira e biblioteca de mídias](docs/content-management.md).

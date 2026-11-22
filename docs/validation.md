@@ -42,3 +42,7 @@ Teste Chromium com serviços controlados percorreu editor, upload de imagem 4,3 
 ## 21/11/2026 — biblioteca e coleções User
 
 Ver [registro de comportamento, validação e limites](user-library.md). 39 testes, typecheck e build aprovados. Migration `20261121165355_user_library` aplicada no Supabase FAVX. Probe transacional de isolamento, salvamento idempotente, compartilhamento explícito, revogação, indisponibilidade e limpeza de associações passou com rollback. Chromium atravessou UI/server actions e PostgreSQL sob RLS, incluindo concorrência e layouts responsivos. O retorno de sessão foi simulado; não foi enviado OTP real.
+
+## 21/11/2026 — gestão de conteúdo
+
+40 testes, typecheck/build e Chromium com UI/ações reais + PGlite sob RLS passaram. O teste transacional `supabase/tests/content_management_access.sql` também passou no Supabase real, com rollback integral. Escopo, reprodução e limites em [gestão de conteúdo](content-management.md).
