@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "email:preview": "node --experimental-strip-types scripts/preview-auth-emails.ts",
     "verify:library": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-user-library.cjs",
-    "verify:content": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-content-management.cjs"
+    "verify:content": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-content-management.cjs",
+    "verify:community": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-community.cjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "4.0.118",

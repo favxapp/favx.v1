@@ -185,3 +185,6 @@ button:disabled { cursor: not-allowed; }
 .management-layout{display:grid;gap:1.5rem;align-items:start;grid-template-columns:minmax(0,1fr)}
 .history-timeline{display:grid;gap:1rem;border-left:1px solid var(--line,#e4e4e7);padding-left:1rem}
 @media(min-width:1100px){.management-layout{grid-template-columns:minmax(0,1.7fr) minmax(260px,1fr)}}
+
+/* Keep the expanded workspace menu reachable as new areas are added. */
+.mobile-menu nav { max-height: calc(100dvh - 120px); overflow-y: auto; }

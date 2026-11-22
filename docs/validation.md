@@ -46,3 +46,7 @@ Ver [registro de comportamento, validação e limites](user-library.md). 39 test
 ## 21/11/2026 — gestão de conteúdo
 
 40 testes, typecheck/build e Chromium com UI/ações reais + PGlite sob RLS passaram. O teste transacional `supabase/tests/content_management_access.sql` também passou no Supabase real, com rollback integral. Escopo, reprodução e limites em [gestão de conteúdo](content-management.md).
+
+## 22/11/2026 — comunidade
+
+42 testes, typecheck/build e verificação da aplicação compilada com PGlite sob RLS. `supabase/tests/community_access.sql` passou no Supabase real com rollback integral. Fluxos, reprodução e limites: [comunidade](community.md).

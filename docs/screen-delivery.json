@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "total": 142,
-  "partial": 54,
-  "notImplemented": 88,
+  "partial": 60,
+  "notImplemented": 82,
   "fullyAccepted": 0,
   "note": "Parcial não equivale a concluído, homologado ou integração externa configurada.",
   "screens": [
@@ -164,15 +164,15 @@
       "id": "PUB-007",
       "title": "Pedido comunitário público",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Pedido ativo em link dedicado com pergunta, instruções, categoria, vencimento e compartilhamento; sem respostas ou contagens privadas no público."
     },
     {
       "id": "PUB-008",
       "title": "Enviar sugestão comunitária",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Envio autenticado de texto/link, consentimento de revisão privada, prévia, recibo idempotente e limite de frequência; anexos e publicação licenciada pendentes."
     },
     {
       "id": "PUB-009",
@@ -409,29 +409,29 @@
       "id": "CRE-019",
       "title": "Solicitações comunitárias — lista",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Lista paginada de pedidos próprios, estados, contagem privada de recebimentos e links para editar/caixa; telemetria pendente."
     },
     {
       "id": "CRE-020",
       "title": "Caixa de recomendações recebidas",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Caixa privada paginada, filtros por pedido/estado e revisão sem publicação; notificações e moderação de plataforma pendentes."
     },
     {
       "id": "CRE-021",
       "title": "Detalhe da sugestão recebida",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Detalhe privado com texto/link, origem comunitária, escopo da autorização e revisão com concorrência; conversão licenciada em post e denúncias pendentes."
     },
     {
       "id": "CRE-022",
       "title": "Criar/editar pedido comunitário",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Criar/editar pedido, rascunho/aberto/pausado/encerrado, validade UTC opcional, confirmação de abertura e link próprio; anexos/localização pendentes."
     },
     {
       "id": "CRE-023",
