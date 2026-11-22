@@ -1,11 +1,15 @@
-import Link from 'next/link';
-import { InspirationGallery } from '@/components/ui/InspirationGallery';
-import { Icon } from '@/components/ui/Icon';
-import { notFound } from 'next/navigation';
-import { normalizeLocale } from '@/lib/locale';
-import { getMessages } from '@/lib/i18n/messages';
+import Link from "next/link";
+import { InspirationGallery } from "@/components/ui/InspirationGallery";
+import { Icon } from "@/components/ui/Icon";
+import { notFound } from "next/navigation";
+import { normalizeLocale } from "@/lib/locale";
+import { getMessages } from "@/lib/i18n/messages";
 
-export default async function Landing({ params }: { params: Promise<{ locale: string }> }) {
+export default async function Landing({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale: raw } = await params;
   const locale = normalizeLocale(raw);
   if (!locale) notFound();
@@ -17,7 +21,14 @@ export default async function Landing({ params }: { params: Promise<{ locale: st
         <h1>{m.landing.headline}</h1>
         <p className="landing-description">{m.landing.sub}</p>
         <Link href={`/${locale}/login`} className="button-primary mt-8">
-          {m.landing.cta}<Icon name="arrow" />
+          {m.landing.cta}
+          <Icon name="arrow" />
+        </Link>
+        <Link
+          href={`/${locale}/como-funciona`}
+          className="button-secondary ml-3 mt-4"
+        >
+          {m.publicGuide.howTitle}
         </Link>
       </div>
       <InspirationGallery />

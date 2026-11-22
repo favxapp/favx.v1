@@ -2,7 +2,7 @@
   "name": "favx-app",
   "version": "0.1.0",
   "private": true,
-  "description": "FAVX \u2014 incremento 1: funda\u00e7\u00e3o, login por e-mail OTP e perfil Creator",
+  "description": "FAVX — incremento 1: fundação, login por e-mail OTP e perfil Creator",
   "engines": {
     "node": "24.x"
   },
@@ -15,7 +15,8 @@
     "email:preview": "node --experimental-strip-types scripts/preview-auth-emails.ts",
     "verify:library": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-user-library.cjs",
     "verify:content": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-content-management.cjs",
-    "verify:community": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-community.cjs"
+    "verify:community": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-community.cjs",
+    "verify:public": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55434 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-public-guides.cjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "4.0.118",

@@ -34,16 +34,16 @@ Avanço de 20/11/2026: veja [implementação, configurações e limites](workspa
 
 “Parcial” não significa aceita/concluída. O status da especificação é preservado; propostas e itens futuros não são ativados automaticamente por esta auditoria.
 
-Foram encontrados **142 contratos detalhados**: 60 com algum comportamento implementado e 82 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
+Foram encontrados **142 contratos detalhados**: 64 com algum comportamento implementado e 78 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
 
 | ID | Superfície | Status no DOC03 | Código atual | Observação |
 |---|---|---|---|---|
 | WEB-001 | Landing institucional | MVP P0 | Parcial | Landing com Manrope, composição fotográfica e CTA de autenticação; narrativa institucional completa ainda pendente. |
-| WEB-002 | Como funciona | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| WEB-002 | Como funciona | MVP P0 | Parcial | Trilhas publicar/encontrar/salvar, demonstração fictícia de busca no perfil, FAQ e CTAs contextuais em seis idiomas; telemetria e aceite visual pendentes. |
 | WEB-003 | Página de preços e planos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-004 | Ajuda — início | MVP P0 | Parcial | Ajuda com busca e categorias de artigos iniciais; catálogo completo pendente. |
 | WEB-005 | Artigo de ajuda | MVP P0 | Parcial | Artigos localizados e contato; feedback de utilidade pendente. |
-| WEB-006 | Contato e suporte | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| WEB-006 | Contato e suporte | MVP P0 | Parcial | Contato por e-mail com formulário, consentimento, prévia e cópia; envio pelo aplicativo do usuário. Tickets, protocolo, anexos e histórico internos pendentes. |
 | WEB-007 | Termos e políticas | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-008 | Programa de parceiros — apresentação | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | AUT-001 | Login | MVP P0 | Parcial | Login OTP em operação; revisar contrato visual completo. |
@@ -172,10 +172,10 @@ Foram encontrados **142 contratos detalhados**: 60 com algum comportamento imple
 | SHR-004 | Seletor de ambiente User/Creator/Partner | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-005 | Confirmação de ação destrutiva | MVP P0 | Parcial | Confirmação acessível de ações de conteúdo, cancelamento e conflito de versão; demais domínios pendentes. |
 | SHR-006 | Modo offline/reconexão | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SHR-007 | Páginas 403/404/500 | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SHR-007 | Páginas 403/404/500 | MVP P0 | Parcial | 404 e error boundary localizados com início/ajuda/suporte, retry e referência opaca; fallback global. Fluxos específicos 403 e homologação completa pendentes. |
 | SHR-008 | Notificação e configuração de cookies | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-009 | Relatar conteúdo / denunciar | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SHR-010 | Confirmação de cópia e compartilhamento | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SHR-010 | Confirmação de cópia e compartilhamento | MVP P0 | Parcial | Componente compartilhado com cópia confirmada, fallback manual, share nativo e cancelamento sem falso sucesso; demais superfícies e telemetria pendentes. |
 | FUT-001 | Busca global — placeholder de roadmap | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
 | FUT-002 | FAVX for Brands — adesão Creator | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
 | FUT-003 | FAVX for Brands — interesse/match | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
@@ -192,3 +192,7 @@ Detalhe de gestão, versões, ocultos/arquivados, lixeira e biblioteca de mídia
 ## 22/11/2026 — pedidos e sugestões da comunidade
 
 PUB-007/008 e CRE-019/020/021/022 receberam fluxos de pedido, envio privado e revisão. [Escopo e limites](community.md). Seleção não cria publicação; mídia, licença pública e moderação continuam pendentes.
+
+## 22/11/2026 — guia, contato e recuperação
+
+WEB-002/006 e SHR-007/010 receberam interfaces e comportamentos descritos em [guia público](public-guides.md). O contato prepara e-mail; não simula criação de ticket.

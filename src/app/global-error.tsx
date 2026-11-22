@@ -1,13 +1,30 @@
-'use client';
+"use client";
+import { Recovery } from "@/components/site/Recovery";
+import { useRecoveryLocale } from "@/components/site/useRecoveryLocale";
 
-export default function GlobalError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function GlobalError({
+  error,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  const locale = useRecoveryLocale();
   return (
-    <html lang="pt-BR">
-      <body style={{ fontFamily: 'Arial, sans-serif', padding: 32 }}>
-        <h1>Algo deu errado · Something went wrong</h1>
-        <button type="button" onClick={reset} style={{ minHeight: 44, padding: '8px 20px' }}>
-          Tentar de novo · Try again
-        </button>
+    <html lang={locale}>
+      <body
+        style={{
+          fontFamily: "Manrope, system-ui, sans-serif",
+          color: "#191a1a",
+          background: "#f0f0ee",
+          margin: 0,
+        }}
+      >
+        <Recovery
+          locale={locale}
+          kind="error"
+          reset={() => window.location.reload()}
+          digest={error.digest}
+        />
       </body>
     </html>
   );

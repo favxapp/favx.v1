@@ -50,3 +50,5 @@ Segredos e `.env` não são versionados. Documentos mantêm seus status originai
 [Gestão de posts, histórico, lixeira e biblioteca de mídias](docs/content-management.md).
 
 [Pedidos da comunidade e caixa de sugestões privadas](docs/community.md).
+
+Guia público, contato por e-mail e recuperação de navegação: [escopo e limites](docs/public-guides.md).
