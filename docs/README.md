@@ -22,6 +22,7 @@ Recebida em 14/11/2026. Originais copiados sem alteração de conteúdo; removid
 - [Perfil Creator e Bunny](creator-profile.md)
 - [Editor de recomendações](posts-editor.md)
 - [Workspace: implementação e limites](workspace-delivery.md)
+- [Biblioteca, salvos e coleções pessoais](user-library.md)
 - [Registro dos 142 contratos](screen-delivery.json)
 - [Auditoria de cobertura das telas](coverage-audit.md)
 - [Decisões e pendências](decisions/README.md)

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SaveButton } from '@/components/library/SaveButton';
 import { cache } from 'react';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
@@ -33,5 +34,5 @@ export default async function PublicPostPage({ params }: Props) {
   const { post, name } = await getPost(username, segment);
   if (segment !== `${post.slug}-${post.public_id}`) permanentRedirect(postPath(username, post));
   const m = getMessages(await getRequestLocale());
-  return <main id="main" className="mx-auto max-w-3xl space-y-6 px-4 py-10 sm:px-6"><Link href={`/${username}`} className="inline-flex min-h-11 items-center text-sm underline">← {name}</Link><PostCard content={post} name={name} labels={m.posts} /><ShareProfile url={`${publicOrigin()}${postPath(username, post)}`} title={post.title} labels={m.creator} /></main>;
+  return <main id="main" className="mx-auto max-w-3xl space-y-6 px-4 py-10 sm:px-6"><Link href={`/${username}`} className="inline-flex min-h-11 items-center text-sm underline">← {name}</Link><PostCard content={post} name={name} labels={m.posts} /><SaveButton publicId={post.public_id} m={m.library}/><ShareProfile url={`${publicOrigin()}${postPath(username, post)}`} title={post.title} labels={m.creator} /></main>;
 }

@@ -49,7 +49,7 @@ IA tem teto técnico atômico de 30 pedidos por conta/dia UTC e 600 no projeto/d
 
 ## Ainda faltam
 
-A interface não deve ser tratada como completa: vídeos/áudio/transcrição, biblioteca integral de mídia, alt por item, taxonomy canônica/subcategorias, agenda/ciclo de vida completo, cupons estruturados, biblioteca User e salvos, comunidade, analytics, Plus/Stripe, Partner/Admin, consentimentos e documentação jurídica final. Decisões comerciais e produtos futuros continuam com seus estados de origem.
+A interface não deve ser tratada como completa: vídeos/áudio/transcrição, biblioteca integral de mídia, alt por item, taxonomy canônica/subcategorias, agenda/ciclo de vida completo, cupons estruturados, comunidade, analytics, Plus/Stripe, Partner/Admin, consentimentos e documentação jurídica final. Decisões comerciais e produtos futuros continuam com seus estados de origem.
 
 As coleções ainda não têm ordenação manual, exclusão/restauração e cover de mídia; seleção mostra até 1000 posts recentes e mantém todos os selecionados na edição. A autorização dos 142 contratos não transforma essas lacunas em funcionalidades prontas.
 
@@ -59,3 +59,5 @@ As coleções ainda não têm ordenação manual, exclusão/restauração e cove
 - Navegador Chromium com aplicação compilada e serviços externos controlados: upload de PNG de 4.328.213 bytes, falha de uma parte e retry, download original idêntico, proteção do rascunho, publicação e revogação, sugestão editorial e aplicação, autosave/refresh, coleções e busca sem Context privado.
 - Layout inspecionado em desktop e 320/390/768 px. Conteúdo fotográfico do onboarding é decorativo; fontes em [fotografia](design/illustrative-photography.md).
 - Teste transacional no Supabase real passou com rollback; isso não homologa chamadas reais OpenAI/Bunny, que dependem das variáveis acima.
+
+Biblioteca User e salvos foram acrescentados em [incremento separado](user-library.md), sem encerrar os demais itens acima.

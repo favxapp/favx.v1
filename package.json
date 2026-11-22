@@ -12,7 +12,8 @@
     "start": "next start",
     "test": "node --experimental-strip-types --test \"tests/*.test.ts\"",
     "typecheck": "tsc --noEmit",
-    "email:preview": "node --experimental-strip-types scripts/preview-auth-emails.ts"
+    "email:preview": "node --experimental-strip-types scripts/preview-auth-emails.ts",
+    "verify:library": "NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:55432 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=mock-key npm run build && node scripts/verify-user-library.cjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "4.0.118",
@@ -31,6 +32,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "autoprefixer": "10.6.2",
+    "playwright-core": "1.65.1",
     "postcss": "8.5.33",
     "tailwindcss": "3.4.19",
     "typescript": "5.9.3"

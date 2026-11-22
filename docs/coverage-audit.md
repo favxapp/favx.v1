@@ -30,15 +30,15 @@ Avanço de 20/11/2026: veja [implementação, configurações e limites](workspa
 - Comportamento próprio para celular: ações alcançáveis, organização progressiva e feedback por arquivo.
 - Homologação visual por tela/estado com referências da Product Owner, sem declarar todos os contratos concluídos porque o build passou.
 
-## Inventário por superfície — atualizado em 20/11/2026
+## Inventário por superfície — atualizado em 21/11/2026
 
 “Parcial” não significa aceita/concluída. O status da especificação é preservado; propostas e itens futuros não são ativados automaticamente por esta auditoria.
 
-Foram encontrados **142 contratos detalhados**: 43 com algum comportamento implementado e 99 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
+Foram encontrados **142 contratos detalhados**: 51 com algum comportamento implementado e 91 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
 
 | ID | Superfície | Status no DOC03 | Código atual | Observação |
 |---|---|---|---|---|
-| WEB-001 | Landing institucional | MVP P0 | Parcial | Landing inicial; direção fotográfica e narrativa ainda incompletas. |
+| WEB-001 | Landing institucional | MVP P0 | Parcial | Landing com Manrope, composição fotográfica e CTA de autenticação; narrativa institucional completa ainda pendente. |
 | WEB-002 | Como funciona | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-003 | Página de preços e planos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | WEB-004 | Ajuda — início | MVP P0 | Parcial | Ajuda com busca e categorias de artigos iniciais; catálogo completo pendente. |
@@ -59,18 +59,18 @@ Foram encontrados **142 contratos detalhados**: 43 com algum comportamento imple
 | PUB-003 | Detalhe público da recomendação | MVP P0 | Parcial | Texto e galeria de imagens com controle de visibilidade; vídeo/áudio demais módulos pendentes. |
 | PUB-004 | Entrada de busca no perfil | MVP P0 | Parcial | Campo lexical dentro do perfil; conversa/voz pendentes. |
 | PUB-005 | Lista de resultados Creator | MVP P0 | Parcial | Resultados públicos filtrados e paginados; contrato completo pendente. |
-| PUB-006 | Coleção compartilhada de User | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| PUB-006 | Coleção compartilhada de User | MVP P0 | Parcial | Seleção compartilhada paginada somente com posts elegíveis, sem identidade do User ou totais privados; link revogado retorna 404. |
 | PUB-007 | Pedido comunitário público | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PUB-008 | Enviar sugestão comunitária | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | PUB-009 | Conteúdo indisponível / link antigo | MVP P0 | Parcial | 404 e slug canônico básicos; faltam estados contextuais. |
 | PUB-010 | Prévia segura de compartilhamento | MVP P0 | Parcial | Metadados básicos; revisar previews sociais completos. |
-| USR-001 | Início do User / biblioteca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-002 | Todos os salvos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-003 | Item salvo e ações | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-004 | Lista de minhas coleções | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-005 | Detalhe de coleção pessoal | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-006 | Criar ou editar coleção User | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| USR-007 | Compartilhar / revogar coleção | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| USR-001 | Início do User / biblioteca | MVP P0 | Parcial | Biblioteca com salvos recentes, coleções e acesso ao Creator; histórico autorizado e telemetria pendentes. |
+| USR-002 | Todos os salvos | MVP P0 | Parcial | Salvos próprios com busca lexical, filtros categoria/Creator/data, ordenação e paginação; offline e telemetria pendentes. |
+| USR-003 | Item salvo e ações | MVP P0 | Parcial | Detalhe salvo com origem, data, coleções, organizar/remover e placeholder sem conteúdo indisponível; telemetria pendente. |
+| USR-004 | Lista de minhas coleções | MVP P0 | Parcial | Coleções próprias com busca, ordenação, criação e exclusão confirmada; arquivamento/restauração e capa na lista pendentes. |
+| USR-005 | Detalhe de coleção pessoal | MVP P0 | Parcial | Detalhe, capa, ordem persistida pelo editor, ações de compartilhamento/revogação; telemetria e aceite visual pendentes. |
+| USR-006 | Criar ou editar coleção User | MVP P0 | Parcial | Nome, descrição, seleção paginada de salvos, capa de item, reordenação e controle de concorrência; upload de capa independente pendente. |
+| USR-007 | Compartilhar / revogar coleção | MVP P0 | Parcial | Ativação explícita, copiar, prévia, revogação imediata e rotação do token; prévia privada é limitada à página atual. |
 | USR-008 | Seguindo e seguidores — privado | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | USR-009 | Configurações da conta | MVP P0 | Parcial | Configurações de idioma/fuso persistidas e e-mail da conta; contrato completo pendente. |
 | USR-010 | Privacidade e consentimentos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -180,3 +180,7 @@ Foram encontrados **142 contratos detalhados**: 43 com algum comportamento imple
 | FUT-002 | FAVX for Brands — adesão Creator | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
 | FUT-003 | FAVX for Brands — interesse/match | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
 | FUT-004 | Events / Proof / Perfil Comercial | FUTURO — fora do MVP | Não implementado | Sem implementação desta superfície no código atual. |
+
+## 21/11/2026 — biblioteca pessoal
+
+USR-001 a USR-007 e PUB-006 receberam implementação funcional, testes de interface e verificação de isolamento/revogação no Supabase. [Escopo e lacunas](user-library.md). Continuam parciais: não houve aceite integral de produto/visual, nem implantação de histórico autorizado, telemetria e todos os estados complementares dos contratos.

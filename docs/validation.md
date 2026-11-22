@@ -38,3 +38,7 @@ As pendências para integração estão em [decisões](decisions/README.md).
 38 testes aprovados, typecheck sem erros e build de produção concluído. Ver [escopo, integrações e limites](workspace-delivery.md). Migration `20261120220440_workspace_collections_search_ai_media` aplicada no projeto FAVX; teste transacional `supabase/tests/workspace_access.sql` passou com rollback de todas as fixtures.
 
 Teste Chromium com serviços controlados percorreu editor, upload de imagem 4,3 MB em partes, retry, original byte a byte, autosave, sugestão editorial, revisão/publicação, criação/edição de coleção, perfil e busca públicos, ocultação e revogação da mídia. Context e identidade não constam do pedido enviado à IA. Imagens de rascunho e originais não são legíveis por anônimos. Layout sem overflow em 320/390/768 px e desktop. A integração externa real permanece pendente das variáveis OpenAI e Bunny privado.
+
+## 21/11/2026 — biblioteca e coleções User
+
+Ver [registro de comportamento, validação e limites](user-library.md). 39 testes, typecheck e build aprovados. Migration `20261121165355_user_library` aplicada no Supabase FAVX. Probe transacional de isolamento, salvamento idempotente, compartilhamento explícito, revogação, indisponibilidade e limpeza de associações passou com rollback. Chromium atravessou UI/server actions e PostgreSQL sob RLS, incluindo concorrência e layouts responsivos. O retorno de sessão foi simulado; não foi enviado OTP real.

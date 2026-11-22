@@ -1,16 +1,13 @@
 import Link from 'next/link';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { libraryClient,userLibrary } from '@/lib/library/server';
 import { getRequestLocale } from '@/lib/i18n/server';
 import { getMessages } from '@/lib/i18n/messages';
 import { Icon } from '@/components/ui/Icon';
-
+import { SavedCard } from '@/components/library/SavedCard';
 export default async function MePage() {
-  const m = getMessages(await getRequestLocale()); const w = m.workspace;
-  const supabase = await createSupabaseServerClient();
-  const { data: creator, error } = await supabase.from('creator_profiles').select('username,display_name,is_public').maybeSingle();
-  if (error) throw Error('Account unavailable');
-  return <main id="main" className="mx-auto max-w-content space-y-10 px-4 py-10 sm:px-6">
-    <section className="studio-hero"><p className="eyebrow">FAVX / {w.yourSpace}</p><h1>{w.greeting}</h1><p>{creator ? w.intro : w.activationBody}</p><Link className="button-primary" href={creator ? '/app/creator' : '/app/creator/activate'}>{creator ? w.studio : w.becomeCreator}<Icon name="arrow" /></Link></section>
-    <section className="grid gap-4 sm:grid-cols-2"><Link href={creator ? '/app/creator/profile' : '/app/creator/activate'} className="discover-card"><span className="icon-tile"><Icon name="user" /></span><h3>{creator ? w.editProfile : w.identity}</h3><p>{w.identityHint}</p></Link><Link href="/app/settings" className="discover-card"><span className="icon-tile"><Icon name="globe" /></span><h3>{w.preferences}</h3><p>{w.language} · {w.timezone} · {w.account}</p></Link></section>
-  </main>;
+ const {db,user}=await libraryClient();const [data,creator,collections,locale]=await Promise.all([userLibrary(),db.from('creator_profiles').select('username').eq('user_id',user.id).maybeSingle(),db.from('user_collections').select('id,title,description,share_enabled').eq('user_id',user.id).order('updated_at',{ascending:false}).limit(4),getRequestLocale()]);if(creator.error||collections.error)throw Error('Library unavailable');const messages=getMessages(locale);const m=messages.library;const w=messages.workspace;
+ return <main id="main" className="mx-auto max-w-content space-y-10 px-4 py-10 sm:px-6"><section className="studio-hero"><p className="eyebrow">FAVX / {w.yourSpace}</p><h1>{m.title}</h1><p>{m.subtitle}</p><div className="mt-6 flex flex-wrap gap-3"><Link className="button-primary !mt-0" href="/app/salvos"><Icon name="bookmark"/>{m.saved}</Link><Link className="button-secondary" href="/app/colecoes/nova"><Icon name="plus"/>{m.newCollection}</Link></div></section>
+ <section><div className="section-heading"><h2>{m.recentSaved}</h2><Link href="/app/salvos">{m.viewAll} ↗</Link></div>{data.items.length?<div className="library-grid">{data.items.slice(0,6).map(item=><SavedCard key={item.id} item={item} m={m}/>)}</div>:<div className="empty-collection"><Icon name="bookmark" width={32} height={32}/><h2>{m.emptyTitle}</h2><p>{m.emptyBody}</p></div>}</section>
+ <section><div className="section-heading"><h2>{m.recentCollections}</h2><Link href="/app/colecoes">{m.viewAll} ↗</Link></div><div className="grid gap-4 sm:grid-cols-2">{collections.data?.map(c=><Link href={`/app/colecoes/${c.id}`} className="discover-card" key={c.id}><span className="icon-tile"><Icon name="layers"/></span><h3>{c.title}</h3><p>{c.description}</p><span className="mt-4 block text-xs text-ink-muted">{c.share_enabled?m.shared:m.private}</span></Link>)}{!collections.data?.length&&<Link href="/app/colecoes/nova" className="discover-card"><span className="icon-tile"><Icon name="plus"/></span><h3>{m.newCollection}</h3><p>{m.emptyCollection}</p></Link>}</div></section>
+ <section className="grid gap-4 sm:grid-cols-2"><Link href={creator.data?'/app/creator':'/app/creator/activate'} className="discover-card"><span className="icon-tile"><Icon name="sparkles"/></span><h3>{creator.data?w.studio:w.becomeCreator}</h3><p>{w.activationBody}</p></Link><Link href="/app/settings" className="discover-card"><span className="icon-tile"><Icon name="globe"/></span><h3>{w.preferences}</h3><p>{w.language} · {w.timezone} · {w.account}</p></Link></section></main>;
 }

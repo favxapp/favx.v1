@@ -44,3 +44,7 @@ A Product Owner pediu avançar na criação de posts. Ver [escopo e decisões do
 ## Atualização de 21/11/2026 — direção visual e workspace
 
 A Product Owner autorizou aplicar as referências e construir as 142 telas. [Decisão visual](2026-11-16-visual-direction.md): Manrope em toda a interface, sidebar desktop, glass e organização do perfil indicada. OpenAI escolhido explicitamente. [Incremento e limites](../workspace-delivery.md) e [registro por ID](../screen-delivery.json) distinguem implementação parcial e pendências; não representam aceite integral das telas.
+
+## Atualização de 21/11/2026 — biblioteca pessoal
+
+A Product Owner pediu avançar nas pendências. O [incremento de biblioteca](../user-library.md) implementa salvos e coleções User separados das coleções autorais de Creator, com compartilhamento explícito revogável. Não ativa busca global, rastreamento de navegação, produtos futuros ou condições comerciais propostas.
