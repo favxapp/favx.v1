@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { PostEditor } from '@/components/posts/PostEditor';
 import { requireCreator } from '@/lib/posts/server';
 import type { PostRecord } from '@/lib/posts/model';
@@ -11,6 +11,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
   const { data, error } = await supabase.from('creator_posts').select('id,public_id,slug,title,body,content_kind,tags,categories,media_ids,private_context,links,rating,is_sponsored,disclosure,lifecycle_state,version,updated_at').eq('id', id).eq('creator_id', user.id).maybeSingle();
   if (error) throw Error('Post unavailable');
   if (!data) notFound();
+  if (['archived','trashed'].includes(data.lifecycle_state)) redirect(`/app/creator/posts/${id}`);
   const m = getMessages(await getRequestLocale());
   return <main id="main" className="mx-auto max-w-content px-4 py-8 sm:px-6"><PostEditor id={id} initial={data as PostRecord} username={creator.username} name={creator.display_name} isPublic={creator.is_public} active={active} labels={m.posts} editorLabels={m.editor} mediaLabels={m.media} errors={m.errors} /></main>;
 }

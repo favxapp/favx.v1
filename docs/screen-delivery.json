@@ -1,8 +1,8 @@
 {
   "updated": "2026-11-21",
   "total": 142,
-  "partial": 51,
-  "notImplemented": 91,
+  "partial": 54,
+  "notImplemented": 88,
   "fullyAccepted": 0,
   "note": "Parcial não equivale a concluído, homologado ou integração externa configurada.",
   "screens": [
@@ -333,7 +333,7 @@
       "title": "Detalhe de gestão de post",
       "specStatus": "MVP P0",
       "implementation": "partial",
-      "note": "Edição disponível; tela específica de gestão não implementada."
+      "note": "Detalhe privado de gestão com mídia, Context, vínculos, duplicação, ocultar/arquivar/lixeira e confirmação com concorrência; agenda e analytics pendentes."
     },
     {
       "id": "CRE-009",
@@ -382,14 +382,14 @@
       "title": "Ocultos, expirados e arquivados",
       "specStatus": "MVP P0",
       "implementation": "partial",
-      "note": "Ocultação básica; faltam expirados/arquivados."
+      "note": "Lista filtrável de ocultos e arquivados, preview e restauração como rascunho; expiração por agenda pendente."
     },
     {
       "id": "CRE-016",
       "title": "Lixeira de conteúdo",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Lixeira de posts com restauração como rascunho, preservação de ID/mídias e confirmação; retenção, expurgo, banners e coleções pendentes."
     },
     {
       "id": "CRE-017",
@@ -459,7 +459,7 @@
       "title": "Histórico e versões de publicação",
       "specStatus": "MVP P0",
       "implementation": "partial",
-      "note": "Histórico no banco; não há interface de versões."
+      "note": "Histórico privado paginado, conteúdo de versões e comparação com anterior; restauração de versões não oferecida sem regra aprovada."
     },
     {
       "id": "CRE-027",
@@ -514,15 +514,15 @@
       "id": "MED-007",
       "title": "Biblioteca de mídias próprias",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Biblioteca própria paginada com busca por arquivo, filtros de estado, detalhes, vínculos e downloads; vídeo/áudio, remoção e retomada de uploads pendentes."
     },
     {
       "id": "MED-008",
       "title": "Opções de download do Creator",
       "specStatus": "MVP P0",
       "implementation": "partial",
-      "note": "Download autenticado do original próprio; variantes e biblioteca completa pendentes."
+      "note": "Downloads autenticados do original e da imagem otimizada com erro visível; integração real depende da zona privada Bunny configurada."
     },
     {
       "id": "MED-009",
@@ -934,8 +934,8 @@
       "id": "SHR-005",
       "title": "Confirmação de ação destrutiva",
       "specStatus": "MVP P0",
-      "implementation": "not_implemented",
-      "note": "Sem implementação desta superfície no código atual."
+      "implementation": "partial",
+      "note": "Confirmação acessível de ações de conteúdo, cancelamento e conflito de versão; demais domínios pendentes."
     },
     {
       "id": "SHR-006",

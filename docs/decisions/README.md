@@ -48,3 +48,8 @@ A Product Owner autorizou aplicar as referências e construir as 142 telas. [Dec
 ## Atualização de 21/11/2026 — biblioteca pessoal
 
 A Product Owner pediu avançar nas pendências. O [incremento de biblioteca](../user-library.md) implementa salvos e coleções User separados das coleções autorais de Creator, com compartilhamento explícito revogável. Não ativa busca global, rastreamento de navegação, produtos futuros ou condições comerciais propostas.
+
+
+## Atualização de 21/11/2026 — gestão de conteúdo
+
+Continuação autorizada nas pendências: [gestão de posts e mídias](../content-management.md). Arquivo/lixeira são reversíveis, restauração retorna a rascunho e preserva ID. Não se institui retenção de 30 dias, expurgo automático ou restauração de versões sem regra aprovada.

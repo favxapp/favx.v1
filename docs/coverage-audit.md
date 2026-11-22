@@ -34,7 +34,7 @@ Avanço de 20/11/2026: veja [implementação, configurações e limites](workspa
 
 “Parcial” não significa aceita/concluída. O status da especificação é preservado; propostas e itens futuros não são ativados automaticamente por esta auditoria.
 
-Foram encontrados **142 contratos detalhados**: 51 com algum comportamento implementado e 91 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
+Foram encontrados **142 contratos detalhados**: 54 com algum comportamento implementado e 88 sem implementação correspondente. Nenhuma tela foi declarada integralmente homologada nesta auditoria.
 
 | ID | Superfície | Status no DOC03 | Código atual | Observação |
 |---|---|---|---|---|
@@ -84,15 +84,15 @@ Foram encontrados **142 contratos detalhados**: 51 com algum comportamento imple
 | CRE-005 | Editar perfil Creator | MVP P0 | Parcial | Foto, redes, bio, idioma/fuso e prévia; UI e demais itens precisam de revisão. |
 | CRE-006 | Gerenciar publicações | MVP P0 | Parcial | Gestão com busca por título, filtros por estado e paginação; ciclo de vida completo pendente. |
 | CRE-007 | Editor de recomendação — conteúdo | MVP P0 | Parcial | Imagens até 20 MiB, abas, autosave, categorias, Context e sugestões IA; vídeo/áudio/taxonomia/agenda pendentes. |
-| CRE-008 | Detalhe de gestão de post | MVP P0 | Parcial | Edição disponível; tela específica de gestão não implementada. |
+| CRE-008 | Detalhe de gestão de post | MVP P0 | Parcial | Detalhe privado de gestão com mídia, Context, vínculos, duplicação, ocultar/arquivar/lixeira e confirmação com concorrência; agenda e analytics pendentes. |
 | CRE-009 | Links, cupons, oferta e patrocínio | MVP P0 | Parcial | Links/código simples/patrocínio; faltam oferta e cupom estruturado. |
 | CRE-010 | Agendar publicação e encerramento | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-011 | Revisão e prévia de publicação | MVP P0 | Parcial | Prévia e confirmação de texto; falta checklist multimídia/acessibilidade. |
 | CRE-012 | Confirmação de publicação / agendamento | MVP P0 | Parcial | Mensagem de confirmação; não há tela/jornada completa nem agendamento. |
 | CRE-013 | Calendário editorial e agenda | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-014 | Gerenciar rascunhos e agendados | MVP P0 | Parcial | Rascunhos na lista; falta gestão dedicada e agendados. |
-| CRE-015 | Ocultos, expirados e arquivados | MVP P0 | Parcial | Ocultação básica; faltam expirados/arquivados. |
-| CRE-016 | Lixeira de conteúdo | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| CRE-015 | Ocultos, expirados e arquivados | MVP P0 | Parcial | Lista filtrável de ocultos e arquivados, preview e restauração como rascunho; expiração por agenda pendente. |
+| CRE-016 | Lixeira de conteúdo | MVP P0 | Parcial | Lixeira de posts com restauração como rascunho, preservação de ID/mídias e confirmação; retenção, expurgo, banners e coleções pendentes. |
 | CRE-017 | Coleções Creator — lista | MVP P0 | Parcial | Lista paginada de coleções próprias; cover e gestão completa pendentes. |
 | CRE-018 | Editor de coleção Creator | MVP P0 | Parcial | Editor persistido, posts próprios e visibilidade; ordenação/exclusão pendentes. |
 | CRE-019 | Solicitações comunitárias — lista | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -102,7 +102,7 @@ Foram encontrados **142 contratos detalhados**: 51 com algum comportamento imple
 | CRE-023 | Métricas gerais Creator | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-024 | Analytics por publicação | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | CRE-025 | Analytics de coleções e busca | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| CRE-026 | Histórico e versões de publicação | MVP P0 | Parcial | Histórico no banco; não há interface de versões. |
+| CRE-026 | Histórico e versões de publicação | MVP P0 | Parcial | Histórico privado paginado, conteúdo de versões e comparação com anterior; restauração de versões não oferecida sem regra aprovada. |
 | CRE-027 | Gerenciar links do perfil | MVP P0 | Parcial | Redes no editor do perfil; contrato de links completo pendente. |
 | MED-001 | Escolha da origem da mídia | MVP P0 | Parcial | Upload de imagens e seletor de câmera; biblioteca, vídeo/áudio pendentes. |
 | MED-002 | Capturar foto/vídeo com câmera | MVP P0 | Parcial | Captura de foto via seletor nativo quando suportado; vídeo e teste em aparelhos reais pendentes. |
@@ -110,8 +110,8 @@ Foram encontrados **142 contratos detalhados**: 51 com algum comportamento imple
 | MED-004 | Prévia da mídia original | MVP P0 | Parcial | Preview local de imagem e reordenação/capa; alt/crop completo pendentes. |
 | MED-005 | Gerenciador de uploads | MVP P0 | Parcial | Upload por partes com progresso/retry na sessão; retomada após fechar e vídeo pendentes. |
 | MED-006 | Processamento de mídia | MVP P0 | Parcial | Validação de original e WebP no servidor; pipeline assíncrono completo pendente. |
-| MED-007 | Biblioteca de mídias próprias | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| MED-008 | Opções de download do Creator | MVP P0 | Parcial | Download autenticado do original próprio; variantes e biblioteca completa pendentes. |
+| MED-007 | Biblioteca de mídias próprias | MVP P0 | Parcial | Biblioteca própria paginada com busca por arquivo, filtros de estado, detalhes, vínculos e downloads; vídeo/áudio, remoção e retomada de uploads pendentes. |
+| MED-008 | Opções de download do Creator | MVP P0 | Parcial | Downloads autenticados do original e da imagem otimizada com erro visível; integração real depende da zona privada Bunny configurada. |
 | MED-009 | Transcrição e edição de áudio | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SRH-001 | Campo de busca contextual | MVP P0 | Parcial | Busca lexical de perfil com escopo; salvos e IA pendentes. |
 | SRH-002 | Resultados e cards de busca | MVP P0 | Parcial | Cards e paginação de resultados lexicais; contrato completo pendente. |
@@ -170,7 +170,7 @@ Foram encontrados **142 contratos detalhados**: 51 com algum comportamento imple
 | SHR-002 | Central de ajuda contextual | MVP P0 | Parcial | Ajuda inicial acessível no menu; contexto por tela pendente. |
 | SHR-003 | Gestão de sessão/dispositivos | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-004 | Seletor de ambiente User/Creator/Partner | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
-| SHR-005 | Confirmação de ação destrutiva | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
+| SHR-005 | Confirmação de ação destrutiva | MVP P0 | Parcial | Confirmação acessível de ações de conteúdo, cancelamento e conflito de versão; demais domínios pendentes. |
 | SHR-006 | Modo offline/reconexão | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-007 | Páginas 403/404/500 | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
 | SHR-008 | Notificação e configuração de cookies | MVP P0 | Não implementado | Sem implementação desta superfície no código atual. |
@@ -184,3 +184,7 @@ Foram encontrados **142 contratos detalhados**: 51 com algum comportamento imple
 ## 21/11/2026 — biblioteca pessoal
 
 USR-001 a USR-007 e PUB-006 receberam implementação funcional, testes de interface e verificação de isolamento/revogação no Supabase. [Escopo e lacunas](user-library.md). Continuam parciais: não houve aceite integral de produto/visual, nem implantação de histórico autorizado, telemetria e todos os estados complementares dos contratos.
+
+## 21/11/2026 — gestão de conteúdo Creator
+
+Detalhe de gestão, versões, ocultos/arquivados, lixeira e biblioteca de mídias receberam implementação. [Comportamentos e limites](content-management.md). O inventário permanece sem telas integralmente homologadas.
